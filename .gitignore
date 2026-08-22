@@ -1,0 +1,39 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Virtual environments and packaging
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Coverage and test reports
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Generated experiment outputs
+artifacts/*
+!artifacts/README.md
+reports/generated/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local secrets and logs
+.env
+.env.*
+!.env.example
+*.log

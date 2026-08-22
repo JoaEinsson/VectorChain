@@ -1,0 +1,104 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vectorchain"
+version = "0.1.0.dev0"
+description = "Causal adaptive vector representation for scalar time series."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.optional-dependencies]
+plot = [
+  "matplotlib>=3.8",
+]
+
+[project.urls]
+Repository = "https://github.com/JoaEinsson/VectorChain"
+Issues = "https://github.com/JoaEinsson/VectorChain/issues"
+
+[dependency-groups]
+dev = [
+  "build>=1.2",
+  "hypothesis>=6.125",
+  "matplotlib>=3.8",
+  "mypy>=1.14",
+  "pre-commit>=4.0",
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "ruff>=0.9",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vectorchain"]
+
+[tool.pytest.ini_options]
+addopts = [
+  "--import-mode=importlib",
+  "--strict-config",
+  "--strict-markers",
+  "-ra",
+]
+testpaths = ["tests"]
+markers = [
+  "property: tests de propriedades e invariantes",
+  "slow: testes que não pertencem ao ciclo local rápido",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["vectorchain"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+skip_covered = true
+exclude_also = [
+  "if TYPE_CHECKING:",
+  "raise NotImplementedError",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests", "experiments"]
+
+[tool.ruff.lint]
+select = [
+  "B",
+  "E4",
+  "E7",
+  "E9",
+  "F",
+  "I",
+  "PT",
+  "RUF",
+  "UP",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "lf"
+exclude = ["prompt_inicial.md"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_configs = true
+files = ["src/vectorchain"]

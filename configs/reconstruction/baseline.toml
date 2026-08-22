@@ -1,0 +1,30 @@
+[experiment]
+name = "reconstruction-baseline"
+seed = 1729
+repetitions = 5
+
+[signals]
+names = [
+  "sine",
+  "chirp",
+  "ramp",
+  "piecewise_linear",
+  "first_order_response",
+  "second_order_response",
+  "regime_change",
+]
+n_points = 1000
+noise_std = 0.01
+
+[vectorchain]
+causal = true
+min_segment_length = 2
+tolerances = [0.001, 0.003, 0.01, 0.03, 0.1]
+
+[metrics]
+names = ["n_points", "n_vectors", "compression_factor", "mae", "rmse", "runtime_s"]
+
+[output]
+root = "artifacts"
+save_vectors = true
+save_plots = true

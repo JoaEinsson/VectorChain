@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussão científica
+    url: https://github.com/JoaEinsson/VectorChain/discussions
+    about: Use discussões para ideias ainda sem hipótese ou reprodução concreta.

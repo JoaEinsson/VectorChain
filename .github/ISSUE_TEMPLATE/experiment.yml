@@ -1,0 +1,44 @@
+name: Proposta de experimento
+description: Proponha uma hipótese, baseline ou ablation verificável.
+title: "[Experiment]: "
+labels: ["experiment"]
+body:
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hipótese
+      description: Declare uma hipótese falsificável e o resultado negativo relevante.
+    validations:
+      required: true
+
+  - type: textarea
+    id: protocol
+    attributes:
+      label: Protocolo proposto
+      description: Dados, seeds, splits, tolerâncias, repetições e controles.
+    validations:
+      required: true
+
+  - type: textarea
+    id: baselines
+    attributes:
+      label: Baselines
+      description: Métodos equivalentes ou mais simples que precisam ser comparados.
+    validations:
+      required: true
+
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Métricas e critério de decisão
+      description: Defina métricas primárias antes de executar o experimento.
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Riscos de validade
+      description: Leakage, tuning, escala, custo, múltiplas comparações ou outros vieses.
+    validations:
+      required: true

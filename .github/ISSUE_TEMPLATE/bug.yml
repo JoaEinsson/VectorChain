@@ -1,0 +1,47 @@
+name: Bug
+description: Reporte comportamento incorreto ou uma regressão reproduzível.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Obrigado por fornecer uma reprodução mínima e sem dados sensíveis.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Comportamento observado
+      description: O que ocorreu e por que parece incorreto?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reprodução mínima
+      description: Inclua código, configuração, seed e dados mínimos.
+      render: python
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Versões de VectorChain, Python, NumPy e sistema operacional.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: causality
+    attributes:
+      label: Causalidade
+      options:
+        - label: O problema pode alterar segmentos já emitidos quando o futuro muda.
