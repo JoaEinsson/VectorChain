@@ -1,0 +1,25 @@
+[experiment]
+name = "forecasting-robustness-grid"
+base_config = "baseline.toml"
+seeds = [1729, 2718, 31415, 104729, 8675309]
+
+[grid]
+context_lengths = [32, 64, 128]
+horizons = [1, 4, 16]
+tolerances = [0.01, 0.03, 0.1]
+stride = 4
+
+[criteria]
+predictive_parity_ratio = 1.10
+maximum_step_fraction = 0.5
+maximum_scalar_fraction = 1.0
+robust_seed_rate = 0.8
+
+[timing]
+repetitions = 1
+warmup_repetitions = 0
+
+[output]
+root = "artifacts"
+save_plots = true
+plot_dpi = 150

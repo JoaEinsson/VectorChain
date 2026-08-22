@@ -45,3 +45,14 @@ O runner cria uma única lista de exemplos rolling-origin, separada temporalment
 alvo e compartilhada por raw, primeira diferença e VectorChain. O scaler e a regressão ridge usam
 somente treino. `examples.csv` prova os limites temporais; `inputs.csv` registra passos, features e
 bytes antes do pooling; `predictions.csv` preserva cada previsão de validação e teste.
+
+A grade fatorial de robustez do forecasting é executada com:
+
+```powershell
+uv run python experiments/05_forecasting_robustness.py --config configs/forecasting/robustness.toml
+```
+
+Ela mantém a baseline congelada e varia somente seeds, horizontes, contextos, tolerâncias e stride
+declarados. `conditions.csv` preserva cada seed; `summary.csv` agrega por célula sem tratar janelas
+sobrepostas como réplicas independentes. Raw e diferenças são avaliados uma vez por
+`(seed, horizon, context)`, não uma vez por tolerância VectorChain.

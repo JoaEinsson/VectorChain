@@ -62,6 +62,12 @@ O forecasting mínimo reproduzível é executado com:
 uv run python experiments/04_forecasting.py --config configs/forecasting/baseline.toml
 ```
 
+A grade pré-especificada de robustez usa a baseline acima como configuração base:
+
+```powershell
+uv run python experiments/05_forecasting_robustness.py --config configs/forecasting/robustness.toml
+```
+
 O runner também grava `timings.csv` com cada repetição e `manifest.json` com tamanho e SHA-256 de
 cada arquivo do run. `metrics.csv` contém mediana e quartis sem tratar repetições de runtime como
 novas observações estatísticas do sinal.
@@ -75,6 +81,10 @@ No forecasting, `examples.csv` registra `context_start`, `origin` e `target_inde
 em `origin`, o alvo ocorre em `origin + horizon` e o split usa exclusivamente o índice do alvo. Os
 IDs em `inputs.csv` devem coincidir entre representações. Scaler e ridge são ajustados apenas nas
 linhas marcadas como treino; validação e teste não provocam refit.
+
+Na robustez, a seed do conjunto completo de sinais é a unidade de réplica. `conditions.csv` contém
+as métricas pareadas seed a seed e `summary.csv` agrega exatamente essas seeds. Contagens de
+janelas não devem ser apresentadas como tamanho amostral da análise de robustez.
 
 Se a árvore estiver suja, o experimento pode rodar, mas deve registrar esse fato e não pode ser
 promovido a resultado de referência sem preservar o diff correspondente.
