@@ -89,12 +89,31 @@ def compute_feature_matrix(
         dtype=np.float64,
         count=n_segments,
     )
+    return compute_features_from_displacements(dt, dy, feature_names)
+
+
+def compute_features_from_displacements(
+    dt: NDArray[np.float64],
+    dy: NDArray[np.float64],
+    feature_names: tuple[FeatureName, ...],
+) -> NDArray[np.float64]:
+    """Compute canonical feature columns from validated segment displacements."""
+
+    if dt.shape != dy.shape or dt.ndim != 1:
+        msg = "dt and dy must be one-dimensional arrays with the same shape"
+        raise ValueError(msg)
+    if dt.size == 0:
+        return np.empty((0, len(feature_names)), dtype=np.float64)
+    if not np.all(np.isfinite(dt)) or not np.all(np.isfinite(dy)) or np.any(dt <= 0.0):
+        msg = "dt must be positive and dt/dy must be finite"
+        raise ValueError(msg)
+
     theta = np.arctan2(dy, dt)
     radius = np.hypot(dt, dy)
 
     delta_theta = np.zeros_like(theta)
     delta_radius = np.zeros_like(radius)
-    if n_segments > 1:
+    if dt.size > 1:
         delta_theta[1:] = theta[1:] - theta[:-1]
         delta_radius[1:] = radius[1:] - radius[:-1]
 
