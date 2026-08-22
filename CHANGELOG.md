@@ -30,3 +30,6 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Padronização aprendida somente na gallery, DTW normalizado e retrieval nearest-neighbor estável.
 - Runner pré-especificado de similaridade com split compartilhado, cinco ablations e ranking completo.
 - Relatório de referência de retrieval com réplica determinística e resultados negativos preservados.
+- Protocolo causal de forecasting de incremento com pooling compartilhado e split temporal auditável.
+- Runner ridge para raw, diferenças e VectorChain com persistência, payload, memória e timings.
+- Relatório de forecasting replicado, incluindo a paridade limítrofe e falha correspondente na validação.

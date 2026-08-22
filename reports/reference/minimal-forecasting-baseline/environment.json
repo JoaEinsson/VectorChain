@@ -1,0 +1,177 @@
+{
+  "command": {
+    "argv": [
+      "experiments/04_forecasting.py",
+      "--config",
+      "configs/forecasting/baseline.toml"
+    ],
+    "display": "experiments/04_forecasting.py --config configs/forecasting/baseline.toml"
+  },
+  "config": {
+    "experiment": {
+      "name": "minimal-forecasting-baseline",
+      "seed": 31415
+    },
+    "forecast": {
+      "context_length": 64,
+      "horizon": 1,
+      "stride": 2
+    },
+    "model": {
+      "alpha": 0.001,
+      "kind": "ridge",
+      "repetitions": 5,
+      "warmup_repetitions": 1
+    },
+    "output": {
+      "plot_dpi": 150,
+      "root": "artifacts",
+      "save_models": true,
+      "save_plots": true
+    },
+    "representations": {
+      "names": [
+        "raw",
+        "first_difference",
+        "vectorchain"
+      ],
+      "summary_statistics": [
+        "last",
+        "mean",
+        "std"
+      ]
+    },
+    "resolved": {
+      "config_path": "configs/forecasting/baseline.toml",
+      "config_sha256": "25bb2365dc96cd383d1d69bffe45064309672ceceacbe37846fc4b1a50b23690",
+      "n_examples_by_split": {
+        "test": 714,
+        "train": 1925,
+        "validation": 721
+      },
+      "output_root": "F:\\Projetos\\VectorChain\\artifacts",
+      "signal_seeds": {
+        "chirp": 6894369671430017204,
+        "first_order_response": 2890100896329134411,
+        "piecewise_linear": 7047214652103394396,
+        "ramp": 5851866067628065167,
+        "regime_change": 8401067361085421641,
+        "second_order_response": 5037646422310687683,
+        "sine": 4114706133015583382
+      },
+      "train_end_exclusive": 614,
+      "validation_end_exclusive": 819
+    },
+    "signals": {
+      "n_points": 1024,
+      "names": [
+        "sine",
+        "chirp",
+        "ramp",
+        "piecewise_linear",
+        "first_order_response",
+        "second_order_response",
+        "regime_change"
+      ],
+      "noise_std": 0.01,
+      "parameters": {
+        "chirp": {
+          "amplitude": 1.0,
+          "end_frequency": 8.0,
+          "offset": 0.0,
+          "phase": 0.0,
+          "start_frequency": 1.0
+        },
+        "first_order_response": {
+          "amplitude": 1.0,
+          "offset": 0.0,
+          "time_constant": 0.15
+        },
+        "piecewise_linear": {
+          "amplitude": 1.0,
+          "offset": 0.0
+        },
+        "ramp": {
+          "amplitude": 1.0,
+          "offset": 0.0
+        },
+        "regime_change": {
+          "amplitude": 1.0,
+          "change_fraction": 0.5,
+          "frequency_after": 8.0,
+          "frequency_before": 2.0,
+          "level_shift": 0.5,
+          "offset": 0.0
+        },
+        "second_order_response": {
+          "amplitude": 1.0,
+          "damping_ratio": 0.15,
+          "natural_frequency": 3.0,
+          "offset": 0.0
+        },
+        "sine": {
+          "amplitude": 1.0,
+          "frequency": 3.0,
+          "offset": 0.0,
+          "phase": 0.0
+        }
+      }
+    },
+    "split": {
+      "train_fraction": 0.6,
+      "validation_fraction": 0.2
+    },
+    "vectorchain": {
+      "causal": true,
+      "features": [
+        "dt",
+        "dy",
+        "theta",
+        "r",
+        "delta_theta"
+      ],
+      "min_segment_length": 2,
+      "tolerance": 0.03
+    }
+  },
+  "dependencies": {
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.2",
+    "vectorchain": "0.1.0.dev0"
+  },
+  "elapsed_s": 4.8536146,
+  "finished_utc": "2026-08-22T11:39:26.000659+00:00",
+  "git": {
+    "commit": "f96388f75946d9f57e3e492348f4dbf527f4252e",
+    "dirty": false
+  },
+  "n_conditions": 3,
+  "n_failures": 0,
+  "platform": {
+    "architecture": "64bit",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "release": "11",
+    "system": "Windows"
+  },
+  "python": {
+    "executable": "F:\\Projetos\\VectorChain\\.venv\\Scripts\\python.exe",
+    "implementation": "CPython",
+    "version": "3.12.12"
+  },
+  "run_id": "20260822T113921043900Z_25bb2365_f96388f",
+  "seeds": {
+    "base": 31415,
+    "signals": {
+      "chirp": 6894369671430017204,
+      "first_order_response": 2890100896329134411,
+      "piecewise_linear": 7047214652103394396,
+      "ramp": 5851866067628065167,
+      "regime_change": 8401067361085421641,
+      "second_order_response": 5037646422310687683,
+      "sine": 4114706133015583382
+    }
+  },
+  "started_utc": "2026-08-22T11:39:21.043900+00:00",
+  "status": "complete"
+}

@@ -19,3 +19,5 @@ Resultados disponíveis:
   reconstrução, com sete sinais sintéticos e cinco tolerâncias.
 - [`similarity-retrieval-baseline/`](similarity-retrieval-baseline/): comparação pré-especificada de
   dez representações no mesmo split, incluindo baselines, segmentação fixa e cinco ablations.
+- [`minimal-forecasting-baseline/`](minimal-forecasting-baseline/): ridge compartilhado com split
+  temporal auditável para raw, diferenças e VectorChain, incluindo payload e persistência.

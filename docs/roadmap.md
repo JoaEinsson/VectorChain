@@ -53,8 +53,10 @@ matrizes de distância preservados no resultado de referência.
 
 ## Etapa 5 — Forecasting mínimo
 
-- [ ] Modelo downstream idêntico para raw, diferenças e VectorChain
-- [ ] Separação temporal sem leakage
-- [ ] Métricas, comprimento, runtime e memória aproximada
+- [x] Modelo downstream idêntico para raw, diferenças e VectorChain
+- [x] Separação temporal sem leakage
+- [x] Métricas, comprimento, runtime e memória aproximada
 
-Gate: conclusões atribuíveis à representação, não à diferença de modelo ou tuning.
+Gate concluído: alvo, pooling, scaler de treino, ridge, alpha e split são compartilhados; dimensão do
+modelo decorrente das features é registrada explicitamente. A paridade VectorChain passou no teste
+por margem mínima, falhou na validação e não é tratada como evidência robusta.

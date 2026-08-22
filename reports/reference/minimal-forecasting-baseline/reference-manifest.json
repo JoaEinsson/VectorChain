@@ -1,0 +1,82 @@
+{
+  "status": "reference",
+  "source_run_id": "20260822T113921043900Z_25bb2365_f96388f",
+  "replication_run_id": "20260822T114016397175Z_25bb2365_f96388f",
+  "files": [
+    {
+      "path": "config.json",
+      "size_bytes": 2744,
+      "sha256": "84267a55a2a96ee5f579fab57f71bf4225afc2832be62be6eac90d4f91050945"
+    },
+    {
+      "path": "environment.json",
+      "size_bytes": 4397,
+      "sha256": "8f22851cc473bba42e992639293be7c4ac06a05ceffdc3bac250d5c361b4408d"
+    },
+    {
+      "path": "examples.csv",
+      "size_bytes": 458378,
+      "sha256": "86a1ff76e808a3c225ee9c39d22f52187b6c203a089a4a7b1bdc919f452f57a0"
+    },
+    {
+      "path": "inputs.csv",
+      "size_bytes": 677996,
+      "sha256": "37f51d5dbf022e7f67d5dde2d53bebf64324424c6d7d8e9b79ce474c3a562e26"
+    },
+    {
+      "path": "metrics_by_signal.csv",
+      "size_bytes": 3290,
+      "sha256": "dcd0e4cc00e537460b4141e7d881930ec0774c018a6a6b004e871dd530a135f9"
+    },
+    {
+      "path": "metrics.csv",
+      "size_bytes": 1956,
+      "sha256": "ffda7d5ca855eb1c5791ba512cb7bff9365d3c989295f09593e4af78bb686a01"
+    },
+    {
+      "path": "models.npz",
+      "size_bytes": 3110,
+      "sha256": "9e8428bf6c4c235ac084f9548f1c6895a2a8f7519265bf72f4b0771bd472fe9c"
+    },
+    {
+      "path": "naive_metrics.csv",
+      "size_bytes": 1082,
+      "sha256": "b0fcd8224792333baecb1dea656ffd9e6ade9d1e335569db7bfc3737b1daa915"
+    },
+    {
+      "path": "plots/summary__error-payload-tradeoff.png",
+      "size_bytes": 49360,
+      "sha256": "ec7f5267ec2a9f3cb22c1f3fa44539eac929a5e08d23e2217d20fc0f0b51dc98"
+    },
+    {
+      "path": "plots/summary__input-size.png",
+      "size_bytes": 55563,
+      "sha256": "7ffc101d4c51694e64cde44c3288fd7fd1702a623f5e1e10161ea992b8babb99"
+    },
+    {
+      "path": "plots/summary__test-error.png",
+      "size_bytes": 40147,
+      "sha256": "fd38bbe4fe153f56592673f16fb2e5362abf0478897174f58c6d1d2ffc2d9637"
+    },
+    {
+      "path": "plots/summary__test-rmse-by-signal.png",
+      "size_bytes": 46115,
+      "sha256": "97f83192850ecadbba9b52b877edfd6f16023aa56472b7c27cab43dd30d269ac"
+    },
+    {
+      "path": "predictions.csv",
+      "size_bytes": 723072,
+      "sha256": "b69faf01145111ffcdc3b522b6974742d51b350a43da95e6a5bae9327aa2331d"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 6548,
+      "sha256": "e231adf877478a2e5f5eed7e99e9589f6db30e697b99713a64e3c2ae9bdbedf2"
+    },
+    {
+      "path": "timings.csv",
+      "size_bytes": 1767,
+      "sha256": "bbf0d681ffb7ff57ff32f44420e835a5ff9991018763f4561a7c1945c80d1041"
+    }
+  ]
+}

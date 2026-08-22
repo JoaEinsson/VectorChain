@@ -26,7 +26,7 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 - [x] Sinais sintéticos e visualização científica
 - [x] Experimento compressão × reconstrução
 - [x] Similaridade, retrieval e ablations
-- [ ] Forecasting mínimo
+- [x] Forecasting mínimo
 
 ## Ambiente de desenvolvimento
 
@@ -112,6 +112,12 @@ A comparação pré-especificada de similaridade está em
 Nesta primeira tarefa sintética, baselines raw, normalizada, diferenças e segmentação fixa superaram
 as ablations VectorChain no top-1. O resultado negativo é preservado como orientação para a próxima
 iteração, não ocultado por seleção de configuração.
+
+O benchmark de forecasting está em
+[`reports/reference/minimal-forecasting-baseline/`](reports/reference/minimal-forecasting-baseline/).
+VectorChain usou 10,58× menos passos e 2,12× menos valores escalares, com RMSE de teste 9,98% maior
+que raw. O limite de paridade de 10% foi satisfeito por margem mínima no teste e falhou na validação;
+o relatório preserva essa fragilidade e o custo de um modelo pooled maior.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.
