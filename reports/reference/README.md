@@ -17,3 +17,5 @@ Resultados disponíveis:
 
 - [`reconstruction-baseline/`](reconstruction-baseline/): primeira baseline causal de compressão ×
   reconstrução, com sete sinais sintéticos e cinco tolerâncias.
+- [`similarity-retrieval-baseline/`](similarity-retrieval-baseline/): comparação pré-especificada de
+  dez representações no mesmo split, incluindo baselines, segmentação fixa e cinco ablations.

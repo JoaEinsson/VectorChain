@@ -1,0 +1,331 @@
+{
+  "command": {
+    "argv": [
+      "experiments/02_similarity.py",
+      "--config",
+      "configs/similarity/baseline.toml"
+    ],
+    "display": "experiments/02_similarity.py --config configs/similarity/baseline.toml"
+  },
+  "config": {
+    "dataset": {
+      "gallery_variants": [
+        {
+          "amplitude": 0.8,
+          "noise_std": 0.01,
+          "offset": -0.4
+        },
+        {
+          "amplitude": 1.0,
+          "noise_std": 0.02,
+          "offset": 0.0
+        },
+        {
+          "amplitude": 1.2,
+          "noise_std": 0.015,
+          "offset": 0.4
+        }
+      ],
+      "n_points": 128,
+      "query_variants": [
+        {
+          "amplitude": 0.7,
+          "noise_std": 0.015,
+          "offset": 0.25
+        },
+        {
+          "amplitude": 1.1,
+          "noise_std": 0.025,
+          "offset": -0.25
+        },
+        {
+          "amplitude": 1.3,
+          "noise_std": 0.01,
+          "offset": 0.6
+        }
+      ],
+      "signal_names": [
+        "sine",
+        "chirp",
+        "ramp",
+        "piecewise_linear",
+        "first_order_response",
+        "second_order_response",
+        "regime_change"
+      ]
+    },
+    "distance": {
+      "dtw_window_fraction": 0.15
+    },
+    "experiment": {
+      "name": "similarity-retrieval-baseline",
+      "seed": 2718
+    },
+    "output": {
+      "plot_dpi": 150,
+      "root": "artifacts",
+      "save_distances": true,
+      "save_plots": true
+    },
+    "representations": {
+      "fixed_features": [
+        "dt",
+        "dy",
+        "theta",
+        "r",
+        "delta_theta"
+      ],
+      "fixed_segment_length": 10,
+      "vectorchain_ablations": [
+        [
+          "dt",
+          "dy"
+        ],
+        [
+          "dt",
+          "dy",
+          "theta"
+        ],
+        [
+          "dt",
+          "dy",
+          "theta",
+          "r"
+        ],
+        [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta"
+        ],
+        [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta",
+          "delta_r"
+        ]
+      ],
+      "vectorchain_min_segment_length": 2,
+      "vectorchain_tolerance": 0.03
+    },
+    "resolved": {
+      "config_path": "configs/similarity/baseline.toml",
+      "config_sha256": "8857c7b6e9d0e9d7d6a4edfcaff5d2ca31f49311e66c1d0f5c8eb6180fb06460",
+      "gallery_sample_ids": [
+        "gallery__sine__v0",
+        "gallery__sine__v1",
+        "gallery__sine__v2",
+        "gallery__chirp__v0",
+        "gallery__chirp__v1",
+        "gallery__chirp__v2",
+        "gallery__ramp__v0",
+        "gallery__ramp__v1",
+        "gallery__ramp__v2",
+        "gallery__piecewise_linear__v0",
+        "gallery__piecewise_linear__v1",
+        "gallery__piecewise_linear__v2",
+        "gallery__first_order_response__v0",
+        "gallery__first_order_response__v1",
+        "gallery__first_order_response__v2",
+        "gallery__second_order_response__v0",
+        "gallery__second_order_response__v1",
+        "gallery__second_order_response__v2",
+        "gallery__regime_change__v0",
+        "gallery__regime_change__v1",
+        "gallery__regime_change__v2"
+      ],
+      "output_root": "F:\\Projetos\\VectorChain\\artifacts",
+      "query_sample_ids": [
+        "query__sine__v0",
+        "query__sine__v1",
+        "query__sine__v2",
+        "query__chirp__v0",
+        "query__chirp__v1",
+        "query__chirp__v2",
+        "query__ramp__v0",
+        "query__ramp__v1",
+        "query__ramp__v2",
+        "query__piecewise_linear__v0",
+        "query__piecewise_linear__v1",
+        "query__piecewise_linear__v2",
+        "query__first_order_response__v0",
+        "query__first_order_response__v1",
+        "query__first_order_response__v2",
+        "query__second_order_response__v0",
+        "query__second_order_response__v1",
+        "query__second_order_response__v2",
+        "query__regime_change__v0",
+        "query__regime_change__v1",
+        "query__regime_change__v2"
+      ],
+      "representations": [
+        "raw",
+        "normalized_raw",
+        "first_difference",
+        "first_second_difference",
+        "fixed_linear",
+        "vectorchain__dt-dy",
+        "vectorchain__dt-dy-theta",
+        "vectorchain__dt-dy-theta-r",
+        "vectorchain__dt-dy-theta-r-delta_theta",
+        "vectorchain__dt-dy-theta-r-delta_theta-delta_r"
+      ],
+      "sample_seeds": {
+        "gallery__chirp__v0": 7309102370603404533,
+        "gallery__chirp__v1": 7055189646852930550,
+        "gallery__chirp__v2": 7471043018054943045,
+        "gallery__first_order_response__v0": 6194112179700111752,
+        "gallery__first_order_response__v1": 7991507640027854994,
+        "gallery__first_order_response__v2": 4484782752077524426,
+        "gallery__piecewise_linear__v0": 3294502498348918382,
+        "gallery__piecewise_linear__v1": 6849935385588639552,
+        "gallery__piecewise_linear__v2": 14200944827521377,
+        "gallery__ramp__v0": 1667859810207342267,
+        "gallery__ramp__v1": 4917392055093196289,
+        "gallery__ramp__v2": 3896241870625907118,
+        "gallery__regime_change__v0": 3613236110278187050,
+        "gallery__regime_change__v1": 3538819494541816141,
+        "gallery__regime_change__v2": 4413908309315431247,
+        "gallery__second_order_response__v0": 6710612923625161788,
+        "gallery__second_order_response__v1": 5267168271643067051,
+        "gallery__second_order_response__v2": 4113808033560850619,
+        "gallery__sine__v0": 403471390340741458,
+        "gallery__sine__v1": 499549320729769928,
+        "gallery__sine__v2": 822896828597865238,
+        "query__chirp__v0": 2001705900342164318,
+        "query__chirp__v1": 7327207700560342198,
+        "query__chirp__v2": 5115648967412180854,
+        "query__first_order_response__v0": 3706767601177430830,
+        "query__first_order_response__v1": 7229369386143675031,
+        "query__first_order_response__v2": 3355190558929425256,
+        "query__piecewise_linear__v0": 6650500457576065490,
+        "query__piecewise_linear__v1": 6616539094474038259,
+        "query__piecewise_linear__v2": 8290165051733645950,
+        "query__ramp__v0": 4226990528224026333,
+        "query__ramp__v1": 3615416744607893010,
+        "query__ramp__v2": 8786716537808292819,
+        "query__regime_change__v0": 4767711088424501043,
+        "query__regime_change__v1": 6824573694524840786,
+        "query__regime_change__v2": 6538056540380325880,
+        "query__second_order_response__v0": 7925849164828421202,
+        "query__second_order_response__v1": 3257411091631677124,
+        "query__second_order_response__v2": 428723739633748540,
+        "query__sine__v0": 5798417999050698561,
+        "query__sine__v1": 3815403766828087543,
+        "query__sine__v2": 852115992889414883
+      }
+    },
+    "retrieval": {
+      "k_values": [
+        1,
+        3
+      ]
+    },
+    "signals": {
+      "parameters": {
+        "chirp": {
+          "end_frequency": 8.0,
+          "phase": 0.0,
+          "start_frequency": 1.0
+        },
+        "first_order_response": {
+          "time_constant": 0.15
+        },
+        "piecewise_linear": {},
+        "ramp": {},
+        "regime_change": {
+          "change_fraction": 0.5,
+          "frequency_after": 8.0,
+          "frequency_before": 2.0,
+          "level_shift": 0.5
+        },
+        "second_order_response": {
+          "damping_ratio": 0.15,
+          "natural_frequency": 3.0
+        },
+        "sine": {
+          "frequency": 3.0,
+          "phase": 0.0
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.2",
+    "vectorchain": "0.1.0.dev0"
+  },
+  "elapsed_s": 13.7232407,
+  "finished_utc": "2026-08-22T11:10:27.044979+00:00",
+  "git": {
+    "commit": "3909a3bb721982c8ff8c5ddd70859bf7c99e42fb",
+    "dirty": false
+  },
+  "n_conditions": 10,
+  "n_failures": 0,
+  "platform": {
+    "architecture": "64bit",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "release": "11",
+    "system": "Windows"
+  },
+  "python": {
+    "executable": "F:\\Projetos\\VectorChain\\.venv\\Scripts\\python.exe",
+    "implementation": "CPython",
+    "version": "3.12.12"
+  },
+  "run_id": "20260822T111013228795Z_8857c7b6_3909a3b",
+  "seeds": {
+    "base": 2718,
+    "samples": {
+      "gallery__chirp__v0": 7309102370603404533,
+      "gallery__chirp__v1": 7055189646852930550,
+      "gallery__chirp__v2": 7471043018054943045,
+      "gallery__first_order_response__v0": 6194112179700111752,
+      "gallery__first_order_response__v1": 7991507640027854994,
+      "gallery__first_order_response__v2": 4484782752077524426,
+      "gallery__piecewise_linear__v0": 3294502498348918382,
+      "gallery__piecewise_linear__v1": 6849935385588639552,
+      "gallery__piecewise_linear__v2": 14200944827521377,
+      "gallery__ramp__v0": 1667859810207342267,
+      "gallery__ramp__v1": 4917392055093196289,
+      "gallery__ramp__v2": 3896241870625907118,
+      "gallery__regime_change__v0": 3613236110278187050,
+      "gallery__regime_change__v1": 3538819494541816141,
+      "gallery__regime_change__v2": 4413908309315431247,
+      "gallery__second_order_response__v0": 6710612923625161788,
+      "gallery__second_order_response__v1": 5267168271643067051,
+      "gallery__second_order_response__v2": 4113808033560850619,
+      "gallery__sine__v0": 403471390340741458,
+      "gallery__sine__v1": 499549320729769928,
+      "gallery__sine__v2": 822896828597865238,
+      "query__chirp__v0": 2001705900342164318,
+      "query__chirp__v1": 7327207700560342198,
+      "query__chirp__v2": 5115648967412180854,
+      "query__first_order_response__v0": 3706767601177430830,
+      "query__first_order_response__v1": 7229369386143675031,
+      "query__first_order_response__v2": 3355190558929425256,
+      "query__piecewise_linear__v0": 6650500457576065490,
+      "query__piecewise_linear__v1": 6616539094474038259,
+      "query__piecewise_linear__v2": 8290165051733645950,
+      "query__ramp__v0": 4226990528224026333,
+      "query__ramp__v1": 3615416744607893010,
+      "query__ramp__v2": 8786716537808292819,
+      "query__regime_change__v0": 4767711088424501043,
+      "query__regime_change__v1": 6824573694524840786,
+      "query__regime_change__v2": 6538056540380325880,
+      "query__second_order_response__v0": 7925849164828421202,
+      "query__second_order_response__v1": 3257411091631677124,
+      "query__second_order_response__v2": 428723739633748540,
+      "query__sine__v0": 5798417999050698561,
+      "query__sine__v1": 3815403766828087543,
+      "query__sine__v2": 852115992889414883
+    }
+  },
+  "started_utc": "2026-08-22T11:10:13.228795+00:00",
+  "status": "complete"
+}

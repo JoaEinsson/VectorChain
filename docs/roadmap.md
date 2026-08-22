@@ -44,11 +44,12 @@ Gate: reprodução documentada a partir de clone limpo.
 
 ## Etapa 4 — Similaridade e ablations
 
-- [ ] Baselines raw, normalizado, diferenças e segmentação fixa
-- [ ] Ablations de features geométricas
-- [ ] Invariância e retrieval nearest-neighbor
+- [x] Baselines raw, normalizado, diferenças e segmentação fixa
+- [x] Ablations de features geométricas
+- [x] Invariância e retrieval nearest-neighbor
 
-Gate: mesma divisão de dados e protocolo para todas as representações.
+Gate concluído: mesma divisão de dados e protocolo para todas as representações, com ranking e
+matrizes de distância preservados no resultado de referência.
 
 ## Etapa 5 — Forecasting mínimo
 

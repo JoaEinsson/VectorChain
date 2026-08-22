@@ -25,7 +25,8 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 - [x] Reconstrução e métricas fundamentais
 - [x] Sinais sintéticos e visualização científica
 - [x] Experimento compressão × reconstrução
-- [ ] Similaridade, retrieval e forecasting
+- [x] Similaridade, retrieval e ablations
+- [ ] Forecasting mínimo
 
 ## Ambiente de desenvolvimento
 
@@ -105,6 +106,12 @@ O primeiro benchmark reproduzível e sua análise estão em
 [`reports/reference/reconstruction-baseline/`](reports/reference/reconstruction-baseline/). O
 resultado identifica um compromisso útil na condição nominal, mas também registra pouca compressão
 em tolerâncias próximas ao ruído e forte dependência da geometria do sinal.
+
+A comparação pré-especificada de similaridade está em
+[`reports/reference/similarity-retrieval-baseline/`](reports/reference/similarity-retrieval-baseline/).
+Nesta primeira tarefa sintética, baselines raw, normalizada, diferenças e segmentação fixa superaram
+as ablations VectorChain no top-1. O resultado negativo é preservado como orientação para a próxima
+iteração, não ocultado por seleção de configuração.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

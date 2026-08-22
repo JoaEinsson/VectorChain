@@ -1,0 +1,67 @@
+{
+  "status": "reference",
+  "source_run_id": "20260822T111013228795Z_8857c7b6_3909a3b",
+  "replication_run_id": "20260822T111207406511Z_8857c7b6_3909a3b",
+  "files": [
+    {
+      "path": "config.json",
+      "size_bytes": 6823,
+      "sha256": "c4f43037a28ee6e2d6cff67c20ea045b648270cd4156f5b7fc97e6a57c1a38de"
+    },
+    {
+      "path": "distances.npz",
+      "size_bytes": 34771,
+      "sha256": "5ed602ba0cf04b4d3ac8f35d89f42c20c320056eaf20cad2d242854e77eb24e0"
+    },
+    {
+      "path": "environment.json",
+      "size_bytes": 10708,
+      "sha256": "183518b5813b6a21cd5fcdb1b7ef79b2a6f3891b7216779db59f9f0675972ed0"
+    },
+    {
+      "path": "metrics.csv",
+      "size_bytes": 2277,
+      "sha256": "a829dff30ff3b34edd422d4aacbf4f45627000ad42215c39b1c42a9cf593e235"
+    },
+    {
+      "path": "neighbors.csv",
+      "size_bytes": 555495,
+      "sha256": "82833e2c7f42a5077783d53be65628e275f5622c846b0477b1c65699550e03c7"
+    },
+    {
+      "path": "plots/summary__retrieval-accuracy.png",
+      "size_bytes": 56248,
+      "sha256": "b3e871631490d7018bab4499fc66a66067146e20bc9caeb7c4cc1ee161ab8291"
+    },
+    {
+      "path": "plots/summary__separation-ratio.png",
+      "size_bytes": 54234,
+      "sha256": "c99603195e0cce7ffc823a3cf29ff6b987175a03a5d86f98162439cf08666122"
+    },
+    {
+      "path": "plots/summary__sequence-length.png",
+      "size_bytes": 56504,
+      "sha256": "e512bd7236d5a65d4d219ae843a1f7e929b000c19373356318a11ee36ca1e6e9"
+    },
+    {
+      "path": "plots/summary__vectorchain-ablations.png",
+      "size_bytes": 40765,
+      "sha256": "de35f2694ef13d049d6d0465b30cfd55befc736ed1d72f97bf34fc3bc08b3e18"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 5734,
+      "sha256": "76a7cccba5ac2c16dd56826e306ef1f1b002419846be7a1d7ef68c444b3882fe"
+    },
+    {
+      "path": "samples.csv",
+      "size_bytes": 3635,
+      "sha256": "17051affb7b08b1ba5eb0e6168d61193854406e05b1ca9a5722cf260499de964"
+    },
+    {
+      "path": "sequences.csv",
+      "size_bytes": 30764,
+      "sha256": "6c2fdf468e75074f158470386d1e4e5235c2330ae134ab6cec6656c90c02b58d"
+    }
+  ]
+}

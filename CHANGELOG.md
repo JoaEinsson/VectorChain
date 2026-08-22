@@ -26,3 +26,7 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Plot Matplotlib opcional de original, reconstrução, segmentos e pontos de articulação.
 - Runner configurável do benchmark compressão × reconstrução com artefatos auditáveis.
 - Relatório de referência da baseline causal com métricas brutas, timings, ambiente e figuras.
+- Baselines raw, normalizada, diferenças e segmentação linear fixa com features configuráveis.
+- Padronização aprendida somente na gallery, DTW normalizado e retrieval nearest-neighbor estável.
+- Runner pré-especificado de similaridade com split compartilhado, cinco ablations e ranking completo.
+- Relatório de referência de retrieval com réplica determinística e resultados negativos preservados.
