@@ -312,8 +312,8 @@ def run_experiment(
                         )
                     if config.save_plots:
                         title = (
-                            f"{signal_name} | seed={signal_seed} | tolerance={tolerance:g} | "
-                            f"n={config.n_points} | run={run_id}"
+                            f"{signal_name} | tolerance={tolerance:g}\n"
+                            f"seed={signal_seed} | n={config.n_points} | run={run_id}"
                         )
                         axis = plot_vector_chain(signal, chain, title=title)
                         axis.figure.savefig(
@@ -486,14 +486,15 @@ def _plot_summaries(
 
     successful = [row for row in metrics_rows if row["status"] == "ok"]
     plot_specs = (
-        ("rmse", "RMSE", "summary__rmse-by-tolerance.png"),
+        ("rmse", "RMSE", "RMSE by tolerance", "summary__rmse-by-tolerance.png"),
         (
             "compression_factor",
             "Structural compression factor (n_points / n_vectors)",
+            "Structural compression by tolerance",
             "summary__compression-by-tolerance.png",
         ),
     )
-    for metric, ylabel, filename in plot_specs:
+    for metric, ylabel, title, filename in plot_specs:
         figure, axis = plt.subplots(figsize=(8.0, 5.0), constrained_layout=True)
         for signal_name in config.signal_names:
             rows = sorted(
@@ -509,10 +510,13 @@ def _plot_summaries(
                 )
         if config.tolerances[0] > 0.0:
             axis.set_xscale("log")
+        metric_values = [float(row[metric]) for row in successful]
+        if metric_values and min(metric_values) > 0.0:
+            axis.set_yscale("log")
         axis.set_xlabel("Absolute tolerance")
         axis.set_ylabel(ylabel)
         axis.set_title(
-            f"{ylabel} by tolerance | seed={config.seed} | n={config.n_points} | run={run_id}"
+            f"{title}\nseed={config.seed} | n={config.n_points} | run={run_id}", fontsize=10.0
         )
         axis.grid(True, alpha=0.25)
         axis.legend(fontsize="small")
@@ -534,9 +538,16 @@ def _plot_summaries(
             )
     axis.set_xlabel("Structural compression factor (n_points / n_vectors)")
     axis.set_ylabel("RMSE")
+    compression_values = [float(row["compression_factor"]) for row in successful]
+    error_values = [float(row["rmse"]) for row in successful]
+    if compression_values and min(compression_values) > 0.0:
+        axis.set_xscale("log")
+    if error_values and min(error_values) > 0.0:
+        axis.set_yscale("log")
     axis.set_title(
-        f"Compression-reconstruction tradeoff | seed={config.seed} | n={config.n_points} | "
-        f"run={run_id}"
+        f"Compression-reconstruction tradeoff\nseed={config.seed} | n={config.n_points} | "
+        f"run={run_id}",
+        fontsize=10.0,
     )
     axis.grid(True, alpha=0.25)
     axis.legend(fontsize="small")
