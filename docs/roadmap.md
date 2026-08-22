@@ -12,15 +12,15 @@ evidência verificável antes da próxima.
 - [x] Protocolo e política de artefatos
 - [x] Configuração local de qualidade e CI
 - [x] Lockfile e gates locais validados
-- [ ] CI executada no GitHub
+- [x] CI executada no GitHub
 
 ## Etapa 1 — Núcleo causal
 
-- [ ] Estado online com `update`, `finalize` e `reset`
-- [ ] Wrapper `fit_transform`
-- [ ] Features canônicas e fronteiras
-- [ ] Testes de propriedades causais
-- [ ] Casos constantes, rampas, ruído e entradas inválidas
+- [x] Estado online com `update`, `finalize` e `reset`
+- [x] Wrapper `fit_transform`
+- [x] Features configuráveis, canônicas e fronteiras
+- [x] Testes de propriedades causais
+- [x] Casos constantes, rampas, ruído e entradas inválidas
 
 Gate: batch e stream equivalentes; alteração arbitrária de futuro não modifica segmentos emitidos.
 

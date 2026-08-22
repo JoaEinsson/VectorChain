@@ -78,20 +78,28 @@ dy          = x[end] - x[start]
 theta       = atan2(dy, dt)
 r           = sqrt(dt**2 + dy**2)
 delta_theta = theta - previous_theta
+delta_r     = r - previous_r
 ```
 
 Como `dt > 0`, `theta` fica no intervalo `(-pi/2, pi/2)`. Não é necessário circular
-`delta_theta`. Para o primeiro vetor, `delta_theta = 0.0`; essa escolha é convencional e deve ser
-incluída nas ablations.
+`delta_theta`. Para o primeiro vetor, `delta_theta = 0.0` e `delta_r = 0.0`; essas escolhas são
+convencionais e devem ser incluídas nas ablations.
 
-A ordem canônica das colunas é:
+A seleção default e sua ordem canônica são:
 
 ```text
 (dt, dy, theta, r, delta_theta)
 ```
 
-Todas as colunas são `float64` no primeiro MVP. `segment_boundaries_` usa inteiros com shape
-`(n_vectors, 2)`.
+O parâmetro `features` aceita uma sequência ordenada contendo `dt`, `dy`, `theta`, `r`,
+`delta_theta` e/ou `delta_r`. `dt` e `dy` são obrigatórios no primeiro MVP; duplicatas e nomes
+desconhecidos são inválidos. A ordem solicitada determina as colunas de `vectors_` e é exposta por
+`feature_names_`.
+
+A seleção ocorre somente depois de as fronteiras terem sido determinadas. Alterar `features` nunca
+pode mudar a segmentação.
+
+Todas as colunas são `float64`. `segment_boundaries_` usa inteiros com shape `(n_vectors, 2)`.
 
 `r` combina unidades de tempo discreto e amplitude. Portanto, não deve ser interpretado como
 distância física sem normalização explícita. Isso é uma limitação da feature, não um detalhe de
@@ -110,7 +118,8 @@ independente exige fornecer o valor inicial explicitamente em uma API futura.
 
 Após `fit_transform`:
 
-- `vectors_`: array `(n_vectors, 5)` na ordem canônica;
+- `vectors_`: array `(n_vectors, n_features)` na ordem de `feature_names_`;
+- `feature_names_`: tupla imutável com os nomes selecionados;
 - `segment_boundaries_`: array inteiro `(n_vectors, 2)`;
 - `compression_ratio_`: alias documentado do fator estrutural `n_points / n_vectors`;
 - `compression_factor_`: `n_points / n_vectors`;

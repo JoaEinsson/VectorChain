@@ -21,7 +21,7 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 
 - [x] Charter e escopo inicial
 - [x] Estrutura de governança e reprodutibilidade
-- [ ] Segmentação causal adaptativa
+- [x] Núcleo de segmentação causal adaptativa
 - [ ] Reconstrução e sinais sintéticos
 - [ ] Experimento compressão × reconstrução
 - [ ] Similaridade, retrieval e forecasting
@@ -38,6 +38,36 @@ uv run ruff check .
 uv run ruff format --check .
 uv run mypy src/vectorchain
 ```
+
+## Uso do núcleo causal
+
+```python
+from vectorchain import VectorChain
+
+vc = VectorChain(
+    tolerance=0.03,
+    causal=True,
+    features=("dt", "dy", "theta", "r", "delta_theta"),
+)
+
+vectors = vc.fit_transform([0.0, 0.2, 0.4, 0.41, 0.42])
+
+print(vectors)
+print(vc.segment_boundaries_)
+```
+
+Para processamento online, use a mesma máquina de estado consumida pelo wrapper batch:
+
+```python
+vc.reset()
+segments = []
+for value in stream:
+    segments.extend(vc.update(value))
+segments.extend(vc.finalize())
+```
+
+As features disponíveis são `dt`, `dy`, `theta`, `r`, `delta_theta` e `delta_r`. `dt` e `dy` são
+obrigatórias no primeiro MVP. Alterar a seleção ou a ordem das features não muda as fronteiras.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

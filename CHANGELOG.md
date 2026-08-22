@@ -16,3 +16,6 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Gates locais com Ruff, mypy, pytest, coverage e build.
 - CI multiplataforma, templates de contribuição e atualização automática de dependências.
 - Licença Apache-2.0 e metadados de citação do autor.
+- Núcleo de segmentação causal com API online e wrapper batch.
+- Projeção configurável de `dt`, `dy`, `theta`, `r`, `delta_theta` e `delta_r`.
+- Testes unitários e de propriedades para causalidade, articulação e equivalência batch/stream.

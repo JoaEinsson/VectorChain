@@ -45,6 +45,7 @@ Não deve existir um algoritmo offline separado por trás de `fit_transform(caus
 4. **Isolamento de reset:** processar uma nova série após `reset` não depende da série anterior.
 5. **Determinismo:** mesmos dados, parâmetros e versão produzem as mesmas fronteiras e features.
 6. **Sem relógio oculto:** decisões usam índices ou timestamps fornecidos, nunca horário de execução.
+7. **Independência de features:** mudar as colunas projetadas não altera nenhuma fronteira.
 
 ## Teste de alteração futura
 
