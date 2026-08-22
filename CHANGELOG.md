@@ -15,3 +15,4 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - ADRs para segmentação, artefatos e tooling.
 - Gates locais com Ruff, mypy, pytest, coverage e build.
 - CI multiplataforma, templates de contribuição e atualização automática de dependências.
+- Licença Apache-2.0 e metadados de citação do autor.

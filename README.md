@@ -47,5 +47,4 @@ As proteções que precisam ser habilitadas na interface do GitHub estão listad
 
 ## Licença
 
-Uma licença ainda não foi selecionada. Até que um arquivo `LICENSE` seja adicionado, nenhuma
-licença de código aberto é concedida implicitamente.
+VectorChain é distribuído sob a [Apache License 2.0](LICENSE).

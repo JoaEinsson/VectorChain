@@ -7,6 +7,8 @@ name = "vectorchain"
 version = "0.1.0.dev0"
 description = "Causal adaptive vector representation for scalar time series."
 readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
 dependencies = [
   "numpy>=1.26",

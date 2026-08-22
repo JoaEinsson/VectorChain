@@ -2,7 +2,9 @@ cff-version: 1.2.0
 message: "Se utilizar este software, cite-o usando os metadados abaixo."
 title: "VectorChain"
 type: software
-version: 0.1.0-dev
+version: 0.1.0.dev0
 authors:
-  - name: "VectorChain contributors"
+  - given-names: "João Vitor"
+    family-names: "Scarpate"
+license: Apache-2.0
 repository-code: "https://github.com/JoaEinsson/VectorChain"
