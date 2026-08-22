@@ -23,7 +23,7 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 - [x] Estrutura de governança e reprodutibilidade
 - [x] Núcleo de segmentação causal adaptativa
 - [x] Reconstrução e métricas fundamentais
-- [ ] Sinais sintéticos e visualização científica
+- [x] Sinais sintéticos e visualização científica
 - [ ] Experimento compressão × reconstrução
 - [ ] Similaridade, retrieval e forecasting
 
@@ -77,6 +77,29 @@ obrigatórias no primeiro MVP. Alterar a seleção ou a ordem das features não 
 qualquer ordem configurada de features e permite alterar `dy`, desde que a quantidade de vetores e
 os valores de `dt` continuem compatíveis com as fronteiras do ajuste. `compression_factor_` mede
 `n_points / n_vectors`; é redução estrutural do comprimento da sequência, não redução em bytes.
+
+Os sete sinais canônicos exigem uma seed ou um `numpy.random.Generator` explícito:
+
+```python
+from vectorchain import generate_chirp
+
+signal = generate_chirp(rng=1729, n_points=1000, noise_std=0.01)
+```
+
+Para visualizar original, reconstrução, segmentos e articulações com a dependência opcional:
+
+```python
+from vectorchain import VectorChain
+from vectorchain.plotting import plot_vector_chain
+
+vc = VectorChain(tolerance=0.03)
+vc.fit_transform(signal)
+axis = plot_vector_chain(signal, vc, title="chirp | seed=1729")
+axis.figure.savefig("vectorchain.png", dpi=150)
+```
+
+As fórmulas e unidades estão registradas em
+[`docs/synthetic-signals.md`](docs/synthetic-signals.md).
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

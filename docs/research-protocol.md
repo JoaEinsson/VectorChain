@@ -34,6 +34,9 @@ O conjunto inicial contém:
 Parâmetros canônicos estão em `configs/reconstruction/baseline.toml`. Geradores recebem um objeto de
 RNG ou seed explicitamente; não devem depender do estado aleatório global.
 
+As fórmulas, unidades normalizadas e parâmetros próprios de cada forma estão registrados em
+`docs/synthetic-signals.md`.
+
 ## Condições
 
 A primeira execução usa sinais em escala nominal comparável e tolerância absoluta. Experimentos com

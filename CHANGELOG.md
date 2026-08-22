@@ -22,3 +22,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Reconstrução linear stateful com suporte a ablações e ordem arbitrária de features.
 - Métricas públicas MAE, RMSE, fator de compressão e fração retida.
 - Atributos pós-ajuste de compressão e erro de reconstrução.
+- Sete geradores sintéticos determinísticos com seed ou `numpy.random.Generator` explícito.
+- Plot Matplotlib opcional de original, reconstrução, segmentos e pontos de articulação.

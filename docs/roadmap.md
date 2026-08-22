@@ -28,8 +28,8 @@ Gate: batch e stream equivalentes; alteração arbitrária de futuro não modifi
 
 - [x] `inverse_transform`
 - [x] Métricas MAE, RMSE e compressão
-- [ ] Sete geradores sintéticos determinísticos
-- [ ] Plot da cadeia articulada
+- [x] Sete geradores sintéticos determinísticos
+- [x] Plot da cadeia articulada
 
 Gate: reconstrução preserva shape, endpoints e continuidade; geradores são reprodutíveis.
 
