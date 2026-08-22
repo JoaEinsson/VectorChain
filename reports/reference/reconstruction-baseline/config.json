@@ -1,0 +1,117 @@
+{
+  "experiment": {
+    "name": "reconstruction-baseline",
+    "repetitions": 5,
+    "seed": 1729,
+    "warmup_repetitions": 1
+  },
+  "metrics": {
+    "names": [
+      "n_points",
+      "n_vectors",
+      "compression_factor",
+      "retention_fraction",
+      "mae",
+      "rmse",
+      "transform_runtime_median_s",
+      "transform_runtime_q1_s",
+      "transform_runtime_q3_s",
+      "reconstruction_runtime_median_s",
+      "reconstruction_runtime_q1_s",
+      "reconstruction_runtime_q3_s"
+    ]
+  },
+  "output": {
+    "plot_dpi": 150,
+    "root": "artifacts",
+    "save_plots": true,
+    "save_vectors": true
+  },
+  "resolved": {
+    "config_path": "configs/reconstruction/baseline.toml",
+    "config_sha256": "808c8919f6107a674415e5e7a639700d69ed8bea7b1bc082cc9e3d3fa0218795",
+    "output_root": "F:\\Projetos\\VectorChain\\artifacts",
+    "signal_seeds": {
+      "chirp": 408835176976195895,
+      "first_order_response": 7754526753939400464,
+      "piecewise_linear": 8232356733117608449,
+      "ramp": 2525541738255795592,
+      "regime_change": 4695181564452026195,
+      "second_order_response": 3453063256976350239,
+      "sine": 5903279023229027532
+    }
+  },
+  "signals": {
+    "n_points": 1000,
+    "names": [
+      "sine",
+      "chirp",
+      "ramp",
+      "piecewise_linear",
+      "first_order_response",
+      "second_order_response",
+      "regime_change"
+    ],
+    "noise_std": 0.01,
+    "parameters": {
+      "chirp": {
+        "amplitude": 1.0,
+        "end_frequency": 8.0,
+        "offset": 0.0,
+        "phase": 0.0,
+        "start_frequency": 1.0
+      },
+      "first_order_response": {
+        "amplitude": 1.0,
+        "offset": 0.0,
+        "time_constant": 0.15
+      },
+      "piecewise_linear": {
+        "amplitude": 1.0,
+        "offset": 0.0
+      },
+      "ramp": {
+        "amplitude": 1.0,
+        "offset": 0.0
+      },
+      "regime_change": {
+        "amplitude": 1.0,
+        "change_fraction": 0.5,
+        "frequency_after": 8.0,
+        "frequency_before": 2.0,
+        "level_shift": 0.5,
+        "offset": 0.0
+      },
+      "second_order_response": {
+        "amplitude": 1.0,
+        "damping_ratio": 0.15,
+        "natural_frequency": 3.0,
+        "offset": 0.0
+      },
+      "sine": {
+        "amplitude": 1.0,
+        "frequency": 3.0,
+        "offset": 0.0,
+        "phase": 0.0
+      }
+    }
+  },
+  "vectorchain": {
+    "causal": true,
+    "features": [
+      "dt",
+      "dy",
+      "theta",
+      "r",
+      "delta_theta"
+    ],
+    "min_segment_length": 2,
+    "tolerances": [
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1
+    ]
+  }
+}

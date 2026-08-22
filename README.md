@@ -24,7 +24,7 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 - [x] Núcleo de segmentação causal adaptativa
 - [x] Reconstrução e métricas fundamentais
 - [x] Sinais sintéticos e visualização científica
-- [ ] Experimento compressão × reconstrução
+- [x] Experimento compressão × reconstrução
 - [ ] Similaridade, retrieval e forecasting
 
 ## Ambiente de desenvolvimento
@@ -100,6 +100,11 @@ axis.figure.savefig("vectorchain.png", dpi=150)
 
 As fórmulas e unidades estão registradas em
 [`docs/synthetic-signals.md`](docs/synthetic-signals.md).
+
+O primeiro benchmark reproduzível e sua análise estão em
+[`reports/reference/reconstruction-baseline/`](reports/reference/reconstruction-baseline/). O
+resultado identifica um compromisso útil na condição nominal, mas também registra pouca compressão
+em tolerâncias próximas ao ruído e forte dependência da geometria do sinal.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

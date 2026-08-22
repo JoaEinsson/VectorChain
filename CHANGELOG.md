@@ -25,3 +25,4 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Sete geradores sintéticos determinísticos com seed ou `numpy.random.Generator` explícito.
 - Plot Matplotlib opcional de original, reconstrução, segmentos e pontos de articulação.
 - Runner configurável do benchmark compressão × reconstrução com artefatos auditáveis.
+- Relatório de referência da baseline causal com métricas brutas, timings, ambiente e figuras.

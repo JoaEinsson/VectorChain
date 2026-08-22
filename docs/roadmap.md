@@ -37,8 +37,8 @@ Gate: reconstrução preserva shape, endpoints e continuidade; geradores são re
 
 - [x] Runner configurável de compressão × reconstrução
 - [x] Manifesto de ambiente e resultados brutos
-- [ ] Curvas e relatório de referência
-- [ ] Análise de condições de sucesso e falha
+- [x] Curvas e relatório de referência
+- [x] Análise de condições de sucesso e falha
 
 Gate: reprodução documentada a partir de clone limpo.
 
