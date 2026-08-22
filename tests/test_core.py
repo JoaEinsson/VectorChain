@@ -17,6 +17,10 @@ def test_initial_state_is_empty_and_open() -> None:
     assert not vc.is_finalized_
     assert vc.n_samples_ == 0
     assert vc.initial_value_ is None
+    assert vc.compression_factor_ is None
+    assert vc.compression_ratio_ is None
+    assert vc.retention_fraction_ is None
+    assert vc.reconstruction_error_ is None
     assert vc.vectors_.shape == (0, len(DEFAULT_FEATURES))
     assert vc.segment_boundaries_.shape == (0, 2)
 
@@ -114,6 +118,10 @@ def test_reset_removes_all_information_from_previous_stream() -> None:
     assert vc.segments_ == ()
     assert vc.n_samples_ == 0
     assert vc.initial_value_ is None
+    assert vc.compression_factor_ is None
+    assert vc.compression_ratio_ is None
+    assert vc.retention_fraction_ is None
+    assert vc.reconstruction_error_ is None
     assert vc.open_segment_boundary_ is None
     assert not vc.is_finalized_
 

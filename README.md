@@ -3,9 +3,9 @@
 VectorChain é um MVP científico para investigar se séries temporais escalares podem ser
 representadas de forma útil como uma cadeia causal e adaptativa de vetores.
 
-O projeto está em fase **pré-alpha**. A infraestrutura de governança e reprodutibilidade está
-sendo estabelecida antes da implementação do algoritmo. Não há, neste momento, resultados que
-sustentem superioridade sobre representações tradicionais.
+O projeto está em fase **pré-alpha**. O núcleo causal, a reconstrução e as métricas fundamentais
+estão implementados, mas ainda não há resultados experimentais que sustentem superioridade sobre
+representações tradicionais.
 
 ## Pergunta de pesquisa
 
@@ -22,7 +22,8 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 - [x] Charter e escopo inicial
 - [x] Estrutura de governança e reprodutibilidade
 - [x] Núcleo de segmentação causal adaptativa
-- [ ] Reconstrução e sinais sintéticos
+- [x] Reconstrução e métricas fundamentais
+- [ ] Sinais sintéticos e visualização científica
 - [ ] Experimento compressão × reconstrução
 - [ ] Similaridade, retrieval e forecasting
 
@@ -51,9 +52,12 @@ vc = VectorChain(
 )
 
 vectors = vc.fit_transform([0.0, 0.2, 0.4, 0.41, 0.42])
+reconstructed = vc.inverse_transform(vectors)
 
 print(vectors)
+print(reconstructed)
 print(vc.segment_boundaries_)
+print(vc.compression_factor_, vc.reconstruction_error_)
 ```
 
 Para processamento online, use a mesma máquina de estado consumida pelo wrapper batch:
@@ -68,6 +72,11 @@ segments.extend(vc.finalize())
 
 As features disponíveis são `dt`, `dy`, `theta`, `r`, `delta_theta` e `delta_r`. `dt` e `dy` são
 obrigatórias no primeiro MVP. Alterar a seleção ou a ordem das features não muda as fronteiras.
+
+`inverse_transform` reconstrói uma amostra por índice por meio de interpolação linear. Ele aceita
+qualquer ordem configurada de features e permite alterar `dy`, desde que a quantidade de vetores e
+os valores de `dt` continuem compatíveis com as fronteiras do ajuste. `compression_factor_` mede
+`n_points / n_vectors`; é redução estrutural do comprimento da sequência, não redução em bytes.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

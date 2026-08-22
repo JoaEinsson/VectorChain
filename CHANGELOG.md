@@ -19,3 +19,6 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Núcleo de segmentação causal com API online e wrapper batch.
 - Projeção configurável de `dt`, `dy`, `theta`, `r`, `delta_theta` e `delta_r`.
 - Testes unitários e de propriedades para causalidade, articulação e equivalência batch/stream.
+- Reconstrução linear stateful com suporte a ablações e ordem arbitrária de features.
+- Métricas públicas MAE, RMSE, fator de compressão e fração retida.
+- Atributos pós-ajuste de compressão e erro de reconstrução.

@@ -114,7 +114,12 @@ escritos uma única vez e segmentos adjacentes devem produzir exatamente o mesmo
 armazenadas. Um array contendo apenas `(dt, dy, ...)` não determina o offset vertical; reconstrução
 independente exige fornecer o valor inicial explicitamente em uma API futura.
 
-## 6. Atributos públicos planejados
+`Z` deve ter a mesma quantidade de linhas e colunas do ajuste, e sua coluna `dt` deve coincidir com
+as durações das fronteiras armazenadas. A coluna `dy` pode ser substituída, permitindo reconstruir
+deslocamentos previstos sobre a mesma estrutura. A localização dessas colunas usa
+`feature_names_`, portanto independe da ordem ou da ablation configurada.
+
+## 6. Atributos públicos
 
 Após `fit_transform`:
 

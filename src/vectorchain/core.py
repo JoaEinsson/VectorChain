@@ -16,6 +16,8 @@ from vectorchain.features import (
     compute_feature_matrix,
     validate_feature_names,
 )
+from vectorchain.metrics import compression_factor, retention_fraction, rmse
+from vectorchain.reconstruction import reconstruct_vector_chain
 
 _ScalarT = TypeVar("_ScalarT", np.float64, np.int64)
 
@@ -179,6 +181,10 @@ class VectorChain:
 
         self.n_samples_ = 0
         self.initial_value_: float | None = None
+        self.compression_factor_: float | None = None
+        self.compression_ratio_: float | None = None
+        self.retention_fraction_: float | None = None
+        self.reconstruction_error_: float | None = None
         self.vectors_ = self._readonly(np.empty((0, len(self.features)), dtype=np.float64))
         self.segment_boundaries_ = self._readonly(np.empty((0, 2), dtype=np.int64))
         return self
@@ -252,10 +258,36 @@ class VectorChain:
             for value in values:
                 self.update(float(value))
             self.finalize()
+            reconstructed = self.inverse_transform(self.vectors_)
+            n_vectors = self.vectors_.shape[0]
+            self.compression_factor_ = compression_factor(self.n_samples_, n_vectors)
+            self.compression_ratio_ = self.compression_factor_
+            self.retention_fraction_ = retention_fraction(self.n_samples_, n_vectors)
+            self.reconstruction_error_ = rmse(values, reconstructed)
         except Exception:
             self.reset()
             raise
         return self.vectors_.copy()
+
+    def inverse_transform(self, Z: ArrayLike) -> NDArray[np.float64]:
+        """Reconstruct the fitted sample sequence from a vector matrix.
+
+        ``Z`` must preserve the fitted chain structure: its rows, columns, and
+        ``dt`` values must match the stored boundaries and configured features.
+        The ``dy`` values may differ, enabling reconstruction of predicted or
+        otherwise transformed vertical displacements on the same segmentation.
+        """
+
+        if not self.is_finalized_ or self.initial_value_ is None:
+            msg = "inverse_transform requires a finalized fitted chain"
+            raise RuntimeError(msg)
+        return reconstruct_vector_chain(
+            Z,
+            self.feature_names_,
+            self.segment_boundaries_,
+            initial_value=self.initial_value_,
+            n_samples=self.n_samples_,
+        )
 
     @staticmethod
     def _validate_tolerance(tolerance: float) -> float:

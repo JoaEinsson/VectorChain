@@ -26,8 +26,8 @@ Gate: batch e stream equivalentes; alteração arbitrária de futuro não modifi
 
 ## Etapa 2 — Reconstrução e sintéticos
 
-- [ ] `inverse_transform`
-- [ ] Métricas MAE, RMSE e compressão
+- [x] `inverse_transform`
+- [x] Métricas MAE, RMSE e compressão
 - [ ] Sete geradores sintéticos determinísticos
 - [ ] Plot da cadeia articulada
 
