@@ -224,6 +224,10 @@ def run_experiment(
 
     config_path = config_path.resolve()
     config = load_config(config_path)
+    if config.save_plots:
+        import matplotlib
+
+        matplotlib.use("Agg")
     repository_root = Path(__file__).resolve().parents[1]
     git_commit, git_dirty = _git_state(repository_root)
     config_digest = hashlib.sha256(config_path.read_bytes()).hexdigest()
