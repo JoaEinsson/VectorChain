@@ -58,6 +58,11 @@ Runtime é repetido pelo menos cinco vezes e resumido por mediana e intervalo in
 determinísticas não devem ser tratadas como cinco observações independentes apenas porque o runtime
 foi repetido.
 
+O runtime de transformação mede exclusivamente `reset`, um `update` por amostra e `finalize` sobre
+o array sintético já gerado; exclui construção do objeto, geração do sinal, reconstrução e cálculo
+de métricas. O runtime de reconstrução mede somente `inverse_transform`. Essa separação evita que o
+cálculo automático de `reconstruction_error_` no wrapper `fit_transform` seja contado duas vezes.
+
 ## Visualizações previstas
 
 1. Original e reconstrução no mesmo eixo.

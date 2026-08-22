@@ -44,6 +44,16 @@ Cada `environment.json` deve conter:
 - seeds;
 - comando executado.
 
+O primeiro benchmark é reproduzido, a partir da raiz do clone, com:
+
+```powershell
+uv run python experiments/01_reconstruction.py --config configs/reconstruction/baseline.toml
+```
+
+O runner também grava `timings.csv` com cada repetição e `manifest.json` com tamanho e SHA-256 de
+cada arquivo do run. `metrics.csv` contém mediana e quartis sem tratar repetições de runtime como
+novas observações estatísticas do sinal.
+
 Se a árvore estiver suja, o experimento pode rodar, mas deve registrar esse fato e não pode ser
 promovido a resultado de referência sem preservar o diff correspondente.
 

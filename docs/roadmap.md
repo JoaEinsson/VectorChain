@@ -35,8 +35,8 @@ Gate: reconstrução preserva shape, endpoints e continuidade; geradores são re
 
 ## Etapa 3 — Primeiro experimento
 
-- [ ] Runner configurável de compressão × reconstrução
-- [ ] Manifesto de ambiente e resultados brutos
+- [x] Runner configurável de compressão × reconstrução
+- [x] Manifesto de ambiente e resultados brutos
 - [ ] Curvas e relatório de referência
 - [ ] Análise de condições de sucesso e falha
 

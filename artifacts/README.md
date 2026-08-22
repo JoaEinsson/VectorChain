@@ -10,6 +10,9 @@ artifacts/<run-id>/
 ├── config.json
 ├── environment.json
 ├── metrics.csv
+├── timings.csv
+├── manifest.json
+├── vectors/
 └── plots/
 ```
 

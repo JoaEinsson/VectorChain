@@ -13,5 +13,13 @@ Um experimento deve:
 6. registrar ambiente e commit Git;
 7. nunca alterar um resultado anterior em silêncio.
 
-O primeiro ponto de entrada planejado é `01_reconstruction.py`, implementado junto com o núcleo
-causal e as métricas correspondentes.
+O benchmark de reconstrução e compressão é executado na raiz do repositório com:
+
+```powershell
+uv run python experiments/01_reconstruction.py --config configs/reconstruction/baseline.toml
+```
+
+Cada execução cria um diretório imutável em `artifacts/<run-id>/` com configuração efetiva,
+ambiente, seeds derivadas por sinal, métricas agregadas, timings individuais, manifesto de hashes,
+vetores opcionais e figuras. O processo termina com código diferente de zero quando qualquer
+condição falha, mas preserva no CSV tudo que conseguiu executar.
