@@ -1,0 +1,96 @@
+[experiment]
+name = "similarity-retrieval-baseline"
+seed = 2718
+
+[dataset]
+signal_names = [
+  "sine",
+  "chirp",
+  "ramp",
+  "piecewise_linear",
+  "first_order_response",
+  "second_order_response",
+  "regime_change",
+]
+n_points = 128
+
+[[dataset.gallery_variants]]
+amplitude = 0.8
+offset = -0.4
+noise_std = 0.01
+
+[[dataset.gallery_variants]]
+amplitude = 1.0
+offset = 0.0
+noise_std = 0.02
+
+[[dataset.gallery_variants]]
+amplitude = 1.2
+offset = 0.4
+noise_std = 0.015
+
+[[dataset.query_variants]]
+amplitude = 0.7
+offset = 0.25
+noise_std = 0.015
+
+[[dataset.query_variants]]
+amplitude = 1.1
+offset = -0.25
+noise_std = 0.025
+
+[[dataset.query_variants]]
+amplitude = 1.3
+offset = 0.6
+noise_std = 0.01
+
+[signals.parameters.sine]
+frequency = 3.0
+phase = 0.0
+
+[signals.parameters.chirp]
+start_frequency = 1.0
+end_frequency = 8.0
+phase = 0.0
+
+[signals.parameters.ramp]
+
+[signals.parameters.piecewise_linear]
+
+[signals.parameters.first_order_response]
+time_constant = 0.15
+
+[signals.parameters.second_order_response]
+natural_frequency = 3.0
+damping_ratio = 0.15
+
+[signals.parameters.regime_change]
+frequency_before = 2.0
+frequency_after = 8.0
+change_fraction = 0.5
+level_shift = 0.5
+
+[representations]
+fixed_segment_length = 10
+fixed_features = ["dt", "dy", "theta", "r", "delta_theta"]
+vectorchain_tolerance = 0.03
+vectorchain_min_segment_length = 2
+vectorchain_ablations = [
+  ["dt", "dy"],
+  ["dt", "dy", "theta"],
+  ["dt", "dy", "theta", "r"],
+  ["dt", "dy", "theta", "r", "delta_theta"],
+  ["dt", "dy", "theta", "r", "delta_theta", "delta_r"],
+]
+
+[distance]
+dtw_window_fraction = 0.15
+
+[retrieval]
+k_values = [1, 3]
+
+[output]
+root = "artifacts"
+save_distances = true
+save_plots = true
+plot_dpi = 150
