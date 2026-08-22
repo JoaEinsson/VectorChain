@@ -484,7 +484,6 @@ def run_experiment(
             split: sum(example.split == split for example in examples)
             for split in ("train", "validation", "test")
         },
-        "example_ids": [example.example_id for example in examples],
     }
     _write_json(run_dir / "config.json", effective_config)
     environment = _environment_manifest(
