@@ -60,3 +60,15 @@ matrizes de distância preservados no resultado de referência.
 Gate concluído: alvo, pooling, scaler de treino, ridge, alpha e split são compartilhados; dimensão do
 modelo decorrente das features é registrada explicitamente. A paridade VectorChain passou no teste
 por margem mínima, falhou na validação e não é tratada como evidência robusta.
+
+## Etapa 6 — Robustez do forecasting
+
+- [x] Cinco seeds independentes como unidade de replicação
+- [x] Grade pré-especificada de horizontes, contextos e tolerâncias
+- [x] Critérios pareados de paridade, redução estrutural e payload
+- [x] Réplica completa e relatório de referência
+
+Gate concluído: 225 avaliações sem falhas em cada execução; todos os campos científicos foram
+idênticos na réplica. Quatorze de 27 células de teste e 12 de 27 de validação foram robustas em pelo
+menos quatro de cinco seeds. A região observada em tolerância `0.1` permanece candidata para
+confirmação independente, não configuração padrão.

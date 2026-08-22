@@ -21,3 +21,5 @@ Resultados disponíveis:
   dez representações no mesmo split, incluindo baselines, segmentação fixa e cinco ablations.
 - [`minimal-forecasting-baseline/`](minimal-forecasting-baseline/): ridge compartilhado com split
   temporal auditável para raw, diferenças e VectorChain, incluindo payload e persistência.
+- [`forecasting-robustness-grid/`](forecasting-robustness-grid/): grade fatorial com cinco seeds,
+  três horizontes, três contextos e três tolerâncias, incluindo réplica determinística.

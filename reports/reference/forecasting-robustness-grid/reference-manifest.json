@@ -1,0 +1,62 @@
+{
+  "status": "reference",
+  "source_run_id": "20260822T120445091325Z_dd459f9e_ce571d9",
+  "replication_run_id": "20260822T121319215288Z_dd459f9e_ce571d9",
+  "files": [
+    {
+      "path": "conditions_by_signal.csv",
+      "size_bytes": 426462,
+      "sha256": "2f2078e375b840c2bc954f07ab547dd5fcd144f7eb3b761d44969d9b16aeeaf9"
+    },
+    {
+      "path": "conditions.csv",
+      "size_bytes": 141411,
+      "sha256": "ef26a4774dce196ed20eee0bf03783637be141019ea1c50a546dca22e3c22367"
+    },
+    {
+      "path": "config.json",
+      "size_bytes": 3489,
+      "sha256": "78f4ac5c89eaef03b3bf89738d555b0f708961e4697f5a9e7d6ceb49b528f406"
+    },
+    {
+      "path": "environment.json",
+      "size_bytes": 6515,
+      "sha256": "0d3cbdf19eeb43783f6d328937237a829ab45d8ae64ddfb400c5237d32f7f8d4"
+    },
+    {
+      "path": "plots/summary__joint-success-rate.png",
+      "size_bytes": 94910,
+      "sha256": "0f1d0e2c61d6e816f651cbb73eedb04ed1aa1e7dce0d084c6b167dbd055d40cf"
+    },
+    {
+      "path": "plots/summary__payload-parity-tradeoff.png",
+      "size_bytes": 89454,
+      "sha256": "e2a18d5d2260d9f59bdf33aa194cc2b4350d3d3153ced76170cc3668bf634758"
+    },
+    {
+      "path": "plots/summary__ratio-distributions.png",
+      "size_bytes": 39081,
+      "sha256": "14a1934251307a0e6d7ea9f8eb90d7abac5013a6ba4d83353568794456069b6d"
+    },
+    {
+      "path": "plots/summary__rmse-ratio.png",
+      "size_bytes": 111126,
+      "sha256": "34bbaef6654a2827f59d7d921bad12357e2c06e0ceeb744d66f9b8035f13cae1"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 7213,
+      "sha256": "864db3fa4b724303c91b47106def4e7710d868e8eda3f5e4e3eebf803f1485d7"
+    },
+    {
+      "path": "summary_by_signal.csv",
+      "size_bytes": 129932,
+      "sha256": "a292d6450c47f0fb558836de631fc4d74f724160c9efa13f5a8cd8c89d833201"
+    },
+    {
+      "path": "summary.csv",
+      "size_bytes": 29586,
+      "sha256": "8934d9bf6631509610fdc65c5129b23c7fae8a41f354ed6dfe4686732595e815"
+    }
+  ]
+}

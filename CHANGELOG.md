@@ -33,3 +33,7 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Protocolo causal de forecasting de incremento com pooling compartilhado e split temporal auditável.
 - Runner ridge para raw, diferenças e VectorChain com persistência, payload, memória e timings.
 - Relatório de forecasting replicado, incluindo a paridade limítrofe e falha correspondente na validação.
+- Runner fatorial de robustez do forecasting com cinco seeds, três horizontes, três contextos e três
+  tolerâncias.
+- Relatório replicado da grade de robustez, com critérios pareados, resultados por sinal e região de
+  sucesso preservada como hipótese para confirmação independente.

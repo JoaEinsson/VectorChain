@@ -27,6 +27,7 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 - [x] Experimento compressão × reconstrução
 - [x] Similaridade, retrieval e ablations
 - [x] Forecasting mínimo
+- [x] Grade fatorial de robustez do forecasting
 
 ## Ambiente de desenvolvimento
 
@@ -118,6 +119,12 @@ O benchmark de forecasting está em
 VectorChain usou 10,58× menos passos e 2,12× menos valores escalares, com RMSE de teste 9,98% maior
 que raw. O limite de paridade de 10% foi satisfeito por margem mínima no teste e falhou na validação;
 o relatório preserva essa fragilidade e o custo de um modelo pooled maior.
+
+A continuação com cinco seeds, três horizontes, três contextos e três tolerâncias está em
+[`reports/reference/forecasting-robustness-grid/`](reports/reference/forecasting-robustness-grid/).
+Quatorze de 27 células de teste foram robustas em pelo menos quatro de cinco seeds. A tolerância
+`0.1` foi a região mais favorável nesta grade sintética, mas é mantida como hipótese para confirmação
+independente, não como novo padrão escolhido sobre os próprios resultados.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.
