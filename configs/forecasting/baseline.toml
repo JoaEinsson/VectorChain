@@ -1,0 +1,87 @@
+[experiment]
+name = "minimal-forecasting-baseline"
+seed = 31415
+
+[signals]
+names = [
+  "sine",
+  "chirp",
+  "ramp",
+  "piecewise_linear",
+  "first_order_response",
+  "second_order_response",
+  "regime_change",
+]
+n_points = 1024
+noise_std = 0.01
+
+[signals.parameters.sine]
+amplitude = 1.0
+offset = 0.0
+frequency = 3.0
+phase = 0.0
+
+[signals.parameters.chirp]
+amplitude = 1.0
+offset = 0.0
+start_frequency = 1.0
+end_frequency = 8.0
+phase = 0.0
+
+[signals.parameters.ramp]
+amplitude = 1.0
+offset = 0.0
+
+[signals.parameters.piecewise_linear]
+amplitude = 1.0
+offset = 0.0
+
+[signals.parameters.first_order_response]
+amplitude = 1.0
+offset = 0.0
+time_constant = 0.15
+
+[signals.parameters.second_order_response]
+amplitude = 1.0
+offset = 0.0
+natural_frequency = 3.0
+damping_ratio = 0.15
+
+[signals.parameters.regime_change]
+amplitude = 1.0
+offset = 0.0
+frequency_before = 2.0
+frequency_after = 8.0
+change_fraction = 0.5
+level_shift = 0.5
+
+[forecast]
+context_length = 64
+horizon = 1
+stride = 2
+
+[split]
+train_fraction = 0.6
+validation_fraction = 0.2
+
+[representations]
+names = ["raw", "first_difference", "vectorchain"]
+summary_statistics = ["last", "mean", "std"]
+
+[vectorchain]
+causal = true
+tolerance = 0.03
+min_segment_length = 2
+features = ["dt", "dy", "theta", "r", "delta_theta"]
+
+[model]
+kind = "ridge"
+alpha = 0.001
+repetitions = 5
+warmup_repetitions = 1
+
+[output]
+root = "artifacts"
+save_models = true
+save_plots = true
+plot_dpi = 150

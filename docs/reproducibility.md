@@ -56,6 +56,12 @@ O benchmark de similaridade e ablations usa um split único e configuração ind
 uv run python experiments/02_similarity.py --config configs/similarity/baseline.toml
 ```
 
+O forecasting mínimo reproduzível é executado com:
+
+```powershell
+uv run python experiments/04_forecasting.py --config configs/forecasting/baseline.toml
+```
+
 O runner também grava `timings.csv` com cada repetição e `manifest.json` com tamanho e SHA-256 de
 cada arquivo do run. `metrics.csv` contém mediana e quartis sem tratar repetições de runtime como
 novas observações estatísticas do sinal.
@@ -64,6 +70,11 @@ No benchmark de similaridade, `samples.csv` é a fonte auditável do split e das
 representação precisa conter exatamente esses mesmos IDs em `sequences.csv`; o scaler por coluna é
 ajustado somente nas sequências da gallery. `neighbors.csv` preserva todos os ranks, inclusive
 empates e erros de classificação, em vez de armazenar somente os acertos.
+
+No forecasting, `examples.csv` registra `context_start`, `origin` e `target_index`. O input termina
+em `origin`, o alvo ocorre em `origin + horizon` e o split usa exclusivamente o índice do alvo. Os
+IDs em `inputs.csv` devem coincidir entre representações. Scaler e ridge são ajustados apenas nas
+linhas marcadas como treino; validação e teste não provocam refit.
 
 Se a árvore estiver suja, o experimento pode rodar, mas deve registrar esse fato e não pode ser
 promovido a resultado de referência sem preservar o diff correspondente.

@@ -34,3 +34,14 @@ Ele gera uma única divisão gallery/query compartilhada por todas as representa
 padronização exclusivamente na gallery e grava `samples.csv`, `sequences.csv`, `metrics.csv`, o
 ranking completo em `neighbors.csv` e, quando habilitado, as matrizes em `distances.npz`. A banda
 DTW resolvida e os runtimes de representação e distância são registrados por condição.
+
+O benchmark mínimo de forecasting é executado com:
+
+```powershell
+uv run python experiments/04_forecasting.py --config configs/forecasting/baseline.toml
+```
+
+O runner cria uma única lista de exemplos rolling-origin, separada temporalmente pelo índice do
+alvo e compartilhada por raw, primeira diferença e VectorChain. O scaler e a regressão ridge usam
+somente treino. `examples.csv` prova os limites temporais; `inputs.csv` registra passos, features e
+bytes antes do pooling; `predictions.csv` preserva cada previsão de validação e teste.
