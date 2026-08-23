@@ -3,10 +3,10 @@
 VectorChain é um projeto científico para investigar se séries temporais escalares podem ser
 representadas de forma útil como uma cadeia causal e adaptativa de vetores.
 
-O projeto está em fase **pré-alpha**. O MVP científico inicial foi concluído: núcleo causal,
-reconstrução, similaridade, forecasting e robustez possuem resultados reproduzíveis. A evidência
-atual sustenta somente um resultado delimitado no benchmark sintético; não sustenta superioridade
-geral nem identifica ainda o mecanismo responsável pelo ganho observado.
+O projeto está em fase **pré-alpha**. A Fase I foi concluída: núcleo causal, reconstrução,
+similaridade, forecasting, controles de mecanismo e rollout possuem resultados reproduzíveis. A
+Fase II está pré-especificada, mas ainda não possui código ou resultados. A evidência atual sustenta
+somente resultados delimitados no benchmark sintético; não sustenta superioridade geral.
 
 ## Pergunta de pesquisa
 
@@ -19,8 +19,9 @@ A hipótese pós-MVP deriva da inspiração em cinemática inversa aplicada ao g
 > Relações cinemáticas entre segmentos adaptativos contêm informação preditiva além da geometria
 > dos segmentos individuais?
 
-O claim mais forte, reservado para uma etapa posterior, pergunta se a própria cadeia pode funcionar
-como espaço de estado autoregressivo causal e compacto.
+O claim mais forte da Fase I perguntou se a própria cadeia poderia funcionar como espaço de estado
+autoregressivo causal e compacto. O teste direto foi válido, mas perdeu para AR raw e encerrou essa
+formulação.
 
 O escopo original está preservado em [`prompt_inicial.md`](prompt_inicial.md). As definições
 executáveis do método serão mantidas em [`docs/specification.md`](docs/specification.md), e a
@@ -30,6 +31,11 @@ O enquadramento pós-MVP está em
 [`docs/kinematic-hypothesis.md`](docs/kinematic-hypothesis.md), o programa experimental em
 [`docs/post-mvp-claim-protocol.md`](docs/post-mvp-claim-protocol.md) e a literatura mais próxima em
 [`docs/closest-prior-art.md`](docs/closest-prior-art.md).
+
+A interpretação final da Fase I está em
+[`docs/phase-1-scientific-synthesis.md`](docs/phase-1-scientific-synthesis.md). A nova hipótese K6,
+sobre tokenização causal sob orçamento de sequência, foi congelada em
+[`docs/phase-2-adaptive-tokenization-protocol.md`](docs/phase-2-adaptive-tokenization-protocol.md).
 
 ## Estado do projeto
 
@@ -45,8 +51,11 @@ O enquadramento pós-MVP está em
 - [x] MVP científico inicial concluído
 - [x] Isolamento do mecanismo cinemático, com gate negativo preservado
 - [x] Controles ABBA/PLA/smoothing e capacidade pareada, com gate negativo preservado
-- [ ] Confirmação em dados inéditos e reais
+- [ ] Confirmação em dados inéditos e reais, bloqueada pelos gates da Fase I
 - [x] Forecasting autoregressivo diretamente na cadeia, com gate K5-A negativo preservado
+- [x] Síntese científica K1–K5 e encerramento da Fase I
+- [x] Protocolo da Fase II congelado antes de código ou execução
+- [ ] Implementação e execução da Etapa 11-A
 
 ## Direção pós-MVP
 
@@ -60,6 +69,11 @@ executados: média móvel trailing e segmentação fixa impediram atribuir o res
 um mecanismo cinemático exclusivo. O forecasting vetorial recursivo também foi executado como nova
 pergunta exploratória: produziu rollouts válidos e compactos, mas perdeu consistentemente para AR
 raw e não sustentou o claim de espaço de estado.
+
+A continuação não retuna essas perguntas. A Fase II usa apenas `(dt, dy)` e testa se tokens
+adaptativos ordenados preservam mais contexto sob um orçamento fixo de comprimento de sequência.
+O gate exige controles de mesmo número de tokens e raw de mesmo payload escalar; dados externos e
+modelos maiores permanecem condicionados ao teste linear sintético.
 
 ## Ambiente de desenvolvimento
 
@@ -179,6 +193,12 @@ O teste direto da cadeia como estado está em
 Sem pooling, o estado causal completou rollouts compactos e venceu controles multioutput pareados,
 mas teve RMSE maior que AR raw nas cinco seeds e nos três horizontes. K5-A não avançou; modelos
 maiores e confirmação externa permanecem fechados por essa condição de parada.
+
+O balanço de toda essa evidência está na
+[`síntese da Fase I`](docs/phase-1-scientific-synthesis.md). A próxima execução possível é a Etapa
+11-A, mas somente depois de implementar literalmente o
+[`protocolo K6 pré-especificado`](docs/phase-2-adaptive-tokenization-protocol.md), sem usar suas cinco
+seeds canônicas durante o desenvolvimento.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

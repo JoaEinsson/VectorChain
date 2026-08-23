@@ -107,7 +107,7 @@ O run promovido e sua reprodução estão em
 O gate K5-A não passou: o estado foi válido e compacto, mas perdeu para AR raw em todas as seeds e
 horizontes.
 
-A ordem restante, condicionada aos gates, é:
+A escada experimental da Fase I terminou com a condição de parada de K5-A:
 
 1. preservar os resultados negativos de K2, K3 e K5-A;
 2. não abrir confirmação externa ou modelos maiores sem uma hipótese nova e justificativa própria;
@@ -117,3 +117,22 @@ Os requisitos e gates estão em
 [`docs/post-mvp-claim-protocol.md`](../docs/post-mvp-claim-protocol.md). Novos números de scripts e
 configs só serão atribuídos quando o protocolo específico da etapa correspondente estiver
 congelado.
+
+## Fase II pré-especificada
+
+A Etapa 11-A testará tokens cartesianos adaptativos sob orçamento de sequência. O protocolo já está
+congelado em
+[`docs/phase-2-adaptive-tokenization-protocol.md`](../docs/phase-2-adaptive-tokenization-protocol.md),
+mas ainda não existe runner, config nem resultado canônico.
+
+Antes de criar `09_*`, a implementação deve:
+
+1. usar somente seeds `11` e `22` em testes e desenvolvimento;
+2. materializar o prefixo aberto sem chamar `finalize()` em origens internas;
+3. manter `2H+1` escalares, incluindo `x[t]`, e parâmetros iguais nas seis representações treinadas;
+4. separar o comando de seleção/validação do comando que abre o teste;
+5. transcrever os cinco inteiros canônicos e os digests do protocolo sem regenerá-los.
+
+Qualquer divergência exige atualizar protocolo e ADR antes de executar uma seed canônica. A Etapa
+11-B externa permanece fechada mesmo depois da implementação; ela depende da passagem integral de
+K6 e de outro protocolo anterior aos dados reais.

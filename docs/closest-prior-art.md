@@ -74,18 +74,17 @@ segmentação, detecção de mudança e análise de trajetórias.
 | duração e incremento por trecho | ABBA/fABBA | `dt/dy` implementados |
 | ângulo ou mudança angular | representação por turning points e curvatura | `theta/delta_theta` implementados |
 | sequência simbólica prevista | ABBA-LSTM, LLM-ABBA | não é o caminho atual |
-| quantização/tokenização | QABBA, HSQP | fora do MVP |
-| ablação causal de relações mantendo fronteiras | não estabelecida por este levantamento | planejada |
-| cadeia geométrica contínua como estado autoregressivo | não estabelecida por este levantamento | planejada, ainda inexistente |
-| Pareto predição × passos × payload com controles pareados | não estabelecido por este levantamento | evidência inicial sem todos os controles |
+| quantização/tokenização | QABBA, HSQP | fora da Fase I; não planejada para 11-A |
+| ablação causal de relações mantendo fronteiras | não estabelecida por este levantamento | executada; gate relacional negativo |
+| cadeia geométrica contínua como estado autoregressivo | não estabelecida por este levantamento | executada em 10-A; pior que AR raw |
+| Pareto predição × passos × payload com controles pareados | não estabelecido por este levantamento | controles executados; gates K3/K5-A negativos |
 
 `Não estabelecida` significa somente que o levantamento inicial não localizou uma correspondência
 direta. Não significa inexistência de anterioridade.
 
 ## Lacuna de pesquisa provisória
 
-A hipótese de diferenciação não depende de uma feature isolada. Ela está na combinação verificável
-de:
+A lacuna que motivou a Fase I estava na combinação verificável de:
 
 1. emissão estritamente causal e irreversível de uma cadeia contínua;
 2. separação entre geometria do elo e relações entre elos;
@@ -93,14 +92,20 @@ de:
 4. contabilização explícita de passos, payload e capacidade downstream;
 5. previsão futura no relógio de eventos e decodificação cinemática recursiva.
 
-O projeto deve demonstrar valor incremental de cada item. Uma combinação pode ser publicável mesmo
-quando seus componentes são conhecidos, mas a redação precisa dizer `combinação`, `enquadramento`
-ou `evidência`, e não reivindicar invenção de PLA, ângulo, curvatura ou previsão simbólica.
+Os testes posteriores não demonstraram valor incremental das relações nem competitividade do estado
+recursivo. A combinação ainda pode ser descrita como enquadramento e protocolo experimental, mas
+não como novo mecanismo preditivo estabelecido.
 
 A área não deve ser descrita como abandonada: os trabalhos de 2024–2026 mostram atividade recente
-em simbolização, quantização, LLMs e turning points. A oportunidade provisória parece resultar da
-fragmentação entre essas linhas e a modelagem causal contínua de relações intersegmentos, não da
-ausência geral de pesquisadores.
+em simbolização, quantização, LLMs e turning points. Na Fase I, a oportunidade provisória foi
+formulada na interseção dessas linhas com relações intersegmentos causais; os gates posteriores não
+confirmaram essa diferenciação.
+
+A Fase II testa eficiência sob orçamento de comprimento, mas tokenização adaptativa, patching e
+representações por segmentos já possuem anterioridade próxima. K6 é uma pergunta empírica do
+VectorChain, não um claim de invenção. Antes de qualquer publicação da Fase II, a busca deve ser
+expandida especificamente para `adaptive tokenization`, `time-series patching`, `dynamic patching`,
+`event-based sampling` e comparações sob `token budget` ou `context budget`.
 
 ## Busca exigida antes de publicação
 

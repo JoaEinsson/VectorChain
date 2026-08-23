@@ -60,3 +60,7 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   AR raw recursivo, artefatos por evento/origem e gate K5-A separado do status de execução.
 - Relatório reproduzido da Etapa 10-A, preservando rollouts válidos/compactos e a rejeição de K5-A
   diante da superioridade consistente do AR raw.
+- Síntese científica da Fase I com matriz K1–K5, escada final de claims e encerramento explícito das
+  hipóteses cinemática e autoregressiva avaliadas.
+- Protocolo e ADR da Fase II para K6: tokenização cartesiana causal sob budgets pareados, oito
+  famílias sintéticas novas, seeds inéditas, teste fechado e condição de parada anterior ao código.

@@ -181,3 +181,43 @@ sucessos por seed e 0/3 horizontes robustos contra AR raw; as razões de RMSE fo
 16/64/128. O estado cartesiano também foi mais parcimonioso e ligeiramente melhor que o relacional.
 K5-A não avança e a Etapa 10-B condicionada permanece fechada. Consulte o
 [`relatório de referência`](../reports/reference/forecasting-vector-state-rollout/).
+
+## Marco — Fase I encerrada
+
+As Etapas 0–10-A formam uma cadeia completa de evidência, incluindo gates negativos. K2, K3 e K5-A
+não passaram; K4 e 10-B não foram abertas. A interpretação consolidada e os limites de claim estão
+na [`síntese científica da Fase I`](phase-1-scientific-synthesis.md).
+
+Continuações não podem retunar essas hipóteses sobre os mesmos testes. Toda nova fase precisa de
+pergunta, dados e condição de parada próprios.
+
+## Etapa 11-A — Tokenização causal adaptativa sob orçamento
+
+Esta etapa inicia a Fase II e testa K6, uma hipótese independente sobre comprimento de sequência.
+Ela usa somente `(dt, dy)`, previsão direta no domínio raw e dados sintéticos inéditos. Não é
+forecasting autoregressivo da cadeia nem confirmação cinemática.
+
+Protocolo congelado em
+[`phase-2-adaptive-tokenization-protocol.md`](phase-2-adaptive-tokenization-protocol.md).
+
+- [x] Consolidar K1–K5 e os claims permitidos/proibidos da Fase I
+- [x] Pré-especificar pergunta, seeds, famílias, splits, budgets, controles e gate K6
+- [x] Registrar a reformulação no
+  [`ADR 0012`](decisions/0012-reframe-as-adaptive-tokenization.md)
+- [ ] Implementar novos geradores e a visão causal do segmento aberto usando apenas fixtures
+- [ ] Implementar controles com exatamente `2H+1` escalares e auditar parâmetros
+- [ ] Separar seleção/validação da abertura do teste
+- [ ] Congelar código, config e `selection.json` em commit limpo
+- [ ] Abrir o teste uma vez e preservar o gate, inclusive se negativo
+- [ ] Reproduzir no mesmo commit e promover relatório de referência
+
+Gate: em `H=16`, a candidata precisa superar em 1% todos os controles de mesmo número de tokens,
+permanecer dentro de 5% do raw de mesmo payload usando no máximo metade dos passos e satisfazer as
+unidades robustas por seed, família e horizonte. Todas as condições causais e estruturais também são
+obrigatórias.
+
+## Etapa 11-B — Confirmação externa condicional
+
+Estado: **fechada**. Só pode receber protocolo próprio se K6 passar integralmente. Datasets reais,
+modelos neurais, quantização e timestamps irregulares não podem ser usados para substituir uma
+falha da Etapa 11-A.

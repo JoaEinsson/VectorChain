@@ -1,6 +1,6 @@
 # Programa experimental pós-MVP para claims
 
-Status: **programa vigente; Etapas 7 e 8 executadas com gates negativos**.
+Status: **programa da Fase I encerrado; Etapas 7, 8 e 10-A executadas com gates negativos**.
 
 ## Objetivo
 
@@ -199,3 +199,14 @@ que a cadeia é um espaço de estado autoregressivo útil.
 Resultado: **K5-A não avançou**. A cadeia completou rollouts válidos e compactos, mas perdeu para
 AR raw em todas as cinco seeds e nos três horizontes. Isso impede C4 nesta formulação e aciona a
 condição de parada antes de ABBA-LSTM, dados externos ou aumento de capacidade.
+
+## Encerramento da Fase I
+
+K2, K3 e K5-A não passaram; K4 e 10-B permaneceram fechadas. A matriz consolidada está em
+[`phase-1-scientific-synthesis.md`](phase-1-scientific-synthesis.md). Este programa permanece como
+registro histórico e não deve receber novas etapas que reutilizem a escada cinemática.
+
+A Fase II começa por K6, uma pergunta independente sobre tokenização causal sob orçamento de
+sequência. Seu protocolo é
+[`phase-2-adaptive-tokenization-protocol.md`](phase-2-adaptive-tokenization-protocol.md). Um sucesso
+ou fracasso em K6 não altera retrospectivamente K1–K5.

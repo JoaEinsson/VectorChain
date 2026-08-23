@@ -170,6 +170,11 @@ comparação com modelos raw e segmentados sob orçamento pareado.
 
 K5-A falhou no teste sintético pré-especificado; portanto, C4 permanece proibido nesta formulação.
 
+A escada cinemática da Fase I está encerrada. A síntese final está em
+[`phase-1-scientific-synthesis.md`](phase-1-scientific-synthesis.md). K6, na Fase II, testa
+tokenização cartesiana sob orçamento e não deve ser citada como continuação ou confirmação de
+K1–K5.
+
 ## Formulações controladas
 
 Formulação atual defensável:
