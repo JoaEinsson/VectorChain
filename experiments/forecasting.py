@@ -38,6 +38,7 @@ from vectorchain import (
 from vectorchain.features import FeatureName, validate_feature_names
 
 SignalGenerator = Callable[..., NDArray[np.float64]]
+SequenceTransform = Callable[[NDArray[np.float64]], NDArray[np.float64]]
 
 SIGNAL_GENERATORS: dict[str, SignalGenerator] = {
     "sine": generate_sine,
@@ -573,6 +574,8 @@ def _run_representation(
     representation: str,
     examples: Sequence[ForecastExample],
     config: ForecastConfig,
+    *,
+    transform: SequenceTransform | None = None,
 ) -> tuple[
     list[dict[str, object]],
     list[dict[str, object]],
@@ -587,7 +590,11 @@ def _run_representation(
     input_features: list[int] = []
     input_rows: list[dict[str, object]] = []
     for example in examples:
-        sequence = _transform(representation, example.context, config)
+        sequence = (
+            _transform(representation, example.context, config)
+            if transform is None
+            else transform(example.context)
+        )
         summary = summarize_sequence(sequence, config.summary_statistics)
         steps, features = sequence.shape
         summaries.append(summary)

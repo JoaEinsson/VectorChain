@@ -33,6 +33,9 @@ Repository = "https://github.com/JoaEinsson/VectorChain"
 Issues = "https://github.com/JoaEinsson/VectorChain/issues"
 
 [dependency-groups]
+abba = [
+    "fabba==1.5.2",
+]
 dev = [
   "build>=1.2",
   "hypothesis>=6.125",

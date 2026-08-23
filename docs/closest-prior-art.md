@@ -34,6 +34,9 @@ aberta. A ausência de um item nesta lista não demonstra ausência na literatur
   [`10.1145/3532622`](https://doi.org/10.1145/3532622), introduz fABBA e acelera a agregação por um
   procedimento baseado em ordenação. A implementação pública está no
   [`nla-group/fABBA`](https://github.com/nla-group/fABBA).
+- Para a comparação operacional da Etapa 8, a versão oficial `fABBA==1.5.2` é fixada como extra
+  experimental. O runner usa `compress` e somente suas peças contínuas; não representa essa etapa
+  como equivalência ao pipeline simbólico fABBA completo.
 - Elsworth e Güttel, *Time Series Forecasting Using LSTM Networks: A Symbolic Approach* (2020),
   [`arXiv:2003.05672`](https://arxiv.org/abs/2003.05672), já trata forecasting como geração de uma
   sequência simbólica ABBA e reconstrói a previsão numérica.

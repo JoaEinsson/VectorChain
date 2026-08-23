@@ -113,6 +113,10 @@ resiste a controles de smoothing, features locais e capacidade. Consulte o
 Após o gate negativo da Etapa 7, esta etapa testa K1/K3 usando `absolute_geometry` como candidata;
 ela não é confirmação do mecanismo relacional.
 
+Protocolo congelado em
+[`forecasting-controls-protocol.md`](forecasting-controls-protocol.md); o estágio contínuo oficial
+`fABBA.compress==1.5.2` é controle descritivo `window_offline`, fora do gate causal.
+
 - [ ] Integrar ABBA/fABBA como baselines experimentais, fora da dependência principal
 - [ ] Adicionar PLA causal, segmentação fixa e downsampling com orçamento comparável
 - [ ] Adicionar média móvel e suavização exponencial estritamente causais

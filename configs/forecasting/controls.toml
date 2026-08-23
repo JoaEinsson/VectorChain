@@ -1,0 +1,56 @@
+[experiment]
+name = "forecasting-absolute-geometry-controls"
+base_config = "baseline.toml"
+seeds = [1729, 2718, 31415, 104729, 8675309]
+
+[grid]
+context_lengths = [32, 64, 128]
+horizons = [1, 4, 16]
+stride = 4
+tolerance = 0.1
+
+[candidate]
+name = "absolute_geometry"
+features = ["dt", "dy", "theta", "r"]
+
+[controls]
+names = [
+  "local_geometry",
+  "moving_average_geometry",
+  "ewma_geometry",
+  "fixed_geometry",
+  "abba_geometry",
+]
+gate_names = [
+  "local_geometry",
+  "moving_average_geometry",
+  "ewma_geometry",
+  "fixed_geometry",
+]
+primary_name = "local_geometry"
+
+[controls.parameters]
+inner_train_fraction = 0.8
+moving_average_windows = [2, 4, 8]
+ewma_alphas = [0.2, 0.5, 0.8]
+fixed_segment_lengths = [8, 16, 32]
+abba_tolerances = [0.03, 0.1, 0.3]
+
+[external]
+fabba_version = "1.5.2"
+
+[criteria]
+primary_split = "validation"
+maximum_candidate_rmse_ratio = 0.99
+pareto_rmse_ratio = 1.01
+robust_seed_rate = 0.8
+minimum_robust_cell_rate = 0.5
+
+[timing]
+repetitions = 1
+warmup_repetitions = 0
+
+[output]
+root = "artifacts"
+save_plots = true
+plot_dpi = 150

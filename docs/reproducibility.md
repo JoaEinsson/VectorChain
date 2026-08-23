@@ -75,6 +75,16 @@ compara as features sobre os mesmos exemplos:
 uv run python experiments/06_forecasting_feature_ablation.py --config configs/forecasting/feature_ablation.toml
 ```
 
+Os controles da geometria absoluta usam um grupo de dependências experimental separado:
+
+```powershell
+uv sync --locked --dev --group abba
+uv run --locked --group abba python experiments/07_forecasting_controls.py --config configs/forecasting/controls.toml
+```
+
+O grupo `abba` não pertence ao runtime nem à CI padrão do pacote. A versão oficial e todas as
+dependências transitivas ficam resolvidas em `uv.lock` para reprodução do controle externo.
+
 O runner também grava `timings.csv` com cada repetição e `manifest.json` com tamanho e SHA-256 de
 cada arquivo do run. `metrics.csv` contém mediana e quartis sem tratar repetições de runtime como
 novas observações estatísticas do sinal.
@@ -97,6 +107,11 @@ Na ablation cinemática, `step_audit.csv` deve ter a mesma assinatura por
 `(seed, contexto, horizonte)` em todas as variantes. `summary_by_seed.csv` contém a unidade de
 réplica usada pelo gate; `gate.json` separa a decisão científica do status de execução registrado
 em `environment.json`.
+
+Nos controles da Etapa 8, `tuning.csv` é a fonte auditável de todas as alternativas e escolhas.
+Somente exemplos do split externo de treino podem aparecer no treino/validação internos; a
+validação e o teste externos não podem influenciar `selected_parameter`. O campo `causal_scope`
+deve permanecer `window_offline` para ABBA e não pode ser omitido em tabelas ou claims.
 
 ## Programa pós-MVP
 

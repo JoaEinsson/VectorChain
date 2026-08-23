@@ -75,10 +75,21 @@ O run revisado e sua réplica estão em
 O gate não passou; futuros controles devem tratar `absolute_geometry` como candidata exploratória,
 não promover retrospectivamente outra variante relacional.
 
-A ordem restante é:
+Os controles pareados da geometria absoluta são executados com o grupo experimental ABBA:
 
-1. ABBA/fABBA, PLA, smoothing, payload e capacidade pareados;
-2. confirmação em dados inéditos;
+```powershell
+uv run --group abba python experiments/07_forecasting_controls.py --config configs/forecasting/controls.toml
+```
+
+O runner seleciona hiperparâmetros exclusivamente numa divisão bloqueada dentro do treino,
+mantém 12 entradas pooled e 13 parâmetros para candidata/controles e separa controles online do
+estágio de compressão `fABBA.compress`, que é offline dentro de cada janela. O protocolo congelado
+está em [`docs/forecasting-controls-protocol.md`](../docs/forecasting-controls-protocol.md).
+
+A ordem restante, condicionada aos gates, é:
+
+1. executar e interpretar ABBA/fABBA, PLA, smoothing, payload e capacidade pareados;
+2. confirmação em dados inéditos apenas para hipóteses que sobreviverem;
 3. somente então `V_1:t -> V_(t+1)` e rollout no relógio de eventos.
 
 Os requisitos e gates estão em
