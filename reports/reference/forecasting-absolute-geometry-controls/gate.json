@@ -1,0 +1,87 @@
+{
+  "candidate": "absolute_geometry",
+  "controls": {
+    "ewma_geometry": {
+      "checks": {
+        "complete_seed_grid": true,
+        "robust_pareto_cells": true,
+        "robust_predictive_cells": true,
+        "seed_superiority": true
+      },
+      "observed": {
+        "cell_trials": 9,
+        "robust_pareto_cells": 5,
+        "robust_predictive_cells": 5,
+        "seed_successes": 4,
+        "seed_trials": 5
+      },
+      "passed": true
+    },
+    "fixed_geometry": {
+      "checks": {
+        "complete_seed_grid": true,
+        "robust_pareto_cells": false,
+        "robust_predictive_cells": false,
+        "seed_superiority": true
+      },
+      "observed": {
+        "cell_trials": 9,
+        "robust_pareto_cells": 3,
+        "robust_predictive_cells": 3,
+        "seed_successes": 4,
+        "seed_trials": 5
+      },
+      "passed": false
+    },
+    "local_geometry": {
+      "checks": {
+        "complete_seed_grid": true,
+        "robust_pareto_cells": true,
+        "robust_predictive_cells": true,
+        "seed_superiority": true
+      },
+      "observed": {
+        "cell_trials": 9,
+        "robust_pareto_cells": 8,
+        "robust_predictive_cells": 8,
+        "seed_successes": 5,
+        "seed_trials": 5
+      },
+      "passed": true
+    },
+    "moving_average_geometry": {
+      "checks": {
+        "complete_seed_grid": true,
+        "robust_pareto_cells": false,
+        "robust_predictive_cells": false,
+        "seed_superiority": false
+      },
+      "observed": {
+        "cell_trials": 9,
+        "robust_pareto_cells": 3,
+        "robust_predictive_cells": 3,
+        "seed_successes": 1,
+        "seed_trials": 5
+      },
+      "passed": false
+    }
+  },
+  "criteria": {
+    "maximum_candidate_rmse_ratio": 0.99,
+    "minimum_robust_cell_rate": 0.5,
+    "pareto_rmse_ratio": 1.01,
+    "required_cells": 5,
+    "required_seeds": 4,
+    "robust_seed_rate": 0.8
+  },
+  "execution_checks": {
+    "complete_condition_grid": true,
+    "matched_downstream_capacity": true,
+    "zero_condition_failures": true
+  },
+  "external_descriptive_control": "abba_geometry",
+  "passed": false,
+  "primary_control": "local_geometry",
+  "primary_split": "validation",
+  "status": "evaluated"
+}

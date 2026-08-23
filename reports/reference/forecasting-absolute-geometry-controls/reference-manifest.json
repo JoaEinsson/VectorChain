@@ -1,0 +1,77 @@
+{
+  "status": "reference",
+  "source_run_id": "20260823T210037718267Z_79851e12_d5af0af",
+  "replication_run_id": "20260823T210528206430Z_79851e12_d5af0af",
+  "files": [
+    {
+      "path": "conditions_by_signal.csv",
+      "size_bytes": 888383,
+      "sha256": "005eae42786efef839de6e7196d92cf47ff95cfdf278b4fc33e2b1ce90259bc4"
+    },
+    {
+      "path": "conditions.csv",
+      "size_bytes": 241846,
+      "sha256": "425a3e21fa2ba5fec0911445d0011fa7705fdf70faea65db79fc89d6a8a91214"
+    },
+    {
+      "path": "config.json",
+      "size_bytes": 4434,
+      "sha256": "63b10e74ccc3aaf489532ad51d98149e4b6ae3729666e8fc88c470cc32736e56"
+    },
+    {
+      "path": "environment.json",
+      "size_bytes": 7648,
+      "sha256": "375084443dc21a7859d3330ab67ab30ae6053f2b6309ed48caf04c7a73d7f6d9"
+    },
+    {
+      "path": "gate.json",
+      "size_bytes": 2221,
+      "sha256": "40c2f98ac3a4d9fe72290717ed2f90fec4ba9af941809fa12e4045f1214cf079"
+    },
+    {
+      "path": "plots/summary__control-ratio-distributions.png",
+      "size_bytes": 58455,
+      "sha256": "63a63d6fbde4f0a741e52b90a8499bde8ee373c2af79cf8605f35ce043fd0a2c"
+    },
+    {
+      "path": "plots/summary__gate-cell-coverage.png",
+      "size_bytes": 38428,
+      "sha256": "843d3627fae3ff98de2393f61c16218cd26c6fd68068574452714d80a931ac00"
+    },
+    {
+      "path": "plots/summary__primary-control-heatmap.png",
+      "size_bytes": 50421,
+      "sha256": "c07b88cdb8b4f5b44d7cb91b2c7d903321301961e12278a7eaee596594b5a1e4"
+    },
+    {
+      "path": "plots/summary__tuning-selections.png",
+      "size_bytes": 42541,
+      "sha256": "f46f5ff7d0b220effa5e6619f2b5692a4ebd4f374a7546aa02c1f116219b3a0a"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 9161,
+      "sha256": "4d4991cd6465e0624eca30432a5f8b1223fe01876065816f997f972ed243a0e6"
+    },
+    {
+      "path": "summary_by_seed.csv",
+      "size_bytes": 5349,
+      "sha256": "7d86df245438fc04adbe4a79743f8f3a139ec1bfbff1f70b3d99a206191654ff"
+    },
+    {
+      "path": "summary_by_signal.csv",
+      "size_bytes": 139890,
+      "sha256": "b1785e1b477afa704e3066ae6cc57303fd8edbcf2cec4463f432dd4eb0759928"
+    },
+    {
+      "path": "summary.csv",
+      "size_bytes": 29251,
+      "sha256": "f865786588e2ef790d2ba9f453e7ce9b6e8059d63c567f7aa34da2a3be1bf2a9"
+    },
+    {
+      "path": "tuning.csv",
+      "size_bytes": 37989,
+      "sha256": "0c49280ef5616831e9523436698845cc26ba299158664721d5a52ab251eea42b"
+    }
+  ]
+}

@@ -52,3 +52,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   e redirecionando os controles para a utilidade exploratória da geometria absoluta.
 - Protocolo e runner da Etapa 8 com geometria local, smoothing trailing/EWMA, segmentação fixa,
   compressão ABBA opcional, tuning bloqueado no treino e gate predição × payload × capacidade.
+- Relatório reproduzido dos controles da Etapa 8, preservando a falha contra média móvel trailing e
+  segmentação fixa e reduzindo explicitamente o claim de mecanismo.

@@ -1,6 +1,6 @@
 # Protocolo de controles da geometria absoluta no forecasting
 
-Status: **pré-especificado antes da primeira execução da Etapa 8**.
+Status: **executado e reproduzido; gate científico da Etapa 8 não satisfeito**.
 
 ## Pergunta
 
@@ -104,3 +104,17 @@ O pacote oficial `fABBA==1.5.2` pertence ao grupo experimental `abba`; SciPy, sc
 não se tornam dependências do VectorChain. A implementação oficial descreve ABBA/fABBA como
 aproximação poligonal adaptativa seguida de agregação simbólica; este protocolo avalia apenas a
 primeira etapa contínua.
+
+## Resultado observado
+
+As duas execuções canônicas completaram 360 avaliações e 540 decisões de tuning, sem falhas. A
+candidata passou contra `local_geometry` (5/5 seeds, 8/9 células preditivas e Pareto) e
+`ewma_geometry` (4/5, 5/9 e 5/9), mas falhou contra `moving_average_geometry` (1/5, 3/9 e 3/9) e
+`fixed_geometry` (4/5, 3/9 e 3/9). Consequentemente, K3 não avança nesta formulação.
+
+A média móvel trailing escolheu janela 8 em 37/45 células e teve RMSE agregado aproximadamente 3%
+menor que a candidata em validação. O efeito se concentrou em seno, chirp e mudança de regime. Isso
+torna smoothing FIR uma explicação concorrente suficiente para bloquear o claim de mecanismo, mas
+não apaga a vantagem observada da candidata sobre geometria local e EWMA. Resultados completos e a
+auditoria da reprodução estão no
+[`relatório de referência`](../reports/reference/forecasting-absolute-geometry-controls/).

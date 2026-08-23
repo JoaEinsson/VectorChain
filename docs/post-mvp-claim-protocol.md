@@ -1,6 +1,6 @@
 # Programa experimental pós-MVP para claims
 
-Status: **pré-especificação do programa; cada etapa ainda exige configuração congelada própria**.
+Status: **programa vigente; Etapas 7 e 8 executadas com gates negativos**.
 
 ## Objetivo
 
@@ -20,10 +20,12 @@ exploratório para qualquer claim novo.
 - A grade com cinco seeds encontrou 14/27 células robustas no teste e 12/27 na validação.
 - Em `tolerance=0.1`, 41/45 condições de teste passaram o critério conjunto, mas a configuração foi
   identificada olhando a própria grade.
-- O ridge VectorChain possui mais entradas e parâmetros que raw; suavização e capacidade são
-  explicações concorrentes ainda abertas.
+- O ridge VectorChain possui mais entradas e parâmetros que raw; essa diferença de capacidade não
+  pode ser confundida com mecanismo da representação.
 - A Etapa 7 executada não sustentou K2: `turning` passou em 0/5 seeds e 1/9 células de validação
   contra `absolute_geometry`; o pacote absoluto tornou-se a candidata exploratória para K1/K3.
+- A Etapa 8 não sustentou K3: média móvel trailing e segmentação fixa bloquearam o gate, embora a
+  candidata tenha vencido geometria local e EWMA.
 
 ## Regras comuns
 
@@ -103,6 +105,12 @@ válida; não devem ser adicionados apenas para aumentar a quantidade de baselin
 K3 avança somente se a região VectorChain permanecer na fronteira de Pareto depois dos controles.
 Se smoothing, PLA simples ou capacidade explicarem o resultado, o claim deve ser reduzido para o
 mecanismo correspondente.
+
+Resultado: **K3 não avançou**. `absolute_geometry` passou contra geometria local e EWMA, mas não
+contra média móvel trailing nem segmentação fixa nas células robustas. O resultado permite um
+claim descritivo de trade-off no benchmark versionado, não um claim de que adaptação ou relações
+cinemáticas causaram o ganho. A Etapa 9 fica fechada como confirmação de K2/K3 até existir uma
+hipótese genuinamente reformulada e pré-especificada.
 
 ## Etapa 9 — Confirmação externa congelada
 

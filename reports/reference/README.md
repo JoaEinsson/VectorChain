@@ -23,3 +23,7 @@ Resultados disponíveis:
   temporal auditável para raw, diferenças e VectorChain, incluindo payload e persistência.
 - [`forecasting-robustness-grid/`](forecasting-robustness-grid/): grade fatorial com cinco seeds,
   três horizontes, três contextos e três tolerâncias, incluindo réplica determinística.
+- [`forecasting-kinematic-feature-ablation/`](forecasting-kinematic-feature-ablation/): isolamento
+  das features relacionais com capacidade pareada e gate negativo preservado.
+- [`forecasting-absolute-geometry-controls/`](forecasting-absolute-geometry-controls/): geometria
+  local, smoothing causal, segmentos fixos e fABBA contínuo; K3 não avançou.

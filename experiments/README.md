@@ -86,11 +86,16 @@ mantém 12 entradas pooled e 13 parâmetros para candidata/controles e separa co
 estágio de compressão `fABBA.compress`, que é offline dentro de cada janela. O protocolo congelado
 está em [`docs/forecasting-controls-protocol.md`](../docs/forecasting-controls-protocol.md).
 
+O run promovido e sua reprodução computacional estão em
+[`reports/reference/forecasting-absolute-geometry-controls/`](../reports/reference/forecasting-absolute-geometry-controls/).
+O gate não passou: geometria local e EWMA não explicaram o efeito, mas média móvel trailing e
+segmentação fixa impediram atribuí-lo à adaptação da cadeia.
+
 A ordem restante, condicionada aos gates, é:
 
-1. executar e interpretar ABBA/fABBA, PLA, smoothing, payload e capacidade pareados;
-2. confirmação em dados inéditos apenas para hipóteses que sobreviverem;
-3. somente então `V_1:t -> V_(t+1)` e rollout no relógio de eventos.
+1. reformular ou encerrar K1/K3 à luz dos controles negativos;
+2. confirmação em dados inéditos apenas para uma hipótese que sobreviva a novo gate congelado;
+3. tratar `V_1:t -> V_(t+1)` e rollout como nova pergunta exploratória, não como claim herdado.
 
 Os requisitos e gates estão em
 [`docs/post-mvp-claim-protocol.md`](../docs/post-mvp-claim-protocol.md). Novos números de scripts e

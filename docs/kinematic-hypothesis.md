@@ -110,6 +110,12 @@ sob este pooling/ridge/benchmark. Em contrapartida, o pacote absoluto superou `s
 forma exploratória; como `theta/r` são transformações determinísticas de `dt/dy`, isso é evidência
 de utilidade para o modelo pooled, não de informação adicional em sentido informacional.
 
+Nos controles posteriores, `absolute_geometry` passou o gate individual contra geometria local e
+EWMA, mas não contra média móvel trailing nem segmentação fixa. A janela trailing 8 foi selecionada
+em 37/45 células e teve erro agregado menor em validação, principalmente em seno, chirp e mudança
+de regime. K3, portanto, não avança: o efeito observado continua compatível com smoothing FIR e não
+pode ser atribuído de forma exclusiva à adaptação das fronteiras.
+
 ## Registro de hipóteses
 
 | ID | Hipótese | Evidência necessária | Condição de rejeição |
@@ -120,8 +126,10 @@ de utilidade para o modelo pooled, não de informação adicional em sentido inf
 | K4 | A região útil generaliza | confirmação congelada em novas seeds, ruídos, dinâmicas e datasets reais | efeito desaparece ou muda de sinal fora dos sintéticos originais |
 | K5 | A cadeia é um espaço de estado preditivo | rollout `V_1:t -> V_t+1` compacto, estável e reconstruível | drift, duração inválida ou erro não competitivo em rollout |
 
-Estado após a Etapa 7: K2 foi rejeitada para a formulação avaliada; K1 permanece exploratória e K3
-deve testar primeiro o pacote de geometria absoluta contra controles simples e pareados.
+Estado após a Etapa 8: K2 foi rejeitada para a formulação avaliada e K3 também não avançou. A
+geometria absoluta venceu controles locais e EWMA, mas não permaneceu robustamente superior à
+média móvel trailing e à segmentação fixa. K1 permanece apenas como utilidade exploratória de
+features para o ridge pooled, não como mecanismo informacional ou cinemático estabelecido.
 
 Hipóteses rejeitadas permanecem resultados científicos. Nenhuma etapa deve ser redesenhada depois
 de abrir o teste apenas para preservar a narrativa cinemática.
@@ -142,7 +150,8 @@ claim.
 ### C2 — Mecanismo cinemático
 
 Só será permitido afirmar que relações entre segmentos carregam informação incremental depois de
-K2 e K3 passarem em ablations e controles pré-especificados.
+K2 e K3 passarem em novas formulações pré-especificadas. Os testes atuais falharam ambos; portanto,
+C2 permanece explicitamente proibido.
 
 ### C3 — Generalização confirmatória
 

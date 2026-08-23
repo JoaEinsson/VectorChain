@@ -1,0 +1,212 @@
+{
+  "base_forecasting_config": {
+    "experiment": {
+      "name": "minimal-forecasting-baseline",
+      "seed": 31415
+    },
+    "forecast": {
+      "context_length": 64,
+      "horizon": 1,
+      "stride": 2
+    },
+    "model": {
+      "alpha": 0.001,
+      "kind": "ridge",
+      "repetitions": 5,
+      "warmup_repetitions": 1
+    },
+    "output": {
+      "plot_dpi": 150,
+      "root": "artifacts",
+      "save_models": true,
+      "save_plots": true
+    },
+    "representations": {
+      "names": [
+        "raw",
+        "first_difference",
+        "vectorchain"
+      ],
+      "summary_statistics": [
+        "last",
+        "mean",
+        "std"
+      ]
+    },
+    "signals": {
+      "n_points": 1024,
+      "names": [
+        "sine",
+        "chirp",
+        "ramp",
+        "piecewise_linear",
+        "first_order_response",
+        "second_order_response",
+        "regime_change"
+      ],
+      "noise_std": 0.01,
+      "parameters": {
+        "chirp": {
+          "amplitude": 1.0,
+          "end_frequency": 8.0,
+          "offset": 0.0,
+          "phase": 0.0,
+          "start_frequency": 1.0
+        },
+        "first_order_response": {
+          "amplitude": 1.0,
+          "offset": 0.0,
+          "time_constant": 0.15
+        },
+        "piecewise_linear": {
+          "amplitude": 1.0,
+          "offset": 0.0
+        },
+        "ramp": {
+          "amplitude": 1.0,
+          "offset": 0.0
+        },
+        "regime_change": {
+          "amplitude": 1.0,
+          "change_fraction": 0.5,
+          "frequency_after": 8.0,
+          "frequency_before": 2.0,
+          "level_shift": 0.5,
+          "offset": 0.0
+        },
+        "second_order_response": {
+          "amplitude": 1.0,
+          "damping_ratio": 0.15,
+          "natural_frequency": 3.0,
+          "offset": 0.0
+        },
+        "sine": {
+          "amplitude": 1.0,
+          "frequency": 3.0,
+          "offset": 0.0,
+          "phase": 0.0
+        }
+      }
+    },
+    "split": {
+      "train_fraction": 0.6,
+      "validation_fraction": 0.2
+    },
+    "vectorchain": {
+      "causal": true,
+      "features": [
+        "dt",
+        "dy",
+        "theta",
+        "r",
+        "delta_theta"
+      ],
+      "min_segment_length": 2,
+      "tolerance": 0.03
+    }
+  },
+  "candidate": {
+    "features": [
+      "dt",
+      "dy",
+      "theta",
+      "r"
+    ],
+    "name": "absolute_geometry"
+  },
+  "controls": {
+    "gate_names": [
+      "local_geometry",
+      "moving_average_geometry",
+      "ewma_geometry",
+      "fixed_geometry"
+    ],
+    "names": [
+      "local_geometry",
+      "moving_average_geometry",
+      "ewma_geometry",
+      "fixed_geometry",
+      "abba_geometry"
+    ],
+    "parameters": {
+      "abba_tolerances": [
+        0.03,
+        0.1,
+        0.3
+      ],
+      "ewma_alphas": [
+        0.2,
+        0.5,
+        0.8
+      ],
+      "fixed_segment_lengths": [
+        8,
+        16,
+        32
+      ],
+      "inner_train_fraction": 0.8,
+      "moving_average_windows": [
+        2,
+        4,
+        8
+      ]
+    },
+    "primary_name": "local_geometry"
+  },
+  "criteria": {
+    "maximum_candidate_rmse_ratio": 0.99,
+    "minimum_robust_cell_rate": 0.5,
+    "pareto_rmse_ratio": 1.01,
+    "primary_split": "validation",
+    "robust_seed_rate": 0.8
+  },
+  "experiment": {
+    "base_config": "baseline.toml",
+    "name": "forecasting-absolute-geometry-controls",
+    "seeds": [
+      1729,
+      2718,
+      31415,
+      104729,
+      8675309
+    ]
+  },
+  "external": {
+    "fabba_version": "1.5.2"
+  },
+  "grid": {
+    "context_lengths": [
+      32,
+      64,
+      128
+    ],
+    "horizons": [
+      1,
+      4,
+      16
+    ],
+    "stride": 4,
+    "tolerance": 0.1
+  },
+  "output": {
+    "plot_dpi": 150,
+    "root": "artifacts",
+    "save_plots": true
+  },
+  "resolved": {
+    "base_config_path": "configs/forecasting/baseline.toml",
+    "base_config_sha256": "25bb2365dc96cd383d1d69bffe45064309672ceceacbe37846fc4b1a50b23690",
+    "combined_sha256": "79851e127fdd505f695c6def64ca547d47ecde5b141340793267295d7d62dafc",
+    "config_path": "configs/forecasting/controls.toml",
+    "config_sha256": "62b4905631ac75bd1f85fc5ed2d3d6c197ffe71b72c94071fa5e0ed5c82527d3",
+    "expected_condition_evaluations": 360,
+    "experimental_dependencies": {
+      "fabba": "1.5.2"
+    },
+    "output_root": "F:\\Projetos\\VectorChain\\artifacts"
+  },
+  "timing": {
+    "repetitions": 1,
+    "warmup_repetitions": 0
+  }
+}

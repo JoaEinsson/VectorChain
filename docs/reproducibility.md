@@ -113,6 +113,11 @@ Somente exemplos do split externo de treino podem aparecer no treino/validação
 validação e o teste externos não podem influenciar `selected_parameter`. O campo `causal_scope`
 deve permanecer `window_offline` para ABBA e não pode ser omitido em tabelas ou claims.
 
+O resultado canônico e a reprodução computacional da Etapa 8 estão em
+[`reports/reference/forecasting-absolute-geometry-controls/`](../reports/reference/forecasting-absolute-geometry-controls/).
+Campos científicos e decisões de tuning foram reproduzidos; diferenças de timing não contam como
+divergência científica.
+
 ## Programa pós-MVP
 
 Experimentos destinados a sustentar claims seguem

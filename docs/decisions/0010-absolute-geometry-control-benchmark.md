@@ -1,6 +1,6 @@
 # 0010 — Controles pareados para a geometria absoluta
 
-Status: **Accepted**
+Status: **Accepted — executed; scientific gate failed**
 Data: 2026-08-23
 
 ## Contexto
@@ -41,3 +41,11 @@ features, suavização forte, segmentação ou capacidade downstream.
   coordenadas comparáveis entre janelas.
 - **Adicionar SciPy/scikit-learn ao runtime:** rejeitada; são necessários apenas ao controle
   externo.
+
+## Resultado
+
+As execuções `20260823T210037718267Z_79851e12_d5af0af` e
+`20260823T210528206430Z_79851e12_d5af0af` reproduziram a mesma decisão. `absolute_geometry` passou
+os critérios contra geometria local e EWMA, mas não contra média móvel trailing nem segmentação
+fixa. O gate global falhou e K3 não avança. A consequência decidida é reduzir o claim, não retunar
+a candidata nem substituir controles depois de observar o resultado.

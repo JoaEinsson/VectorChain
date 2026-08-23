@@ -117,18 +117,28 @@ Protocolo congelado em
 [`forecasting-controls-protocol.md`](forecasting-controls-protocol.md); o estágio contínuo oficial
 `fABBA.compress==1.5.2` é controle descritivo `window_offline`, fora do gate causal.
 
-- [ ] Integrar ABBA/fABBA como baselines experimentais, fora da dependência principal
-- [ ] Adicionar PLA causal, segmentação fixa e downsampling com orçamento comparável
-- [ ] Adicionar média móvel e suavização exponencial estritamente causais
-- [ ] Comparar raw com features locais e número de parâmetros pareado
-- [ ] Aplicar o mesmo orçamento de tuning em treino/validação
-- [ ] Reportar fronteira predição × passos × payload × capacidade × runtime
+- [x] Integrar a compressão contínua fABBA como controle experimental fora da dependência principal
+- [x] Comparar PLA adaptativa com segmentação fixa sob o mesmo modelo downstream
+- [x] Adicionar média móvel e suavização exponencial estritamente causais
+- [x] Comparar geometria local com features e número de parâmetros pareados
+- [x] Restringir o tuning a uma divisão bloqueada do treino e registrar o orçamento conservador
+- [x] Reportar fronteira predição × passos × payload × capacidade × runtime
 
 Gate: o VectorChain relacional precisa permanecer na fronteira de Pareto depois dos controles. Se
 um suavizador, PLA simples ou capacidade adicional explicar o resultado, reduzir o claim ao
 mecanismo efetivamente observado.
 
+Resultado: **gate não satisfeito**. A candidata passou contra geometria local e EWMA, mas falhou
+contra média móvel trailing (1/5 seeds e 3/9 células robustas) e segmentação fixa (4/5 seeds, porém
+apenas 3/9 células robustas). K3 não avança; smoothing FIR e fronteiras fixas permanecem
+explicações concorrentes. Consulte o
+[`relatório de referência`](../reports/reference/forecasting-absolute-geometry-controls/).
+
 ## Etapa 9 — Confirmação externa congelada
+
+Esta etapa fica **bloqueada para confirmação de K2/K3** pelos gates negativos das Etapas 7 e 8. Só
+pode ser reaberta para uma hipótese reformulada e pré-especificada, sem tratar a geometria
+relacional/adaptativa como mecanismo já demonstrado.
 
 - [ ] Congelar configuração candidata sem alterar o default do pacote
 - [ ] Registrar datasets, exclusões, métricas e critérios antes de abrir o teste

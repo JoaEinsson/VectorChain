@@ -43,22 +43,22 @@ O enquadramento pós-MVP está em
 - [x] Forecasting mínimo
 - [x] Grade fatorial de robustez do forecasting
 - [x] MVP científico inicial concluído
-- [ ] Isolamento do mecanismo cinemático
-- [ ] Controles ABBA/PLA/smoothing e capacidade pareada
+- [x] Isolamento do mecanismo cinemático, com gate negativo preservado
+- [x] Controles ABBA/PLA/smoothing e capacidade pareada, com gate negativo preservado
 - [ ] Confirmação em dados inéditos e reais
 - [ ] Forecasting autoregressivo diretamente na cadeia
 
 ## Direção pós-MVP
 
-O resultado atual pertence ao pacote `(dt, dy, theta, r, delta_theta)`. Ele não demonstra que
-`delta_theta` causou a melhora: o ridge VectorChain possui mais entradas que raw e uma tolerância
-alta também pode atuar como suavizador. A próxima etapa preserva as fronteiras e compara
-progressivamente segmento básico, geometria absoluta e relações cinemáticas.
+O resultado inicial pertenceu ao pacote `(dt, dy, theta, r, delta_theta)`. As ablations posteriores
+mostraram que `delta_theta/delta_r` não causaram melhora consistente, e os controles simples
+mostraram que smoothing FIR concorre com a geometria absoluta. A interpretação foi reduzida de
+acordo com esses gates, sem alterar retrospectivamente o benchmark original.
 
-A tolerância `0.1` continua candidata pós-análise, não novo default. Antes de qualquer claim de
-mecanismo, VectorChain será comparado com ABBA/fABBA, PLA causal, downsampling e smoothing sob
-payload e capacidade downstream pareados. O forecasting vetorial recursivo somente começa depois
-de esses controles e de uma confirmação externa passarem seus gates.
+A tolerância `0.1` continua candidata pós-análise, não novo default. Os controles pareados foram
+executados: média móvel trailing e segmentação fixa impediram atribuir o resultado à adaptação ou a
+um mecanismo cinemático exclusivo. O forecasting vetorial recursivo, se iniciado, será uma nova
+pergunta exploratória e não a continuação confirmatória de K2/K3.
 
 ## Ambiente de desenvolvimento
 
@@ -166,6 +166,12 @@ A primeira ablation cinemática pós-MVP está em
 O gate relacional não passou: `delta_theta/delta_r` não acrescentaram efeito consistente sobre a
 geometria absoluta no ridge pooled. O resultado negativo redireciona os próximos controles para a
 utilidade de `theta/r`, sem sustentar informação relacional incremental.
+
+Os controles resultantes estão em
+[`reports/reference/forecasting-absolute-geometry-controls/`](reports/reference/forecasting-absolute-geometry-controls/).
+`absolute_geometry` superou geometria local e EWMA, mas o gate global falhou contra média móvel
+trailing e segmentação fixa. O claim atual é, portanto, um trade-off empírico delimitado no
+benchmark sintético; não é evidência de um mecanismo adaptativo ou relacional exclusivo.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.
