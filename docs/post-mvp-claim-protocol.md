@@ -195,3 +195,7 @@ baselines pareadas em dados inéditos. O claim permitido passa então a ser:
 
 Falha no gate não invalida os resultados de compressão ou forecasting pooled; apenas impede afirmar
 que a cadeia é um espaço de estado autoregressivo útil.
+
+Resultado: **K5-A não avançou**. A cadeia completou rollouts válidos e compactos, mas perdeu para
+AR raw em todas as cinco seeds e nos três horizontes. Isso impede C4 nesta formulação e aciona a
+condição de parada antes de ABBA-LSTM, dados externos ou aumento de capacidade.

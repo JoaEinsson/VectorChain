@@ -1,0 +1,82 @@
+{
+  "status": "reference",
+  "source_run_id": "20260823T224948889128Z_884e50b0_4e289ba",
+  "replication_run_id": "20260823T225242182768Z_884e50b0_4e289ba",
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 9668,
+      "sha256": "fd3e8c87a948d55b0ad8cd8933803d585609c481ac6d0f8281b9455e665e22db"
+    },
+    {
+      "path": "conditions.csv",
+      "size_bytes": 129538,
+      "sha256": "8e70c4d7748012a78d9cfae903a3d6016132ebab1278aeb0b43f9c0aadc6502f"
+    },
+    {
+      "path": "conditions_by_signal.csv",
+      "size_bytes": 924276,
+      "sha256": "a2430cbfa1232b9dbf99dd98e189d31948803557d5be4c3f8bcf95fad2b99c44"
+    },
+    {
+      "path": "config.json",
+      "size_bytes": 5457,
+      "sha256": "6ace1dfe1ddf3db46ef90f8aff3f52084db9b377dbc12131a16b333133bbb76d"
+    },
+    {
+      "path": "environment.json",
+      "size_bytes": 8943,
+      "sha256": "a26c430fdf20d0449eae1e21c32d86e6480fa1899129970e22e4c4da9245905e"
+    },
+    {
+      "path": "events.csv",
+      "size_bytes": 1314112,
+      "sha256": "64a0a665ebe3b38495f312021514224b7c86f7a098144b72aa6ac62d86a927b6"
+    },
+    {
+      "path": "gate.json",
+      "size_bytes": 1899,
+      "sha256": "c4141391fdf96dde559ba3daf1bdc0633fef6b760bc1fa7657958778ef0ff4ac"
+    },
+    {
+      "path": "models.csv",
+      "size_bytes": 6748,
+      "sha256": "275cee4bec949da83a8d9489a3e48a98bc4f176fa120179721a8fc86990f56a1"
+    },
+    {
+      "path": "plots/summary__next-event-predictions.png",
+      "size_bytes": 141473,
+      "sha256": "3aefa424f998ed4bde229a867caa2a6557b5c2ba9c5b46426ac3c21a9b8e4344"
+    },
+    {
+      "path": "plots/summary__rollout-ratio-distributions.png",
+      "size_bytes": 47133,
+      "sha256": "8f187936cd8ca9dc07ce3aff35820d1a16f006ac063397214941b0ee2556188c"
+    },
+    {
+      "path": "plots/summary__rollout-rmse-by-horizon.png",
+      "size_bytes": 51334,
+      "sha256": "93256b690e2cf43db6ab3db85377c7f6aed6785b3c73a5d4d817c6b787b71c1b"
+    },
+    {
+      "path": "plots/summary__rollout-validity.png",
+      "size_bytes": 30894,
+      "sha256": "767ac0cd1a01b3a58d78b24329afe8c389bab5adef66072d08d9d351bb84e203"
+    },
+    {
+      "path": "raw-tables.zip",
+      "size_bytes": 6234034,
+      "sha256": "8dbe66be56b9a6b3eb0304d8b8fd2e27f31d5ca874ee5ff0ca37dee9a555fea1"
+    },
+    {
+      "path": "summary.csv",
+      "size_bytes": 11553,
+      "sha256": "7237797c48fa83e8049cb48b0e77fff1e44cce75dc855c229a9c2e38ea42d6e4"
+    },
+    {
+      "path": "summary_by_seed.csv",
+      "size_bytes": 8405,
+      "sha256": "d558088a3b6a24e6a44f4a85344a9855382452d06be183773a0abca9ebe5dd58"
+    }
+  ]
+}

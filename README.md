@@ -46,7 +46,7 @@ O enquadramento pós-MVP está em
 - [x] Isolamento do mecanismo cinemático, com gate negativo preservado
 - [x] Controles ABBA/PLA/smoothing e capacidade pareada, com gate negativo preservado
 - [ ] Confirmação em dados inéditos e reais
-- [ ] Forecasting autoregressivo diretamente na cadeia
+- [x] Forecasting autoregressivo diretamente na cadeia, com gate K5-A negativo preservado
 
 ## Direção pós-MVP
 
@@ -57,8 +57,9 @@ acordo com esses gates, sem alterar retrospectivamente o benchmark original.
 
 A tolerância `0.1` continua candidata pós-análise, não novo default. Os controles pareados foram
 executados: média móvel trailing e segmentação fixa impediram atribuir o resultado à adaptação ou a
-um mecanismo cinemático exclusivo. O forecasting vetorial recursivo, se iniciado, será uma nova
-pergunta exploratória e não a continuação confirmatória de K2/K3.
+um mecanismo cinemático exclusivo. O forecasting vetorial recursivo também foi executado como nova
+pergunta exploratória: produziu rollouts válidos e compactos, mas perdeu consistentemente para AR
+raw e não sustentou o claim de espaço de estado.
 
 ## Ambiente de desenvolvimento
 
@@ -172,6 +173,12 @@ Os controles resultantes estão em
 `absolute_geometry` superou geometria local e EWMA, mas o gate global falhou contra média móvel
 trailing e segmentação fixa. O claim atual é, portanto, um trade-off empírico delimitado no
 benchmark sintético; não é evidência de um mecanismo adaptativo ou relacional exclusivo.
+
+O teste direto da cadeia como estado está em
+[`reports/reference/forecasting-vector-state-rollout/`](reports/reference/forecasting-vector-state-rollout/).
+Sem pooling, o estado causal completou rollouts compactos e venceu controles multioutput pareados,
+mas teve RMSE maior que AR raw nas cinco seeds e nos três horizontes. K5-A não avançou; modelos
+maiores e confirmação externa permanecem fechados por essa condição de parada.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

@@ -1,0 +1,334 @@
+{
+  "command": {
+    "argv": [
+      "experiments/08_vector_state_rollout.py",
+      "--config",
+      "configs/forecasting/vector_state_rollout.toml"
+    ],
+    "display": "experiments/08_vector_state_rollout.py --config configs/forecasting/vector_state_rollout.toml"
+  },
+  "config": {
+    "base_forecasting_config": {
+      "experiment": {
+        "name": "minimal-forecasting-baseline",
+        "seed": 31415
+      },
+      "forecast": {
+        "context_length": 64,
+        "horizon": 1,
+        "stride": 2
+      },
+      "model": {
+        "alpha": 0.001,
+        "kind": "ridge",
+        "repetitions": 5,
+        "warmup_repetitions": 1
+      },
+      "output": {
+        "plot_dpi": 150,
+        "root": "artifacts",
+        "save_models": true,
+        "save_plots": true
+      },
+      "representations": {
+        "names": [
+          "raw",
+          "first_difference",
+          "vectorchain"
+        ],
+        "summary_statistics": [
+          "last",
+          "mean",
+          "std"
+        ]
+      },
+      "signals": {
+        "n_points": 1024,
+        "names": [
+          "sine",
+          "chirp",
+          "ramp",
+          "piecewise_linear",
+          "first_order_response",
+          "second_order_response",
+          "regime_change"
+        ],
+        "noise_std": 0.01,
+        "parameters": {
+          "chirp": {
+            "amplitude": 1.0,
+            "end_frequency": 8.0,
+            "offset": 0.0,
+            "phase": 0.0,
+            "start_frequency": 1.0
+          },
+          "first_order_response": {
+            "amplitude": 1.0,
+            "offset": 0.0,
+            "time_constant": 0.15
+          },
+          "piecewise_linear": {
+            "amplitude": 1.0,
+            "offset": 0.0
+          },
+          "ramp": {
+            "amplitude": 1.0,
+            "offset": 0.0
+          },
+          "regime_change": {
+            "amplitude": 1.0,
+            "change_fraction": 0.5,
+            "frequency_after": 8.0,
+            "frequency_before": 2.0,
+            "level_shift": 0.5,
+            "offset": 0.0
+          },
+          "second_order_response": {
+            "amplitude": 1.0,
+            "damping_ratio": 0.15,
+            "natural_frequency": 3.0,
+            "offset": 0.0
+          },
+          "sine": {
+            "amplitude": 1.0,
+            "frequency": 3.0,
+            "offset": 0.0,
+            "phase": 0.0
+          }
+        }
+      },
+      "split": {
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2
+      },
+      "vectorchain": {
+        "causal": true,
+        "features": [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta"
+        ],
+        "min_segment_length": 2,
+        "tolerance": 0.03
+      }
+    },
+    "controls": {
+      "fixed_segment_length": "training_median_vectorchain_dt",
+      "gate_names": [
+        "raw_matched",
+        "fixed_relational",
+        "raw_ar",
+        "persistence"
+      ],
+      "raw_lags_per_candidate_feature": 1
+    },
+    "criteria": {
+      "maximum_candidate_rmse_ratio": 0.99,
+      "maximum_candidate_scalar_fraction_vs_raw_matched": 1.0,
+      "maximum_candidate_step_fraction_vs_raw_matched": 0.14285714285714285,
+      "minimum_robust_horizon_rate": 0.6666666666666666,
+      "primary_history_length": 8,
+      "primary_split": "test",
+      "required_postprojection_validity_rate": 1.0,
+      "required_rollout_completion_rate": 1.0,
+      "robust_seed_rate": 0.8
+    },
+    "event_state": {
+      "candidate": "vectorchain_relational",
+      "features": {
+        "fixed_relational": [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta",
+          "delta_r",
+          "open_dy"
+        ],
+        "vectorchain_absolute": [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "open_dy"
+        ],
+        "vectorchain_cartesian": [
+          "dt",
+          "dy",
+          "open_dy"
+        ],
+        "vectorchain_relational": [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta",
+          "delta_r",
+          "open_dy"
+        ]
+      },
+      "history_lengths": [
+        4,
+        8,
+        16
+      ],
+      "min_segment_length": 2,
+      "representations": [
+        "vectorchain_cartesian",
+        "vectorchain_absolute",
+        "vectorchain_relational",
+        "raw_matched",
+        "fixed_relational",
+        "raw_ar",
+        "persistence"
+      ],
+      "tolerance": 0.03
+    },
+    "experiment": {
+      "base_config": "baseline.toml",
+      "name": "forecasting-vector-state-rollout",
+      "phase": "stage10a-preregistered-synthetic",
+      "seeds": [
+        5334086151564077557,
+        9076691527785929283,
+        1488991049205644303,
+        2506524397075762905,
+        228973438714350052
+      ]
+    },
+    "model": {
+      "alpha": 0.001,
+      "kind": "ridge"
+    },
+    "output": {
+      "plot_dpi": 150,
+      "root": "artifacts",
+      "save_plots": true
+    },
+    "resolved": {
+      "base_config_path": "configs/forecasting/baseline.toml",
+      "base_config_sha256": "25bb2365dc96cd383d1d69bffe45064309672ceceacbe37846fc4b1a50b23690",
+      "combined_sha256": "884e50b06e1aaba2f0f00a436f7450faa42fc0e78038d39354b35a34a78cfa18",
+      "config_path": "configs/forecasting/vector_state_rollout.toml",
+      "config_sha256": "58e5e835ea1b8f2791da9c81106d46bc6b91563c3820bd16bc617d25ef441c16",
+      "expected_condition_rows": 630,
+      "output_root": "F:\\Projetos\\VectorChain\\artifacts"
+    },
+    "rollout": {
+      "maximum_predicted_events": 256,
+      "origin_event_stride": 2,
+      "raw_horizons": [
+        16,
+        64,
+        128
+      ]
+    },
+    "signals": {
+      "n_points": 2048
+    },
+    "split": {
+      "minimum_examples_per_signal_split": 5,
+      "train_fraction": 0.6,
+      "validation_fraction": 0.2
+    },
+    "targets": {
+      "duration_projection": "round_expm1_clip",
+      "maximum_remaining_dt": 256,
+      "names": [
+        "log1p_remaining_dt",
+        "remaining_dy",
+        "next_open_dy"
+      ],
+      "zero_duration_displacement": "force_zero"
+    },
+    "timing": {
+      "repetitions": 1,
+      "warmup_repetitions": 0
+    }
+  },
+  "dependencies": {
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.2",
+    "vectorchain": "0.1.0.dev0"
+  },
+  "derived_signal_seeds": {
+    "1488991049205644303": {
+      "chirp": 811914152234655890,
+      "first_order_response": 521651816725495348,
+      "piecewise_linear": 3206818685882578195,
+      "ramp": 8599143323659880762,
+      "regime_change": 3882989053335533283,
+      "second_order_response": 5524240382119864488,
+      "sine": 8369785794095345595
+    },
+    "228973438714350052": {
+      "chirp": 8686447641582884145,
+      "first_order_response": 6749898367739757915,
+      "piecewise_linear": 7758592713768696499,
+      "ramp": 3259779968242047768,
+      "regime_change": 8498349992390034482,
+      "second_order_response": 494688015408849983,
+      "sine": 2198220491006603447
+    },
+    "2506524397075762905": {
+      "chirp": 1510464489173889045,
+      "first_order_response": 7300978980044490137,
+      "piecewise_linear": 3591689049764518628,
+      "ramp": 1632704083869966353,
+      "regime_change": 7519410136429908764,
+      "second_order_response": 805726553081973727,
+      "sine": 4706290822489135819
+    },
+    "5334086151564077557": {
+      "chirp": 7397771002983429507,
+      "first_order_response": 8666176324452638585,
+      "piecewise_linear": 3923991963572244713,
+      "ramp": 2966368201774408857,
+      "regime_change": 2709977706730557760,
+      "second_order_response": 5842028701871132584,
+      "sine": 1413003558871540748
+    },
+    "9076691527785929283": {
+      "chirp": 1141402216240685423,
+      "first_order_response": 2676994404518722879,
+      "piecewise_linear": 6504258531688232168,
+      "ramp": 5648293475335130081,
+      "regime_change": 6917795965307192289,
+      "second_order_response": 5893107487063854068,
+      "sine": 8391203693063787872
+    }
+  },
+  "elapsed_s": 91.9669069,
+  "finished_utc": "2026-08-23T22:51:20.924008+00:00",
+  "fixed_segment_lengths": {
+    "1488991049205644303": 9,
+    "228973438714350052": 9,
+    "2506524397075762905": 9,
+    "5334086151564077557": 8,
+    "9076691527785929283": 9
+  },
+  "git": {
+    "commit": "4e289ba215c19c13f161aff94d084000b793789c",
+    "dirty": false
+  },
+  "n_conditions": 630,
+  "n_failures": 0,
+  "platform": {
+    "architecture": "64bit",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "release": "11",
+    "system": "Windows"
+  },
+  "python": {
+    "executable": "F:\\Projetos\\VectorChain\\.venv\\Scripts\\python.exe",
+    "implementation": "CPython",
+    "version": "3.12.12"
+  },
+  "run_id": "20260823T224948889128Z_884e50b0_4e289ba",
+  "scientific_gate_passed": false,
+  "started_utc": "2026-08-23T22:49:48.889128+00:00",
+  "status": "complete"
+}

@@ -27,3 +27,5 @@ Resultados disponíveis:
   das features relacionais com capacidade pareada e gate negativo preservado.
 - [`forecasting-absolute-geometry-controls/`](forecasting-absolute-geometry-controls/): geometria
   local, smoothing causal, segmentos fixos e fABBA contínuo; K3 não avançou.
+- [`forecasting-vector-state-rollout/`](forecasting-vector-state-rollout/): próximo evento e
+  rollout recursivo sem pooling; K5-A não avançou contra AR raw.

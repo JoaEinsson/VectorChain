@@ -1,0 +1,82 @@
+{
+  "candidate": "vectorchain_relational",
+  "controls": {
+    "fixed_relational": {
+      "checks": {
+        "complete_horizon_grid": true,
+        "robust_horizons": true,
+        "seed_superiority": true
+      },
+      "observed": {
+        "horizon_trials": 3,
+        "robust_horizons": 3,
+        "seed_successes": 5,
+        "seed_trials": 5
+      },
+      "passed": true
+    },
+    "persistence": {
+      "checks": {
+        "complete_horizon_grid": true,
+        "robust_horizons": true,
+        "seed_superiority": true
+      },
+      "observed": {
+        "horizon_trials": 3,
+        "robust_horizons": 2,
+        "seed_successes": 4,
+        "seed_trials": 5
+      },
+      "passed": true
+    },
+    "raw_ar": {
+      "checks": {
+        "complete_horizon_grid": true,
+        "robust_horizons": false,
+        "seed_superiority": false
+      },
+      "observed": {
+        "horizon_trials": 3,
+        "robust_horizons": 0,
+        "seed_successes": 0,
+        "seed_trials": 5
+      },
+      "passed": false
+    },
+    "raw_matched": {
+      "checks": {
+        "complete_horizon_grid": true,
+        "robust_horizons": true,
+        "seed_superiority": true
+      },
+      "observed": {
+        "horizon_trials": 3,
+        "robust_horizons": 3,
+        "seed_successes": 5,
+        "seed_trials": 5
+      },
+      "passed": true
+    }
+  },
+  "criteria": {
+    "maximum_candidate_rmse_ratio": 0.99,
+    "required_horizons": 2,
+    "required_seeds": 4
+  },
+  "execution_checks": {
+    "complete_condition_grid": true,
+    "postprojection_validity": true,
+    "rollout_completion": true,
+    "zero_condition_failures": true
+  },
+  "hypothesis": "K5-A",
+  "passed": false,
+  "primary_history_length": 8,
+  "primary_split": "test",
+  "status": "evaluated",
+  "structural_checks": {
+    "matched_predictive_parameters": true,
+    "scalar_fraction": true,
+    "step_fraction": true
+  }
+}

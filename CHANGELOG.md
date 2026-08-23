@@ -58,3 +58,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   e rollout autoregressivo pareado contra raw, segmentos fixos, AR e persistência.
 - Runner da Etapa 10-A com ridge multioutput, concatenação ordenada de estados, cinemática direta,
   AR raw recursivo, artefatos por evento/origem e gate K5-A separado do status de execução.
+- Relatório reproduzido da Etapa 10-A, preservando rollouts válidos/compactos e a rejeição de K5-A
+  diante da superioridade consistente do AR raw.

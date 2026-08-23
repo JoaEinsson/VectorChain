@@ -131,6 +131,11 @@ geometria absoluta venceu controles locais e EWMA, mas não permaneceu robustame
 média móvel trailing e à segmentação fixa. K1 permanece apenas como utilidade exploratória de
 features para o ridge pooled, não como mecanismo informacional ou cinemático estabelecido.
 
+Estado após a Etapa 10-A: K5 também não avançou na formulação linear pré-especificada. O estado de
+emissão produziu rollouts válidos e compactos, mas teve RMSE maior que AR raw em 5/5 seeds e 3/3
+horizontes. O estado cartesiano foi ligeiramente melhor e muito menor que o relacional, reforçando
+que as relações cinemáticas não trouxeram benefício observável nesta tarefa.
+
 Hipóteses rejeitadas permanecem resultados científicos. Nenhuma etapa deve ser redesenhada depois
 de abrir o teste apenas para preservar a narrativa cinemática.
 
@@ -162,6 +167,8 @@ experimentais inéditas e com incerteza estatística adequada.
 
 O claim mais forte exige K5: previsão recursiva diretamente na cadeia, decodificação cinemática e
 comparação com modelos raw e segmentados sob orçamento pareado.
+
+K5-A falhou no teste sintético pré-especificado; portanto, C4 permanece proibido nesta formulação.
 
 ## Formulações controladas
 

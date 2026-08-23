@@ -102,11 +102,16 @@ aberto e prevê apenas duração/deslocamento ainda desconhecidos. A ordem dos e
 sem pooling, e o rollout é reconstruído no relógio raw. O protocolo pré-especificado está em
 [`docs/vector-state-rollout-protocol.md`](../docs/vector-state-rollout-protocol.md).
 
+O run promovido e sua reprodução estão em
+[`reports/reference/forecasting-vector-state-rollout/`](../reports/reference/forecasting-vector-state-rollout/).
+O gate K5-A não passou: o estado foi válido e compacto, mas perdeu para AR raw em todas as seeds e
+horizontes.
+
 A ordem restante, condicionada aos gates, é:
 
-1. reformular ou encerrar K1/K3 à luz dos controles negativos;
-2. confirmação em dados inéditos apenas para uma hipótese que sobreviva a novo gate congelado;
-3. tratar `V_1:t -> V_(t+1)` e rollout como nova pergunta exploratória, não como claim herdado.
+1. preservar os resultados negativos de K2, K3 e K5-A;
+2. não abrir confirmação externa ou modelos maiores sem uma hipótese nova e justificativa própria;
+3. tratar qualquer continuação como reformulação, não como promoção do claim autoregressivo.
 
 Os requisitos e gates estão em
 [`docs/post-mvp-claim-protocol.md`](../docs/post-mvp-claim-protocol.md). Novos números de scripts e

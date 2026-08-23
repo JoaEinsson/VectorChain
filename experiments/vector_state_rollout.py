@@ -2057,6 +2057,7 @@ def _plot_summaries(
     axis.set_xticks(positions, [str(value) for value in config.raw_horizons])
     axis.set_xlabel("Raw horizon")
     axis.set_ylabel("Geometric mean trajectory RMSE")
+    axis.set_yscale("log")
     axis.set_title(f"Test rollout error at history 8\nrun={run_id}", fontsize=10.0)
     axis.legend(fontsize=7.5, ncol=2)
     axis.grid(axis="y", alpha=0.25)

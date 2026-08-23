@@ -57,3 +57,11 @@ não os transformar em confirmação retrospectiva.
   de uma baseline linear forte.
 - **Executar ABBA-LSTM agora:** adiada; é offline/simbólica e não deve consumir a etapa se o estado
   causal básico já falhar.
+
+## Resultado
+
+As execuções `20260823T224948889128Z_884e50b0_4e289ba` e
+`20260823T225242182768Z_884e50b0_4e289ba` reproduziram o mesmo gate negativo. A candidata foi
+válida, terminou todos os rollouts e venceu controles multioutput pareados e persistência, mas
+perdeu para AR raw em 5/5 seeds e 3/3 horizontes. Conforme a condição de parada, K5-A não avança e
+ABBA-LSTM/modelos maiores não são abertos nesta sequência experimental.

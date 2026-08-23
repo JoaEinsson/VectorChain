@@ -174,3 +174,10 @@ Gate do claim mais forte: o rollout vetorial precisa ser causal, válido, estáv
 reconstruível e competitivo sob comparação pareada. Somente então o projeto poderá afirmar que uma
 cadeia cinemática causal funciona como espaço de estado autoregressivo compacto nas condições
 avaliadas.
+
+Resultado da Etapa 10-A: **gate não satisfeito**. O rollout foi causal, válido, completo e compacto,
+passando contra raw multioutput pareado, segmentos fixos e persistência. Entretanto, obteve 0/5
+sucessos por seed e 0/3 horizontes robustos contra AR raw; as razões de RMSE foram 2,77/1,59/1,20 em
+16/64/128. O estado cartesiano também foi mais parcimonioso e ligeiramente melhor que o relacional.
+K5-A não avança e a Etapa 10-B condicionada permanece fechada. Consulte o
+[`relatório de referência`](../reports/reference/forecasting-vector-state-rollout/).

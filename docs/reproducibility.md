@@ -94,6 +94,11 @@ uv run --locked python experiments/08_vector_state_rollout.py --config configs/f
 `events.csv` prova o relógio de emissão, `event_predictions.csv` separa alvo conhecido e restante,
 e `rollouts.csv` preserva cada origem/horizonte antes das agregações e do gate.
 
+O resultado canônico e sua reprodução computacional estão em
+[`reports/reference/forecasting-vector-state-rollout/`](../reports/reference/forecasting-vector-state-rollout/).
+As tabelas grandes por evento/origem foram promovidas integralmente em `raw-tables.zip`; os CSVs
+agregados permanecem diretamente legíveis.
+
 O runner também grava `timings.csv` com cada repetição e `manifest.json` com tamanho e SHA-256 de
 cada arquivo do run. `metrics.csv` contém mediana e quartis sem tratar repetições de runtime como
 novas observações estatísticas do sinal.

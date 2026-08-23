@@ -1,6 +1,6 @@
 # Protocolo do estado autoregressivo causal da cadeia
 
-Status: **pré-especificado antes da implementação e da primeira execução da Etapa 10-A**.
+Status: **executado e reproduzido; gate K5-A não satisfeito**.
 
 ## Pergunta
 
@@ -185,3 +185,16 @@ qualquer modelo mais complexo.
 
 Uma reprodução no mesmo commit verifica determinismo computacional; não substitui replicação
 independente.
+
+## Resultado observado
+
+As duas execuções completaram 630 condições sem falhas e reproduziram todos os campos científicos.
+`vectorchain_relational` passou contra estado raw multioutput pareado, segmentos fixos e
+persistência, com validade e término de 100%, mas falhou contra `raw_ar`: 0/5 sucessos por seed e
+0/3 horizontes robustos. As razões de RMSE candidata/AR foram 2,77, 1,59 e 1,20 nos horizontes
+16/64/128.
+
+O estado absoluto foi praticamente idêntico ao relacional, enquanto o cartesiano foi cerca de
+2,5% melhor com menos da metade dos escalares. K5-A não avança e a Etapa 10-B condicionada não é
+aberta. O resultado completo está no
+[`relatório de referência`](../reports/reference/forecasting-vector-state-rollout/).
