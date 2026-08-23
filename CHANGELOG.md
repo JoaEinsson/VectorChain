@@ -37,3 +37,12 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   tolerâncias.
 - Relatório replicado da grade de robustez, com critérios pareados, resultados por sinal e região de
   sucesso preservada como hipótese para confirmação independente.
+- Enquadramento pós-MVP inspirado em cinemática inversa, com distinção entre elos, articulações e
+  previsão autoregressiva no relógio de eventos.
+- Escada de claims e protocolo experimental até isolamento de mecanismo, controles pareados,
+  confirmação externa e rollout direto da cadeia vetorial.
+- Levantamento inicial de anterioridade cobrindo PLA online, ABBA/fABBA, forecasting simbólico,
+  quantização e representações baseadas em mudança angular.
+- ADR do programa científico pós-MVP e roadmap expandido até o claim de espaço de estado
+  autoregressivo compacto.
+- Orientação para que novos runners isolem o mecanismo antes de implementar autoregressão vetorial.

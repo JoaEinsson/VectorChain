@@ -62,6 +62,22 @@ Uma mudança científica deve declarar:
 Não altere fixtures ou resultados de referência apenas para fazer um teste passar. A causa da
 mudança deve estar documentada e revisável.
 
+## Claims científicos
+
+Claims pós-MVP seguem a escada definida em
+[`docs/kinematic-hypothesis.md`](docs/kinematic-hypothesis.md) e os gates de
+[`docs/post-mvp-claim-protocol.md`](docs/post-mvp-claim-protocol.md).
+
+- Não atribua a uma feature um efeito medido apenas no pacote completo.
+- Não trate uma configuração escolhida no teste como confirmação independente.
+- Não use janelas sobrepostas como réplicas.
+- Não compare representações sem registrar payload e capacidade downstream.
+- Não use `novo`, `primeiro` ou `estado da arte` com base somente no levantamento inicial.
+- Quando um controle simples explicar o efeito, reduza o claim em vez de trocar o baseline.
+
+Pull requests experimentais devem declarar o nível de claim pretendido, o contraste que poderia
+refutá-lo e o gate que permanecerá aberto mesmo se todos os testes de software passarem.
+
 ## Dependências
 
 Dependências de runtime só devem ser adicionadas quando forem necessárias ao pacote principal.

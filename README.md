@@ -1,11 +1,12 @@
 # VectorChain
 
-VectorChain é um MVP científico para investigar se séries temporais escalares podem ser
+VectorChain é um projeto científico para investigar se séries temporais escalares podem ser
 representadas de forma útil como uma cadeia causal e adaptativa de vetores.
 
-O projeto está em fase **pré-alpha**. O núcleo causal, a reconstrução e as métricas fundamentais
-estão implementados, mas ainda não há resultados experimentais que sustentem superioridade sobre
-representações tradicionais.
+O projeto está em fase **pré-alpha**. O MVP científico inicial foi concluído: núcleo causal,
+reconstrução, similaridade, forecasting e robustez possuem resultados reproduzíveis. A evidência
+atual sustenta somente um resultado delimitado no benchmark sintético; não sustenta superioridade
+geral nem identifica ainda o mecanismo responsável pelo ganho observado.
 
 ## Pergunta de pesquisa
 
@@ -13,9 +14,22 @@ representações tradicionais.
 > relevante, reduzir o comprimento efetivo da sequência e ajudar em reconstrução, similaridade,
 > forecasting e detecção de mudança?
 
+A hipótese pós-MVP deriva da inspiração em cinemática inversa aplicada ao gráfico da série:
+
+> Relações cinemáticas entre segmentos adaptativos contêm informação preditiva além da geometria
+> dos segmentos individuais?
+
+O claim mais forte, reservado para uma etapa posterior, pergunta se a própria cadeia pode funcionar
+como espaço de estado autoregressivo causal e compacto.
+
 O escopo original está preservado em [`prompt_inicial.md`](prompt_inicial.md). As definições
 executáveis do método serão mantidas em [`docs/specification.md`](docs/specification.md), e a
 causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
+
+O enquadramento pós-MVP está em
+[`docs/kinematic-hypothesis.md`](docs/kinematic-hypothesis.md), o programa experimental em
+[`docs/post-mvp-claim-protocol.md`](docs/post-mvp-claim-protocol.md) e a literatura mais próxima em
+[`docs/closest-prior-art.md`](docs/closest-prior-art.md).
 
 ## Estado do projeto
 
@@ -28,6 +42,23 @@ causalidade em [`docs/causality-contract.md`](docs/causality-contract.md).
 - [x] Similaridade, retrieval e ablations
 - [x] Forecasting mínimo
 - [x] Grade fatorial de robustez do forecasting
+- [x] MVP científico inicial concluído
+- [ ] Isolamento do mecanismo cinemático
+- [ ] Controles ABBA/PLA/smoothing e capacidade pareada
+- [ ] Confirmação em dados inéditos e reais
+- [ ] Forecasting autoregressivo diretamente na cadeia
+
+## Direção pós-MVP
+
+O resultado atual pertence ao pacote `(dt, dy, theta, r, delta_theta)`. Ele não demonstra que
+`delta_theta` causou a melhora: o ridge VectorChain possui mais entradas que raw e uma tolerância
+alta também pode atuar como suavizador. A próxima etapa preserva as fronteiras e compara
+progressivamente segmento básico, geometria absoluta e relações cinemáticas.
+
+A tolerância `0.1` continua candidata pós-análise, não novo default. Antes de qualquer claim de
+mecanismo, VectorChain será comparado com ABBA/fABBA, PLA causal, downsampling e smoothing sob
+payload e capacidade downstream pareados. O forecasting vetorial recursivo somente começa depois
+de esses controles e de uma confirmação externa passarem seus gates.
 
 ## Ambiente de desenvolvimento
 
@@ -125,6 +156,10 @@ A continuação com cinco seeds, três horizontes, três contextos e três toler
 Quatorze de 27 células de teste foram robustas em pelo menos quatro de cinco seeds. A tolerância
 `0.1` foi a região mais favorável nesta grade sintética, mas é mantida como hipótese para confirmação
 independente, não como novo padrão escolhido sobre os próprios resultados.
+
+O roadmap completo até o claim autoregressivo está em [`docs/roadmap.md`](docs/roadmap.md). A
+conclusão do MVP e o início desse programa foram registrados no
+[`ADR 0008`](docs/decisions/0008-post-mvp-kinematic-claim-program.md).
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

@@ -86,6 +86,29 @@ Na robustez, a seed do conjunto completo de sinais é a unidade de réplica. `co
 as métricas pareadas seed a seed e `summary.csv` agrega exatamente essas seeds. Contagens de
 janelas não devem ser apresentadas como tamanho amostral da análise de robustez.
 
+## Programa pós-MVP
+
+Experimentos destinados a sustentar claims seguem
+[`post-mvp-claim-protocol.md`](post-mvp-claim-protocol.md). Além das regras anteriores, cada etapa
+deve registrar:
+
+- nível de claim pretendido e hipótese que pode ser falsificada;
+- contraste primário e análises secundárias;
+- origem de cada escolha, distinguindo configuração herdada, exploratória e confirmatória;
+- orçamento de tuning e quais partições podem influenciá-lo;
+- parâmetros e payload downstream para cada representação;
+- unidade experimental independente e método de incerteza;
+- condição de parada ou redução do claim.
+
+`tolerance=0.1` foi identificada na grade de robustez e deve carregar essa proveniência em toda nova
+análise. Repetir a mesma grade não a transforma em configuração confirmatória. Uma confirmação
+precisa de unidades não usadas para escolhê-la e não pode alterar seus critérios depois de abrir o
+teste.
+
+Uma segunda execução no mesmo commit e ambiente é reprodução computacional. Replicação
+independente requer, no mínimo, execução por outro operador ou implementação/ambiente separado e,
+preferencialmente, novos dados. Relatórios devem usar esses termos sem intercambiá-los.
+
 Se a árvore estiver suja, o experimento pode rodar, mas deve registrar esse fato e não pode ser
 promovido a resultado de referência sem preservar o diff correspondente.
 
@@ -113,3 +136,6 @@ para `reports/reference/` somente se:
 3. conter ambiente e seeds;
 4. reproduzir dentro das tolerâncias documentadas;
 5. incluir resultados negativos e falhas relevantes.
+
+Resultados pós-MVP também devem indicar qual gate do roadmap foi satisfeito e qual formulação de
+claim permanece proibida.
