@@ -46,3 +46,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - ADR do programa científico pós-MVP e roadmap expandido até o claim de espaço de estado
   autoregressivo compacto.
 - Orientação para que novos runners isolem o mecanismo antes de implementar autoregressão vetorial.
+- Runner pré-especificado da ablation cinemática com cinco variantes, controle de capacidade,
+  auditoria estrutural por exemplo e gate científico separado do status de execução.

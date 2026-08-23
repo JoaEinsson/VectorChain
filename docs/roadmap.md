@@ -92,9 +92,9 @@ está em [`closest-prior-art.md`](closest-prior-art.md).
 
 ## Etapa 7 — Isolamento do mecanismo cinemático
 
-- [ ] Pré-especificar métrica primária, margem, seeds e análise de incerteza
+- [x] Pré-especificar métrica primária, margem, seeds e unidade de análise
 - [ ] Comparar `dt/dy` com geometria absoluta, `delta_theta` e `delta_r`
-- [ ] Garantir fronteiras, exemplos, alvos e splits idênticos entre ablations
+- [x] Garantir fronteiras, exemplos, alvos e splits idênticos entre ablations
 - [ ] Executar análise com capacidade downstream pareada
 - [ ] Preservar efeitos por seed, célula e dinâmica
 

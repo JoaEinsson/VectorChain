@@ -59,15 +59,24 @@ sobrepostas como réplicas independentes. Raw e diferenças são avaliados uma v
 
 ## Experimentos pós-MVP
 
-O próximo runner deve isolar o mecanismo cinemático antes de introduzir um modelo autoregressivo
-mais capaz. A ordem obrigatória é:
+O isolamento pré-especificado do mecanismo cinemático é executado com:
 
-1. ablations de geometria absoluta e relações entre segmentos;
-2. ABBA/fABBA, PLA, smoothing, payload e capacidade pareados;
-3. confirmação em dados inéditos;
-4. somente então `V_1:t -> V_(t+1)` e rollout no relógio de eventos.
+```powershell
+uv run python experiments/06_forecasting_feature_ablation.py --config configs/forecasting/feature_ablation.toml
+```
+
+Ele compara cinco subconjuntos de features sobre fronteiras e exemplos idênticos, preserva razões
+pareadas por seed/célula/sinal, registra parâmetros e payload, audita a contagem de passos de cada
+exemplo e grava a decisão científica em `gate.json`. O gate usa validação; o teste é apenas
+descritivo porque esse benchmark já foi observado.
+
+A ordem restante é:
+
+1. ABBA/fABBA, PLA, smoothing, payload e capacidade pareados;
+2. confirmação em dados inéditos;
+3. somente então `V_1:t -> V_(t+1)` e rollout no relógio de eventos.
 
 Os requisitos e gates estão em
-[`docs/post-mvp-claim-protocol.md`](../docs/post-mvp-claim-protocol.md). Números de scripts e configs
-serão atribuídos quando o protocolo específico de cada etapa estiver congelado; este README não
-reserva uma implementação inexistente.
+[`docs/post-mvp-claim-protocol.md`](../docs/post-mvp-claim-protocol.md). Novos números de scripts e
+configs só serão atribuídos quando o protocolo específico da etapa correspondente estiver
+congelado.

@@ -1,0 +1,48 @@
+[experiment]
+name = "forecasting-kinematic-feature-ablation"
+base_config = "baseline.toml"
+seeds = [1729, 2718, 31415, 104729, 8675309]
+
+[grid]
+context_lengths = [32, 64, 128]
+horizons = [1, 4, 16]
+stride = 4
+tolerance = 0.1
+
+[ablations]
+names = [
+  "segment",
+  "absolute_geometry",
+  "turning_matched",
+  "turning",
+  "full_relational",
+]
+reference_variant = "absolute_geometry"
+primary_variant = "turning"
+capacity_control_variant = "turning_matched"
+
+[ablations.features]
+segment = ["dt", "dy"]
+absolute_geometry = ["dt", "dy", "theta", "r"]
+turning_matched = ["dt", "dy", "theta", "delta_theta"]
+turning = ["dt", "dy", "theta", "r", "delta_theta"]
+full_relational = ["dt", "dy", "theta", "r", "delta_theta", "delta_r"]
+
+[criteria]
+primary_split = "validation"
+maximum_primary_rmse_ratio = 0.99
+maximum_capacity_control_rmse_ratio = 1.0
+robust_seed_rate = 0.8
+minimum_robust_cell_rate = 0.5
+predictive_parity_ratio = 1.10
+maximum_step_fraction = 0.5
+maximum_scalar_fraction = 1.0
+
+[timing]
+repetitions = 1
+warmup_repetitions = 0
+
+[output]
+root = "artifacts"
+save_plots = true
+plot_dpi = 150

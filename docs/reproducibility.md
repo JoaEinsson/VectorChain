@@ -68,6 +68,13 @@ A grade pré-especificada de robustez usa a baseline acima como configuração b
 uv run python experiments/05_forecasting_robustness.py --config configs/forecasting/robustness.toml
 ```
 
+A ablation cinemática pré-especificada reutiliza a baseline, fixa a tolerância exploratória e
+compara as features sobre os mesmos exemplos:
+
+```powershell
+uv run python experiments/06_forecasting_feature_ablation.py --config configs/forecasting/feature_ablation.toml
+```
+
 O runner também grava `timings.csv` com cada repetição e `manifest.json` com tamanho e SHA-256 de
 cada arquivo do run. `metrics.csv` contém mediana e quartis sem tratar repetições de runtime como
 novas observações estatísticas do sinal.
@@ -85,6 +92,11 @@ linhas marcadas como treino; validação e teste não provocam refit.
 Na robustez, a seed do conjunto completo de sinais é a unidade de réplica. `conditions.csv` contém
 as métricas pareadas seed a seed e `summary.csv` agrega exatamente essas seeds. Contagens de
 janelas não devem ser apresentadas como tamanho amostral da análise de robustez.
+
+Na ablation cinemática, `step_audit.csv` deve ter a mesma assinatura por
+`(seed, contexto, horizonte)` em todas as variantes. `summary_by_seed.csv` contém a unidade de
+réplica usada pelo gate; `gate.json` separa a decisão científica do status de execução registrado
+em `environment.json`.
 
 ## Programa pós-MVP
 
