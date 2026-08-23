@@ -76,6 +76,7 @@ maximum_predicted_events = 256
 
 [criteria]
 primary_split = "test"
+primary_history_length = 8
 maximum_candidate_rmse_ratio = 0.99
 robust_seed_rate = 0.8
 minimum_robust_horizon_rate = 0.6666666666666666

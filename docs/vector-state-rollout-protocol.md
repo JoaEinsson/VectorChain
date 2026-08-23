@@ -96,6 +96,9 @@ menos cinco exemplos por split e comprimento de histórico.
 Cada condição usa os últimos `4/8/16` estados completos, sem padding. A ordem é preservada por
 concatenação, não por pooling.
 
+O gate usa exclusivamente histórico 8, fixado antes da implementação. Históricos 4 e 16 são
+análises de sensibilidade e não podem substituir o contraste primário depois de abrir o teste.
+
 | Nome | Conteúdo por passo | Papel |
 |---|---|---|
 | `vectorchain_cartesian` | `dt,dy,open_dy` | ablation da cadeia básica |
@@ -140,7 +143,7 @@ da seed são medidas repetidas, não réplicas independentes.
 
 ## Gate K5-A
 
-O gate usa somente teste e a razão:
+O gate usa somente teste, histórico 8 e a razão:
 
 ```text
 RMSE_rollout(vectorchain_relational) / RMSE_rollout(controle)
