@@ -57,6 +57,10 @@ dy_hat           = open_dy_current + remaining_dy_hat
 contados como inválidos; para manter o rollout auditável, `NaN/-inf` projetam para zero e `+inf`
 para 256. A saída bruta nunca é substituída nos artefatos.
 
+Se `remaining_dt_hat = 0`, o deslocamento restante efetivo é forçado a zero. Permitir um valor não
+zero criaria um salto vertical sem avanço no tempo. O deslocamento bruto e a ocorrência dessa
+projeção permanecem registrados separadamente.
+
 O trecho ainda não observado do segmento é interpolado da observação corrente até o endpoint
 previsto em `remaining_dt_hat` intervalos. Em seguida, `next_open_dy_hat` cria a primeira amostra
 do próximo segmento aberto. A transição avança exatamente `dt_hat` amostras e produz `E_(i+1)`;
@@ -98,6 +102,8 @@ concatenação, não por pooling.
 
 O gate usa exclusivamente histórico 8, fixado antes da implementação. Históricos 4 e 16 são
 análises de sensibilidade e não podem substituir o contraste primário depois de abrir o teste.
+Ao projetar uma janela de estados, `delta_theta/delta_r` do primeiro passo são zero; nenhuma relação
+com um estado fora do payload declarado é carregada implicitamente.
 
 | Nome | Conteúdo por passo | Papel |
 |---|---|---|

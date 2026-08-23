@@ -54,6 +54,7 @@ fixed_relational = [
 names = ["log1p_remaining_dt", "remaining_dy", "next_open_dy"]
 duration_projection = "round_expm1_clip"
 maximum_remaining_dt = 256
+zero_duration_displacement = "force_zero"
 
 [controls]
 gate_names = ["raw_matched", "fixed_relational", "raw_ar", "persistence"]

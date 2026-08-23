@@ -91,6 +91,17 @@ O run promovido e sua reprodução computacional estão em
 O gate não passou: geometria local e EWMA não explicaram o efeito, mas média móvel trailing e
 segmentação fixa impediram atribuí-lo à adaptação da cadeia.
 
+O primeiro teste direto do estado autoregressivo da cadeia é executado com:
+
+```powershell
+uv run python experiments/08_vector_state_rollout.py --config configs/forecasting/vector_state_rollout.toml
+```
+
+Ele usa somente segmentos realmente emitidos, inclui explicitamente o primeiro incremento do elo
+aberto e prevê apenas duração/deslocamento ainda desconhecidos. A ordem dos estados é concatenada,
+sem pooling, e o rollout é reconstruído no relógio raw. O protocolo pré-especificado está em
+[`docs/vector-state-rollout-protocol.md`](../docs/vector-state-rollout-protocol.md).
+
 A ordem restante, condicionada aos gates, é:
 
 1. reformular ou encerrar K1/K3 à luz dos controles negativos;

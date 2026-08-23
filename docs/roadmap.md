@@ -160,13 +160,14 @@ o estado de emissão com seeds sintéticas novas; uma Etapa 10-B externa só é 
 básico passar.
 
 - [x] Definir tarefa causal `E_1:t -> E_(t+1)` no relógio real de emissão
-- [ ] Comparar previsão de `(dt, dy)`, `(r, theta)` e incrementos articulares
-- [ ] Garantir duração positiva, articulação contínua e estado inicial explícito
-- [ ] Definir truncamento do elo que cruza o horizonte raw
-- [ ] Implementar rollout multi-vetor sem usar endpoints futuros reais
-- [ ] Reconstruir a trajetória por cinemática direta e medir drift
-- [ ] Comparar com raw recursivo, persistência e ABBA-LSTM ou equivalente próximo
-- [ ] Medir validade, estabilidade, erro, payload, parâmetros, runtime e memória
+- [x] Comparar estados cartesiano, absoluto e relacional sob concatenação ordenada
+- [x] Garantir duração positiva, articulação contínua e estado inicial explícito
+- [x] Definir truncamento do elo que cruza o horizonte raw
+- [x] Implementar rollout multi-vetor sem usar endpoints futuros reais
+- [x] Reconstruir a trajetória por cinemática direta e medir drift
+- [x] Comparar com raw recursivo, persistência e estado segmentado fixo pareado
+- [ ] Adicionar ABBA-LSTM ou equivalente simbólico somente se o gate K5-A passar
+- [x] Medir validade, estabilidade, erro, payload, parâmetros, runtime e memória
 - [ ] Confirmar o rollout em dados não usados para seleção
 
 Gate do claim mais forte: o rollout vetorial precisa ser causal, válido, estável, compacto,

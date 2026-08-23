@@ -56,3 +56,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   segmentação fixa e reduzindo explicitamente o claim de mecanismo.
 - Protocolo e ADR da Etapa 10-A para estado causal de emissão, alvo não observado, duração projetada
   e rollout autoregressivo pareado contra raw, segmentos fixos, AR e persistência.
+- Runner da Etapa 10-A com ridge multioutput, concatenação ordenada de estados, cinemática direta,
+  AR raw recursivo, artefatos por evento/origem e gate K5-A separado do status de execução.

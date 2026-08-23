@@ -21,6 +21,8 @@ não os transformar em confirmação retrospectiva.
 - Prever somente duração e deslocamento restantes, além da primeira diferença do estado seguinte.
 - Projetar duração para inteiro não negativo por uma regra explícita e registrar valores antes da
   projeção.
+- Forçar deslocamento restante zero quando a duração restante projetada for zero, preservando a
+  saída bruta e a contagem dessa correção de validade.
 - Reconstruir por cinemática direta, avançar no relógio raw e reaplicar a mesma transição em rollout.
 - Usar o default `tolerance=0.03`; `0.1` não tem densidade de eventos suficiente em alguns sinais e
   foi selecionada em resultados anteriores.
