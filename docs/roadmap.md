@@ -154,7 +154,12 @@ elos nas condições avaliadas.
 
 ## Etapa 10 — Estado autoregressivo da cadeia
 
-- [ ] Definir tarefa causal `V_1:t -> V_(t+1)` no relógio de eventos
+Protocolo causal pré-especificado em
+[`vector-state-rollout-protocol.md`](vector-state-rollout-protocol.md). A Etapa 10-A testa primeiro
+o estado de emissão com seeds sintéticas novas; uma Etapa 10-B externa só é aberta se esse gate
+básico passar.
+
+- [x] Definir tarefa causal `E_1:t -> E_(t+1)` no relógio real de emissão
 - [ ] Comparar previsão de `(dt, dy)`, `(r, theta)` e incrementos articulares
 - [ ] Garantir duração positiva, articulação contínua e estado inicial explícito
 - [ ] Definir truncamento do elo que cruza o horizonte raw

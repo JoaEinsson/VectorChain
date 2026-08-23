@@ -1,0 +1,94 @@
+[experiment]
+name = "forecasting-vector-state-rollout"
+base_config = "baseline.toml"
+phase = "stage10a-preregistered-synthetic"
+seeds = [
+  5334086151564077557,
+  9076691527785929283,
+  1488991049205644303,
+  2506524397075762905,
+  228973438714350052,
+]
+
+[signals]
+n_points = 2048
+
+[event_state]
+tolerance = 0.03
+min_segment_length = 2
+history_lengths = [4, 8, 16]
+candidate = "vectorchain_relational"
+representations = [
+  "vectorchain_cartesian",
+  "vectorchain_absolute",
+  "vectorchain_relational",
+  "raw_matched",
+  "fixed_relational",
+  "raw_ar",
+  "persistence",
+]
+
+[event_state.features]
+vectorchain_cartesian = ["dt", "dy", "open_dy"]
+vectorchain_absolute = ["dt", "dy", "theta", "r", "open_dy"]
+vectorchain_relational = [
+  "dt",
+  "dy",
+  "theta",
+  "r",
+  "delta_theta",
+  "delta_r",
+  "open_dy",
+]
+fixed_relational = [
+  "dt",
+  "dy",
+  "theta",
+  "r",
+  "delta_theta",
+  "delta_r",
+  "open_dy",
+]
+
+[targets]
+names = ["log1p_remaining_dt", "remaining_dy", "next_open_dy"]
+duration_projection = "round_expm1_clip"
+maximum_remaining_dt = 256
+
+[controls]
+gate_names = ["raw_matched", "fixed_relational", "raw_ar", "persistence"]
+fixed_segment_length = "training_median_vectorchain_dt"
+raw_lags_per_candidate_feature = 1
+
+[split]
+train_fraction = 0.6
+validation_fraction = 0.2
+minimum_examples_per_signal_split = 5
+
+[model]
+kind = "ridge"
+alpha = 0.001
+
+[rollout]
+raw_horizons = [16, 64, 128]
+origin_event_stride = 2
+maximum_predicted_events = 256
+
+[criteria]
+primary_split = "test"
+maximum_candidate_rmse_ratio = 0.99
+robust_seed_rate = 0.8
+minimum_robust_horizon_rate = 0.6666666666666666
+required_postprojection_validity_rate = 1.0
+required_rollout_completion_rate = 1.0
+maximum_candidate_step_fraction_vs_raw_matched = 0.14285714285714285
+maximum_candidate_scalar_fraction_vs_raw_matched = 1.0
+
+[timing]
+repetitions = 1
+warmup_repetitions = 0
+
+[output]
+root = "artifacts"
+save_plots = true
+plot_dpi = 150

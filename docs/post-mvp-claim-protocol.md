@@ -147,6 +147,11 @@ ser descrito como hipótese do benchmark sintético original.
 
 Esta etapa testa o claim mais forte e não deve ser confundida com o forecasting pooled atual.
 
+O protocolo operacional está em
+[`vector-state-rollout-protocol.md`](vector-state-rollout-protocol.md). Como o elo anterior só é
+emitido depois da primeira observação do elo aberto seguinte, o estado causal passa a ser
+`E_i = (S_i, open_dy_(i+1))`; os alvos excluem explicitamente essa parte já conhecida.
+
 ### Tarefa
 
 ```text

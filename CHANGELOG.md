@@ -54,3 +54,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   compressão ABBA opcional, tuning bloqueado no treino e gate predição × payload × capacidade.
 - Relatório reproduzido dos controles da Etapa 8, preservando a falha contra média móvel trailing e
   segmentação fixa e reduzindo explicitamente o claim de mecanismo.
+- Protocolo e ADR da Etapa 10-A para estado causal de emissão, alvo não observado, duração projetada
+  e rollout autoregressivo pareado contra raw, segmentos fixos, AR e persistência.
