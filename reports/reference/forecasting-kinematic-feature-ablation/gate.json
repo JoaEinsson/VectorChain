@@ -1,0 +1,32 @@
+{
+  "capacity_control_variant": "turning_matched",
+  "checks": {
+    "capacity_control_seed_rate": false,
+    "complete_primary_grid": true,
+    "primary_seed_rate": false,
+    "robust_cell_coverage": false
+  },
+  "criteria": {
+    "maximum_capacity_control_rmse_ratio": 1.0,
+    "maximum_primary_rmse_ratio": 0.99,
+    "minimum_robust_cell_rate": 0.5,
+    "required_cells": 5,
+    "required_seeds": 4,
+    "robust_seed_rate": 0.8
+  },
+  "observed": {
+    "capacity_control_seed_successes": 2,
+    "capacity_control_seed_trials": 5,
+    "primary_cell_trials": 9,
+    "primary_seed_successes": 0,
+    "primary_seed_trials": 5,
+    "robust_primary_cells": 1,
+    "test_primary_cell_trials_descriptive": 9,
+    "test_robust_primary_cells_descriptive": 0
+  },
+  "passed": false,
+  "primary_split": "validation",
+  "primary_variant": "turning",
+  "reference_variant": "absolute_geometry",
+  "status": "evaluated"
+}

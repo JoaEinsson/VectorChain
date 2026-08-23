@@ -48,3 +48,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Orientação para que novos runners isolem o mecanismo antes de implementar autoregressão vetorial.
 - Runner pré-especificado da ablation cinemática com cinco variantes, controle de capacidade,
   auditoria estrutural por exemplo e gate científico separado do status de execução.
+- Relatório replicado da ablation cinemática preservando o gate negativo de `delta_theta/delta_r`
+  e redirecionando os controles para a utilidade exploratória da geometria absoluta.

@@ -161,6 +161,12 @@ O roadmap completo até o claim autoregressivo está em [`docs/roadmap.md`](docs
 conclusão do MVP e o início desse programa foram registrados no
 [`ADR 0008`](docs/decisions/0008-post-mvp-kinematic-claim-program.md).
 
+A primeira ablation cinemática pós-MVP está em
+[`reports/reference/forecasting-kinematic-feature-ablation/`](reports/reference/forecasting-kinematic-feature-ablation/).
+O gate relacional não passou: `delta_theta/delta_r` não acrescentaram efeito consistente sobre a
+geometria absoluta no ridge pooled. O resultado negativo redireciona os próximos controles para a
+utilidade de `theta/r`, sem sustentar informação relacional incremental.
+
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.
 

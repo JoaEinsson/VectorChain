@@ -1,0 +1,292 @@
+{
+  "command": {
+    "argv": [
+      "experiments/06_forecasting_feature_ablation.py",
+      "--config",
+      "configs/forecasting/feature_ablation.toml"
+    ],
+    "display": "experiments/06_forecasting_feature_ablation.py --config configs/forecasting/feature_ablation.toml"
+  },
+  "config": {
+    "ablations": {
+      "capacity_control_variant": "turning_matched",
+      "features": {
+        "absolute_geometry": [
+          "dt",
+          "dy",
+          "theta",
+          "r"
+        ],
+        "full_relational": [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta",
+          "delta_r"
+        ],
+        "segment": [
+          "dt",
+          "dy"
+        ],
+        "turning": [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta"
+        ],
+        "turning_matched": [
+          "dt",
+          "dy",
+          "theta",
+          "delta_theta"
+        ]
+      },
+      "names": [
+        "segment",
+        "absolute_geometry",
+        "turning_matched",
+        "turning",
+        "full_relational"
+      ],
+      "primary_variant": "turning",
+      "reference_variant": "absolute_geometry"
+    },
+    "base_forecasting_config": {
+      "experiment": {
+        "name": "minimal-forecasting-baseline",
+        "seed": 31415
+      },
+      "forecast": {
+        "context_length": 64,
+        "horizon": 1,
+        "stride": 2
+      },
+      "model": {
+        "alpha": 0.001,
+        "kind": "ridge",
+        "repetitions": 5,
+        "warmup_repetitions": 1
+      },
+      "output": {
+        "plot_dpi": 150,
+        "root": "artifacts",
+        "save_models": true,
+        "save_plots": true
+      },
+      "representations": {
+        "names": [
+          "raw",
+          "first_difference",
+          "vectorchain"
+        ],
+        "summary_statistics": [
+          "last",
+          "mean",
+          "std"
+        ]
+      },
+      "signals": {
+        "n_points": 1024,
+        "names": [
+          "sine",
+          "chirp",
+          "ramp",
+          "piecewise_linear",
+          "first_order_response",
+          "second_order_response",
+          "regime_change"
+        ],
+        "noise_std": 0.01,
+        "parameters": {
+          "chirp": {
+            "amplitude": 1.0,
+            "end_frequency": 8.0,
+            "offset": 0.0,
+            "phase": 0.0,
+            "start_frequency": 1.0
+          },
+          "first_order_response": {
+            "amplitude": 1.0,
+            "offset": 0.0,
+            "time_constant": 0.15
+          },
+          "piecewise_linear": {
+            "amplitude": 1.0,
+            "offset": 0.0
+          },
+          "ramp": {
+            "amplitude": 1.0,
+            "offset": 0.0
+          },
+          "regime_change": {
+            "amplitude": 1.0,
+            "change_fraction": 0.5,
+            "frequency_after": 8.0,
+            "frequency_before": 2.0,
+            "level_shift": 0.5,
+            "offset": 0.0
+          },
+          "second_order_response": {
+            "amplitude": 1.0,
+            "damping_ratio": 0.15,
+            "natural_frequency": 3.0,
+            "offset": 0.0
+          },
+          "sine": {
+            "amplitude": 1.0,
+            "frequency": 3.0,
+            "offset": 0.0,
+            "phase": 0.0
+          }
+        }
+      },
+      "split": {
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2
+      },
+      "vectorchain": {
+        "causal": true,
+        "features": [
+          "dt",
+          "dy",
+          "theta",
+          "r",
+          "delta_theta"
+        ],
+        "min_segment_length": 2,
+        "tolerance": 0.03
+      }
+    },
+    "criteria": {
+      "maximum_capacity_control_rmse_ratio": 1.0,
+      "maximum_primary_rmse_ratio": 0.99,
+      "maximum_scalar_fraction": 1.0,
+      "maximum_step_fraction": 0.5,
+      "minimum_robust_cell_rate": 0.5,
+      "predictive_parity_ratio": 1.1,
+      "primary_split": "validation",
+      "robust_seed_rate": 0.8
+    },
+    "experiment": {
+      "base_config": "baseline.toml",
+      "name": "forecasting-kinematic-feature-ablation",
+      "seeds": [
+        1729,
+        2718,
+        31415,
+        104729,
+        8675309
+      ]
+    },
+    "grid": {
+      "context_lengths": [
+        32,
+        64,
+        128
+      ],
+      "horizons": [
+        1,
+        4,
+        16
+      ],
+      "stride": 4,
+      "tolerance": 0.1
+    },
+    "output": {
+      "plot_dpi": 150,
+      "root": "artifacts",
+      "save_plots": true
+    },
+    "resolved": {
+      "base_config_path": "configs/forecasting/baseline.toml",
+      "base_config_sha256": "25bb2365dc96cd383d1d69bffe45064309672ceceacbe37846fc4b1a50b23690",
+      "combined_sha256": "c63b4e17bc3192948090f43db8acea129dbd9b7842e03f7cba73bc92fb3798fe",
+      "config_path": "configs/forecasting/feature_ablation.toml",
+      "config_sha256": "81f2cb2b56514a2cf7a933c1759f6b3fbdb843a190677b17c23d8977188de23e",
+      "expected_condition_evaluations": 315,
+      "output_root": "F:\\Projetos\\VectorChain\\artifacts"
+    },
+    "timing": {
+      "repetitions": 1,
+      "warmup_repetitions": 0
+    }
+  },
+  "dependencies": {
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.2",
+    "vectorchain": "0.1.0.dev0"
+  },
+  "derived_signal_seeds": {
+    "104729": {
+      "chirp": 558861801251860594,
+      "first_order_response": 945554831586756012,
+      "piecewise_linear": 6317799066782518258,
+      "ramp": 4363872765454129982,
+      "regime_change": 2607858282737726724,
+      "second_order_response": 8209929833484088262,
+      "sine": 3352651786729380101
+    },
+    "1729": {
+      "chirp": 408835176976195895,
+      "first_order_response": 7754526753939400464,
+      "piecewise_linear": 8232356733117608449,
+      "ramp": 2525541738255795592,
+      "regime_change": 4695181564452026195,
+      "second_order_response": 3453063256976350239,
+      "sine": 5903279023229027532
+    },
+    "2718": {
+      "chirp": 5607406431340766973,
+      "first_order_response": 2527248448472441259,
+      "piecewise_linear": 7094940757616264071,
+      "ramp": 5210633721631928842,
+      "regime_change": 725015608300306666,
+      "second_order_response": 3327937680824456094,
+      "sine": 4890217661249664038
+    },
+    "31415": {
+      "chirp": 6894369671430017204,
+      "first_order_response": 2890100896329134411,
+      "piecewise_linear": 7047214652103394396,
+      "ramp": 5851866067628065167,
+      "regime_change": 8401067361085421641,
+      "second_order_response": 5037646422310687683,
+      "sine": 4114706133015583382
+    },
+    "8675309": {
+      "chirp": 5093877067614012753,
+      "first_order_response": 3767178568383059144,
+      "piecewise_linear": 8674028708095890744,
+      "ramp": 2051996041425908238,
+      "regime_change": 4005977874306455458,
+      "second_order_response": 1792193096425744659,
+      "sine": 1262069813901332815
+    }
+  },
+  "elapsed_s": 370.5210536,
+  "finished_utc": "2026-08-23T20:23:18.802702+00:00",
+  "git": {
+    "commit": "73446eff021916ec9816a20ddea3ea393f147554",
+    "dirty": false
+  },
+  "n_conditions": 315,
+  "n_failures": 0,
+  "platform": {
+    "architecture": "64bit",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "release": "11",
+    "system": "Windows"
+  },
+  "python": {
+    "executable": "F:\\Projetos\\VectorChain\\.venv\\Scripts\\python.exe",
+    "implementation": "CPython",
+    "version": "3.12.12"
+  },
+  "run_id": "20260823T201708203259Z_c63b4e17_73446ef",
+  "scientific_gate_passed": false,
+  "started_utc": "2026-08-23T20:17:08.203259+00:00",
+  "status": "complete"
+}

@@ -1,6 +1,6 @@
 # Protocolo da ablation cinemática no forecasting
 
-Status: **pré-especificado antes da primeira execução da Etapa 7**.
+Status: **pré-especificado antes da primeira execução; executado e replicado com gate negativo**.
 
 Implementação registrada em `experiments/06_forecasting_feature_ablation.py` e configuração
 congelada em `configs/forecasting/feature_ablation.toml`. A execução canônica deve partir de commit
@@ -112,3 +112,15 @@ confiança estreito.
 Se o gate passar, a conclusão é apenas que `delta_theta` merece enfrentar controles externos da
 Etapa 8. Se falhar, K2 não avança sob este pooling/ridge/benchmark. `full_relational` permanece
 secundária e não pode substituir retrospectivamente `turning` como contraste primário.
+
+## Resultado registrado
+
+O run canônico e sua réplica executaram 315/315 avaliações sem falhas. Em validação, `turning`
+passou a margem em 0/5 seeds e 1/9 células; `turning_matched` não degradou em apenas 2/5 seeds.
+Todos os checks científicos falharam, embora a grade e as 225 auditorias estruturais estivessem
+completas. O relatório promovido está em
+[`reports/reference/forecasting-kinematic-feature-ablation/`](../reports/reference/forecasting-kinematic-feature-ablation/).
+
+Consequentemente, K2 não avança nesta formulação. A geometria absoluta foi melhor que o pacote
+relacional agregado e gera uma hipótese mais estreita para controles de K1/K3; ela não autoriza o
+claim de informação relacional incremental.

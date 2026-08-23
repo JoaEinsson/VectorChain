@@ -22,6 +22,8 @@ exploratório para qualquer claim novo.
   identificada olhando a própria grade.
 - O ridge VectorChain possui mais entradas e parâmetros que raw; suavização e capacidade são
   explicações concorrentes ainda abertas.
+- A Etapa 7 executada não sustentou K2: `turning` passou em 0/5 seeds e 1/9 células de validação
+  contra `absolute_geometry`; o pacote absoluto tornou-se a candidata exploratória para K1/K3.
 
 ## Regras comuns
 
@@ -69,6 +71,9 @@ fora desta primeira ablation.
 K2 avança somente se a variante relacional mostrar efeito incremental consistente em unidades
 independentes e o resultado não depender de uma única célula escolhida no teste. A direção, medida
 primária, margem operacional e método de incerteza serão congelados na configuração da etapa.
+
+Resultado: **K2 não avançou** no protocolo executado. A Etapa 8 pode diagnosticar a utilidade de
+`absolute_geometry`, mas não pode rebatizar esse caminho como confirmação relacional.
 
 ## Etapa 8 — Controles pareados e anterioridade operacional
 

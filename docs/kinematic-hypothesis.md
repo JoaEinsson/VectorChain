@@ -103,6 +103,13 @@ janela raw -> VectorChain -> pooling -> delta_target raw
 Portanto, os resultados existentes não sustentam ainda o claim de que a cadeia seja um espaço de
 estado autoregressivo próprio.
 
+Na ablation posterior, `turning` não superou `absolute_geometry` de forma consistente: 0/5 seeds e
+1/9 células de validação atingiram a margem pré-especificada. O controle `turning_matched` passou em
+2/5 seeds e `full_relational` piorou todas as médias geométricas por seed. K2, portanto, não avança
+sob este pooling/ridge/benchmark. Em contrapartida, o pacote absoluto superou `segment` e raw de
+forma exploratória; como `theta/r` são transformações determinísticas de `dt/dy`, isso é evidência
+de utilidade para o modelo pooled, não de informação adicional em sentido informacional.
+
 ## Registro de hipóteses
 
 | ID | Hipótese | Evidência necessária | Condição de rejeição |
@@ -112,6 +119,9 @@ estado autoregressivo próprio.
 | K3 | O ganho não é somente suavização ou capacidade downstream | VectorChain vence controles de smoothing, PLA e parâmetros pareados | controle mais simples explica o mesmo Pareto |
 | K4 | A região útil generaliza | confirmação congelada em novas seeds, ruídos, dinâmicas e datasets reais | efeito desaparece ou muda de sinal fora dos sintéticos originais |
 | K5 | A cadeia é um espaço de estado preditivo | rollout `V_1:t -> V_t+1` compacto, estável e reconstruível | drift, duração inválida ou erro não competitivo em rollout |
+
+Estado após a Etapa 7: K2 foi rejeitada para a formulação avaliada; K1 permanece exploratória e K3
+deve testar primeiro o pacote de geometria absoluta contra controles simples e pareados.
 
 Hipóteses rejeitadas permanecem resultados científicos. Nenhuma etapa deve ser redesenhada depois
 de abrir o teste apenas para preservar a narrativa cinemática.
@@ -150,6 +160,11 @@ Formulação atual defensável:
 
 > No benchmark sintético pré-especificado, uma representação VectorChain estritamente causal
 > encontrou condições em que reduziu passos e payload mantendo ou melhorando a previsão.
+
+Formulação pós-ablation também defensável:
+
+> Neste benchmark sintético e modelo ridge com pooling, o pacote de geometria absoluta foi mais
+> parcimonioso e teve menor erro agregado que as variantes relacionais avaliadas.
 
 Formulação-alvo do mecanismo:
 

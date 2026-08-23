@@ -70,6 +70,11 @@ pareadas por seed/célula/sinal, registra parâmetros e payload, audita a contag
 exemplo e grava a decisão científica em `gate.json`. O gate usa validação; o teste é apenas
 descritivo porque esse benchmark já foi observado.
 
+O run revisado e sua réplica estão em
+[`reports/reference/forecasting-kinematic-feature-ablation/`](../reports/reference/forecasting-kinematic-feature-ablation/).
+O gate não passou; futuros controles devem tratar `absolute_geometry` como candidata exploratória,
+não promover retrospectivamente outra variante relacional.
+
 A ordem restante é:
 
 1. ABBA/fABBA, PLA, smoothing, payload e capacidade pareados;

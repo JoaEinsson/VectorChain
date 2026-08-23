@@ -93,16 +93,25 @@ está em [`closest-prior-art.md`](closest-prior-art.md).
 ## Etapa 7 — Isolamento do mecanismo cinemático
 
 - [x] Pré-especificar métrica primária, margem, seeds e unidade de análise
-- [ ] Comparar `dt/dy` com geometria absoluta, `delta_theta` e `delta_r`
+- [x] Comparar `dt/dy` com geometria absoluta, `delta_theta` e `delta_r`
 - [x] Garantir fronteiras, exemplos, alvos e splits idênticos entre ablations
-- [ ] Executar análise com capacidade downstream pareada
-- [ ] Preservar efeitos por seed, célula e dinâmica
+- [x] Executar análise com capacidade downstream pareada
+- [x] Preservar efeitos por seed, célula e dinâmica
 
 Gate: a variante relacional precisa acrescentar efeito preditivo consistente sobre
 `(dt, dy, theta, r)` em unidades independentes. Se não acrescentar, rejeitar o mecanismo relacional
 sem reescrever o resultado do pacote completo.
 
+Resultado: **gate não satisfeito**. `turning` passou em 0/5 seeds e 1/9 células de validação;
+`turning_matched` passou em 2/5 seeds. K2 não avança sob o pooling/ridge atual. A evidência
+exploratória migra para uma pergunta mais estreita: se a utilidade do pacote de geometria absoluta
+resiste a controles de smoothing, features locais e capacidade. Consulte o
+[`relatório de referência`](../reports/reference/forecasting-kinematic-feature-ablation/).
+
 ## Etapa 8 — Controles pareados e literatura operacional
+
+Após o gate negativo da Etapa 7, esta etapa testa K1/K3 usando `absolute_geometry` como candidata;
+ela não é confirmação do mecanismo relacional.
 
 - [ ] Integrar ABBA/fABBA como baselines experimentais, fora da dependência principal
 - [ ] Adicionar PLA causal, segmentação fixa e downsampling com orçamento comparável
