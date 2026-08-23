@@ -5,28 +5,28 @@
   "files": [
     {
       "path": "conditions_by_signal.csv",
-      "size_bytes": 780489,
-      "sha256": "eb50e22076d769f42767f9a5547a1f5bf15ee5da41c2db691a159ee29bc49630"
+      "size_bytes": 776078,
+      "sha256": "f3967388f82598c6ca233186f6897706d3ee3a6703c9bd09714d37a5aa3fdd98"
     },
     {
       "path": "conditions.csv",
-      "size_bytes": 233817,
-      "sha256": "3c40df5e50a258666fd2fd7dc1855578e8c3d393d352be385ceafd05f4f3064c"
+      "size_bytes": 233186,
+      "sha256": "17b9e957ba57daafd2ebe154396f9661608628e3bd2ca64d8f0fb44df960333b"
     },
     {
       "path": "config.json",
-      "size_bytes": 4637,
-      "sha256": "dbf238708fc3e836eff0b9f2a7ecae730fedb17eebba0357a2ea1aa154837318"
+      "size_bytes": 4431,
+      "sha256": "de37992f94ee68cb031d6c52ee04cb628064d4eaaf7f27ecd1511aa829e9b8c2"
     },
     {
       "path": "environment.json",
-      "size_bytes": 7898,
-      "sha256": "49204378b529243345a88c35738af63ba983511e5fbf6b61e0a6b52776c71df4"
+      "size_bytes": 7606,
+      "sha256": "f7c95c2228253903807a94c72140e2b75383f5ab080b1d75a0ef9123f3ade8ed"
     },
     {
       "path": "gate.json",
-      "size_bytes": 942,
-      "sha256": "2c8dd8d0001bb310bed93ac9a588ba579c29c958fdf0a18edb5fb58c2fcf5fdd"
+      "size_bytes": 910,
+      "sha256": "6d1d0e592fc1dc9b5538dbdc70ecb4615180a17271c6a92fd70cba9c8f6d31bd"
     },
     {
       "path": "plots/summary__payload-error-tradeoff.png",
@@ -55,23 +55,23 @@
     },
     {
       "path": "step_audit.csv",
-      "size_bytes": 28877,
-      "sha256": "f469eca1ca79d21b89adb8b007d6ddae1e6d755316bfa4259a778c3781fd6c1b"
+      "size_bytes": 28651,
+      "sha256": "38d8575fee51d1bd35ead921086a4f8c9890fe5f50135e8127194c6fa70e923a"
     },
     {
       "path": "summary_by_seed.csv",
-      "size_bytes": 5297,
-      "sha256": "a3dfb94608f84d1208fe6f4a29c11477c3c38877c153bb618797d6b8dbe82efa"
+      "size_bytes": 5246,
+      "sha256": "168fe07df47b557a067a5afc8a34bfada38f7e89e3509a6beb1ff09a4b441c2f"
     },
     {
       "path": "summary_by_signal.csv",
-      "size_bytes": 236282,
-      "sha256": "5d8521d418f96148d47c73ba31db83dee410acdb6f6b561f24ac8fb188d58ca4"
+      "size_bytes": 235399,
+      "sha256": "cc6efbd120adf69914bbfef8d9f04e9d4265e6a0daaeadf44069bde2b952c700"
     },
     {
       "path": "summary.csv",
-      "size_bytes": 51877,
-      "sha256": "f2c379e995a7a737fc9d7566f167e179af551e96299becf558badb797e274421"
+      "size_bytes": 51750,
+      "sha256": "0aad693c148403b4ef4316cd905511bdac9d837cef18a82a322c083f3bb86dab"
     }
   ]
 }
