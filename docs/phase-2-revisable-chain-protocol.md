@@ -321,6 +321,16 @@ K7 passa somente se K7-R, K7-D, K7-U e todas as condições estruturais passarem
 
 Nenhuma composição de mecanismos ou modelo adicional é executado antes da decisão K7.
 
+### Registro operacional pré-teste
+
+A etapa 5 foi executada em 2026-08-24 no commit limpo `742d51f`. O runner gerou somente até o índice
+exclusivo 2867, registrou `test_materialized=false` e congelou
+`lambda_revision=0.1`, `lambda_bend=1.0`. O lock, seu hash e o resultado não decisório de validação
+estão em
+[`reports/reference/revisable-chain-stage12a-selection/`](../reports/reference/revisable-chain-stage12a-selection/).
+O resultado desfavorável de K7-D/K7-U na validação não altera o protocolo nem autoriza omitir o
+teste.
+
 ## 10. Claims e condição de parada
 
 Se K7 passar integralmente, o claim máximo será:

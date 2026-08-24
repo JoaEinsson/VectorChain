@@ -151,8 +151,7 @@ uv run python experiments/09_revisable_chain_validation.py --config configs/fore
 Esse comando aceita somente seeds `11/22`, gera cada sinal apenas até o fim da validação, seleciona
 uma única dupla de regularizadores no treino interno e ajusta um ridge multioutput por série e
 representação. `selection.json`, previsões de validação, modelos, estados versionados e auditorias
-entram no manifesto; não existe modo de teste nem `gate.json` nesse runner. Ainda não há dado
-canônico executado ou promovido.
+entram no manifesto; não existe modo de teste nem `gate.json` nesse runner.
 
 Depois que o desenvolvimento passar integralmente pelos testes e o código estiver em commit limpo,
 o mesmo runner pode receber o escopo canônico **somente de seleção**:
@@ -165,13 +164,18 @@ Esse escopo exige exatamente as cinco seeds pré-registradas, recusa worktree su
 implementar ou materializar o teste. A futura abertura do teste será outro comando e deverá consumir
 o `selection.json` congelado por hash.
 
+A seleção canônica foi executada no commit `742d51f` e congelou
+`lambda_revision=0.1`, `lambda_bend=1.0`. O registro pré-teste, incluindo o resultado desfavorável
+de K7-D/K7-U na validação, está em
+[`reports/reference/revisable-chain-stage12a-selection/`](../reports/reference/revisable-chain-stage12a-selection/).
+
 O runner deve permanecer limitado a:
 
 1. uma cauda de quatro elos e 256 intervalos, com fronteiras fixas;
 2. um solver quadrático NumPy e log versionado de cada revisão/compromisso;
 3. três modulações isoladas: frequência, baseline e assimetria da crista;
 4. quatro ablations vetoriais, raw pareado e persistência;
-5. seeds de desenvolvimento `11/22`, nunca as seeds canônicas do protocolo.
+5. seeds estritamente iguais às registradas para o escopo `development` ou `canonical_selection`.
 
 Não implementar sinal combinado, fronteiras móveis, Kalman ou rede neural antes da decisão K7.
 Durante o desenvolvimento, uma origem comum também precisa ter 16 incrementos anteriores para

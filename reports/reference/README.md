@@ -29,3 +29,5 @@ Resultados disponíveis:
   local, smoothing causal, segmentos fixos e fABBA contínuo; K3 não avançou.
 - [`forecasting-vector-state-rollout/`](forecasting-vector-state-rollout/): próximo evento e
   rollout recursivo sem pooling; K5-A não avançou contra AR raw.
+- [`revisable-chain-stage12a-selection/`](revisable-chain-stage12a-selection/): seleção canônica
+  pré-teste da cauda revisável K7, com lock por hash e validação negativa de K7-D/K7-U preservada.

@@ -240,7 +240,7 @@ Protocolo congelado em
 - [x] Implementar identidades, versionamento e compromisso usando somente seeds 11/22
 - [x] Implementar solver, três sinais e seis representações pareadas
 - [x] Implementar auditorias em artefatos e o comando separado de treino/validação
-- [ ] Congelar seleção em treino/validação antes de abrir o teste
+- [x] Congelar seleção em treino/validação antes de abrir o teste
 - [ ] Executar uma vez, reproduzir e preservar o resultado
 
 Gate: revisão precisa melhorar o estado imutável; features temporais precisam superar geometria

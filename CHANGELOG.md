@@ -78,3 +78,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   teste fechado.
 - Escopo canônico de seleção K7 limitado aos primeiros 70% das cinco seeds pré-registradas, com
   recusa de worktree sujo e identidade do commit/config incorporada ao arquivo de seleção.
+- Lock canônico K7 em `(lambda_revision=0.1, lambda_bend=1.0)` e referência pré-teste auditada,
+  preservando a melhora de K7-R e os sinais negativos de K7-D/K7-U na validação.

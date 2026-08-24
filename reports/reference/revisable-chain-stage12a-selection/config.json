@@ -1,0 +1,61 @@
+{
+  "resolved": {
+    "generated_stop_exclusive": 2867,
+    "inner_fit_end_exclusive": 1638,
+    "model_unit": "one model per mechanism, seed and representation",
+    "row_split_rule": "all target endpoints must lie within the same split",
+    "scope": "canonical_selection",
+    "test_materialization_supported": false,
+    "test_start_inclusive": 2867,
+    "train_end_exclusive": 2048,
+    "validation_end_exclusive": 2867
+  },
+  "source": {
+    "experiment": {
+      "name": "revisable-chain-stage12a-selection",
+      "phase": "stage12a-canonical-selection",
+      "scope": "canonical_selection",
+      "seeds": [
+        2652130430004669680,
+        2132228189405173304,
+        7118215795047038510,
+        7649379155735444565,
+        1017387535040708910
+      ]
+    },
+    "model": {
+      "alpha": 0.001,
+      "kind": "ridge"
+    },
+    "output": {
+      "root": "artifacts"
+    },
+    "selection": {
+      "lambda_bend": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "lambda_revision": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "representation": "revisable_absolute"
+    },
+    "signals": {
+      "n_points": 4096,
+      "names": [
+        "frequency_modulation",
+        "baseline_modulation",
+        "crest_asymmetry_modulation"
+      ],
+      "noise_std": 0.02
+    },
+    "split": {
+      "inner_train_fraction": 0.8,
+      "train_fraction": 0.5,
+      "validation_fraction": 0.2
+    }
+  }
+}

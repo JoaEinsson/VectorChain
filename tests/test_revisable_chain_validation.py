@@ -2,6 +2,7 @@
 
 import csv
 import gzip
+import hashlib
 import importlib.util
 import json
 import shutil
@@ -131,6 +132,23 @@ def test_canonical_selection_refuses_dirty_worktree_before_generating_signals(
     failures = _read_csv(run_dirs[0] / "failures.csv")
     assert failures[0]["error_type"] == "RuntimeError"
     assert not (run_dirs[0] / "selection.json").exists()
+
+
+def test_canonical_selection_lock_matches_hash_and_keeps_test_closed() -> None:
+    lock_path = Path("configs/forecasting/revisable_chain_selection.lock.json")
+    hash_path = Path("configs/forecasting/revisable_chain_selection.lock.sha256")
+    expected_hash = hash_path.read_text(encoding="utf-8").split()[0]
+    payload = json.loads(lock_path.read_text(encoding="utf-8"))
+
+    assert hashlib.sha256(lock_path.read_bytes()).hexdigest() == expected_hash
+    assert payload["selected"] == {
+        "global_nrmse": 0.5230412893176433,
+        "lambda_bend": 1.0,
+        "lambda_revision": 0.1,
+    }
+    assert payload["source"]["git_dirty"] is False
+    assert payload["source"]["generated_stop_exclusive"] == 2867
+    assert payload["test_materialized"] is False
 
 
 def test_fixture_scope_rejects_every_seed_outside_development(experiment_path: Path) -> None:

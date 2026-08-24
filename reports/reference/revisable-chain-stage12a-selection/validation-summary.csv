@@ -1,0 +1,6 @@
+criterion,comparison,n_units,n_passing,threshold,rmse_ratio_geomean
+K7-R,revisable_absolute/immutable_absolute,45,45,<=0.99,0.829553755192931
+K7-D,revisable_temporal/revisable_absolute,45,0,<=0.99,1.25705341214598
+K7-D,revisable_temporal/revisable_spatial,45,4,<=0.99,1.03305771118679
+K7-U,revisable_temporal/raw_matched,45,0,<=1.05,1.45043028717388
+K7-D,correction_energy_changing/stationary,15,3,>=1.25,0.961469680214489

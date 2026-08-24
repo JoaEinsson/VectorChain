@@ -1,0 +1,75 @@
+{
+  "files": [
+    {
+      "path": "causality_audit.csv",
+      "sha256": "597d4cf1a1ad6d9c422d1ecc7f2ccb18005de28f516feaf881b9beb2e7710e47",
+      "size_bytes": 1001
+    },
+    {
+      "path": "commit_audit.csv",
+      "sha256": "a6280295a8e784ecfb0d5e1c61292981b65088d492432f5b50b694e8c3ab0b43",
+      "size_bytes": 1778864
+    },
+    {
+      "path": "config.json",
+      "sha256": "e92083de9ff375900cefc9c1b1cf6835a982618984e70afb9c2a756c9c0b563d",
+      "size_bytes": 1492
+    },
+    {
+      "path": "environment.json",
+      "sha256": "a80b5a75180e61f79f750528189054c06b92462f3c56bb9fbdb91fa9b4d31b8c",
+      "size_bytes": 2816
+    },
+    {
+      "path": "failures.csv",
+      "sha256": "0e3a63bbb86c22bd014daa6bac5da7ad4f84a871173a4b8689e1091f61d25795",
+      "size_bytes": 41
+    },
+    {
+      "path": "inputs.csv.gz",
+      "sha256": "fd76e76b0215a52c9f4670c92dc9e4f65bf5986e595fa455d2604e9008d7fa9c",
+      "size_bytes": 5581760
+    },
+    {
+      "path": "metrics.csv",
+      "sha256": "f048831927d0d8ba5b14eb57987c4cf23f8477df8dc3e4c6d33bc7bde16a6533",
+      "size_bytes": 40206
+    },
+    {
+      "path": "models.npz",
+      "sha256": "37761055c66a07ae89c7fdd632e0a7eef57493391ea9981a14110e5ed2b00a51",
+      "size_bytes": 151713
+    },
+    {
+      "path": "origins.csv",
+      "sha256": "5a14289d4794ed246c6efd00e5cdab9303ddb4906b73618cfcc19e372f1a1212",
+      "size_bytes": 1337150
+    },
+    {
+      "path": "predictions.csv",
+      "sha256": "026df7d10155bdbf2c22048fc768a926d461fca7dc4141106feb87979dd78fd8",
+      "size_bytes": 6476813
+    },
+    {
+      "path": "selection.json",
+      "sha256": "c2c83339a786d4a99192cff50aaa7c39a0d3f1da4e214cb4a166462c0c6bab5c",
+      "size_bytes": 1851
+    },
+    {
+      "path": "selection_metrics.csv",
+      "sha256": "2f85d77c15bc88d0871558fcc85bd77682571ff9b0a7fd231fc5af424b545ac1",
+      "size_bytes": 48902
+    },
+    {
+      "path": "solver_audit.csv",
+      "sha256": "2b9c3e70b4e4b7819bbbcaf5cc2376281da94283586fd43bdedb5061bca25fe5",
+      "size_bytes": 5256993
+    },
+    {
+      "path": "working_state.csv.gz",
+      "sha256": "58314c1ebd35786fad707061e9d5c603536dedddad8af06dd5914ef01b902454",
+      "size_bytes": 13080150
+    }
+  ],
+  "status": "complete"
+}

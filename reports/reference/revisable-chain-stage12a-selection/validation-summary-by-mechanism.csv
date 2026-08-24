@@ -1,0 +1,4 @@
+mechanism,n_cells,revision_geomean,revision_pass_099,temporal_absolute_geomean,temporal_absolute_pass_099,temporal_spatial_geomean,temporal_spatial_pass_099,temporal_raw_geomean,temporal_raw_pass_105
+baseline_modulation,15,0.7957500544022453,15,1.3025027951329347,0,1.0436486045271474,0,1.4473809205334165,0
+crest_asymmetry_modulation,15,0.7989023332403955,15,1.300468198419723,0,1.0358052632458654,2,1.4732739779125226,0
+frequency_modulation,15,0.8979729083829163,15,1.172688843035492,0,1.0198618377888975,2,1.4309492066763094,0
