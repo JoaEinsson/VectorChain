@@ -141,10 +141,20 @@ K6 e de outro protocolo anterior aos dados reais.
 
 A Etapa 12-A possui protocolo independente em
 [`docs/phase-2-revisable-chain-protocol.md`](../docs/phase-2-revisable-chain-protocol.md). O módulo
-`revisable_chain.py` já materializa os três sinais, as origens causais comuns e as seis matrizes de
-design; ainda não existe comando de seleção/validação, config congelada ou dado canônico.
+`revisable_chain.py` materializa os três sinais, as origens causais comuns e as seis matrizes de
+design. O runner de desenvolvimento é executado com:
 
-Seu primeiro runner deve limitar-se a:
+```powershell
+uv run python experiments/09_revisable_chain_validation.py --config configs/forecasting/revisable_chain_development.toml
+```
+
+Esse comando aceita somente seeds `11/22`, gera cada sinal apenas até o fim da validação, seleciona
+uma única dupla de regularizadores no treino interno e ajusta um ridge multioutput por série e
+representação. `selection.json`, previsões de validação, modelos, estados versionados e auditorias
+entram no manifesto; não existe modo de teste nem `gate.json` nesse runner. Ainda não há dado
+canônico executado ou promovido.
+
+O runner deve permanecer limitado a:
 
 1. uma cauda de quatro elos e 256 intervalos, com fronteiras fixas;
 2. um solver quadrático NumPy e log versionado de cada revisão/compromisso;

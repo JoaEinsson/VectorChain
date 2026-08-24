@@ -239,7 +239,7 @@ Protocolo congelado em
 - [x] Registrar a extensão no [`ADR 0013`](decisions/0013-bounded-revisable-tail.md)
 - [x] Implementar identidades, versionamento e compromisso usando somente seeds 11/22
 - [x] Implementar solver, três sinais e seis representações pareadas
-- [ ] Implementar auditorias em artefatos e o comando separado de treino/validação
+- [x] Implementar auditorias em artefatos e o comando separado de treino/validação
 - [ ] Congelar seleção em treino/validação antes de abrir o teste
 - [ ] Executar uma vez, reproduzir e preservar o resultado
 

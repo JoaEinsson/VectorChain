@@ -73,3 +73,6 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   256 intervalos raw.
 - Três modulações K7 isoladas com coordenadas latentes analíticas e seis matrizes causais pareadas de
   17 escalares, mantendo quatro passos vetoriais contra 16 incrementos raw e persistência separada.
+- Gerador K7 por prefixo observável e runner separado de treino/validação com seleção global dos
+  regularizadores, ridge multioutput por série, artefatos estruturais e barreira explícita contra o
+  teste fechado.

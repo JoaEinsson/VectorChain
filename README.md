@@ -5,10 +5,10 @@ representadas de forma útil como uma cadeia causal e adaptativa de vetores.
 
 O projeto está em fase **pré-alpha**. A Fase I foi concluída: núcleo causal, reconstrução,
 similaridade, forecasting, controles de mecanismo e rollout possuem resultados reproduzíveis. A
-Fase II está pré-especificada; o núcleo estrutural, os três sinais e as seis representações de K7 já
-existem, mas seleção, forecasting e teste canônico ainda não foram implementados nem executados. A
-evidência atual sustenta somente resultados delimitados no benchmark sintético; não sustenta
-superioridade geral.
+Fase II está pré-especificada; o núcleo estrutural, os três sinais, as seis representações de K7 e o
+runner restrito a treino/validação já existem. A seleção de desenvolvimento e o teste canônico ainda
+não foram executados. A evidência atual sustenta somente resultados delimitados no benchmark
+sintético; não sustenta superioridade geral.
 
 ## Pergunta de pesquisa
 
@@ -63,6 +63,7 @@ Uma hipótese separada, K7, testa atualizações temporais numa cauda articulada
 - [x] Protocolo mínimo da cadeia revisável K7 congelado
 - [x] Núcleo estrutural causal da cauda revisável K7
 - [x] Três sinais e seis representações pareadas K7, testados somente com seeds 11/22
+- [x] Runner K7 separado de treino/validação, sem acesso ao teste fechado
 - [ ] Implementação e execução da Etapa 12-A
 
 ## Direção pós-MVP

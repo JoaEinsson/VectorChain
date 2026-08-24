@@ -106,6 +106,29 @@ gráfico escalar acrescentam sinal preditivo sob controles pareados.
 `Não estabelecida` significa somente que o levantamento inicial não localizou uma correspondência
 direta. Não significa inexistência de anterioridade.
 
+## Fronteira de contribuição candidata — K7
+
+K7 não declara novidade sobre segmentação poligonal, revisão incremental, fixed-lag smoothing,
+cinemática inversa temporal, ângulo ou comprimento. Esses ingredientes possuem precedentes próximos.
+A fronteira candidata, ainda sujeita a busca sistemática e resultado experimental, é a combinação
+operacional de:
+
+1. uma cadeia poligonal escalar online com prefixo comprometido imutável e cauda revisável limitada;
+2. identidades persistentes de elos, permitindo medir a mudança temporal da **mesma** articulação;
+3. `update_theta/update_r` usados como variáveis preditivas, distintos de diferenças espaciais entre
+   elos simultâneos;
+4. ablations causais pareadas que preservam fronteiras, origens, alvos, payload e capacidade do
+   modelo;
+5. teste isolado contra geometria imutável, geometria revisada, relações espaciais, raw pareado e
+   persistência.
+
+Por enquanto isso deve aparecer apenas como **fronteira de contribuição candidata** ou **hipótese
+K7**, nunca como invenção ou novidade provada. Se K7 passar e a busca ampliada não encontrar uma
+formulação equivalente, a eventual contribuição poderá ser declarada na seção de contribuições de
+um artigo como o método e o protocolo pareado; o resultado preditivo será um claim empírico separado.
+Se K7 falhar, a contribuição restante será metodológica/diagnóstica e o resultado negativo deverá
+ser preservado.
+
 ## Lacuna de pesquisa provisória
 
 A lacuna que motivou a Fase I estava na combinação verificável de:

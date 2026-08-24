@@ -50,6 +50,7 @@ class K7Signal:
 
     mechanism: str
     seed: int
+    total_n_points: int
     values: NDArray[np.float64]
     latent_name: str
     latent_coordinate: NDArray[np.float64]
@@ -102,13 +103,15 @@ def generate_k7_signal(
     seed: int,
     n_points: int = N_POINTS,
     noise_std: float = NOISE_STD,
+    stop_exclusive: int | None = None,
 ) -> K7Signal:
     """Generate one pre-registered isolated oscillator condition.
 
     ``frequency_modulation`` uses ``phi[0] = 0`` and then the documented
-    right-endpoint recurrence for samples ``1..n-1``. The returned derivative is
-    analytic with respect to normalized time ``u`` and is not estimated from the
-    noisy observations.
+    right-endpoint recurrence for samples ``1..n-1``. ``stop_exclusive`` returns
+    only an observable prefix while preserving the full-series time scale and
+    random-number prefix. The returned derivative is analytic with respect to
+    normalized time ``u`` and is not estimated from the noisy observations.
     """
 
     if mechanism not in MECHANISM_NAMES:
@@ -116,39 +119,43 @@ def generate_k7_signal(
         raise ValueError(msg)
     validated_seed = _validate_seed(seed)
     count = _validate_n_points(n_points)
+    observed_count = _validate_stop_exclusive(stop_exclusive, count)
     noise = _validate_noise_std(noise_std)
-    normalized_time = np.linspace(0.0, 1.0, count, dtype=np.float64)
+    normalized_time = np.arange(observed_count, dtype=np.float64) * (1.0 / (count - 1))
     modulation_phase = 2.0 * np.pi * 3.0 * normalized_time
 
     if mechanism == "frequency_modulation":
         latent_name = "f"
         latent = 20.0 - 12.0 * np.cos(modulation_phase)
         derivative = 72.0 * np.pi * np.sin(modulation_phase)
-        phase = np.zeros(count, dtype=np.float64)
+        phase = np.zeros(observed_count, dtype=np.float64)
         phase[1:] = np.cumsum(2.0 * np.pi * latent[1:] / (count - 1))
-        baseline = np.zeros(count, dtype=np.float64)
-        asymmetry = np.zeros(count, dtype=np.float64)
+        baseline = np.zeros(observed_count, dtype=np.float64)
+        asymmetry = np.zeros(observed_count, dtype=np.float64)
     elif mechanism == "baseline_modulation":
         latent_name = "mu"
         latent = 1.0 - np.cos(modulation_phase)
         derivative = 6.0 * np.pi * np.sin(modulation_phase)
         phase = 2.0 * np.pi * 16.0 * normalized_time
         baseline = latent
-        asymmetry = np.zeros(count, dtype=np.float64)
+        asymmetry = np.zeros(observed_count, dtype=np.float64)
     else:
         latent_name = "kappa"
         latent = 0.225 * (1.0 - np.cos(modulation_phase))
         derivative = 1.35 * np.pi * np.sin(modulation_phase)
         phase = 2.0 * np.pi * 16.0 * normalized_time
-        baseline = np.zeros(count, dtype=np.float64)
+        baseline = np.zeros(observed_count, dtype=np.float64)
         asymmetry = latent
 
     clean = baseline + _oscillator(phase, asymmetry)
     if noise > 0.0:
-        clean = clean + np.random.default_rng(validated_seed).normal(0.0, noise, size=count)
+        clean = clean + np.random.default_rng(validated_seed).normal(
+            0.0, noise, size=observed_count
+        )
     return K7Signal(
         mechanism=mechanism,
         seed=validated_seed,
+        total_n_points=count,
         values=_readonly_float(clean),
         latent_name=latent_name,
         latent_coordinate=_readonly_float(latent),
@@ -357,6 +364,10 @@ def _validate_signal(signal: K7Signal) -> NDArray[np.float64]:
         msg = "K7 signal mechanism and latent_name are inconsistent"
         raise ValueError(msg)
     values = np.asarray(signal.values)
+    total_n_points = _validate_n_points(signal.total_n_points)
+    if values.size > total_n_points:
+        msg = "K7 signal prefix cannot exceed total_n_points"
+        raise ValueError(msg)
     if values.ndim != 1 or values.size <= max(HORIZONS) + RAW_MATCHED_STEPS:
         msg = "K7 signal is too short for the registered origins and horizons"
         raise ValueError(msg)
@@ -413,6 +424,19 @@ def _validate_noise_std(noise_std: float) -> float:
     validated = float(noise_std)
     if not np.isfinite(validated) or validated < 0.0:
         msg = "noise_std must be finite and non-negative"
+        raise ValueError(msg)
+    return validated
+
+
+def _validate_stop_exclusive(stop_exclusive: int | None, n_points: int) -> int:
+    if stop_exclusive is None:
+        return n_points
+    if isinstance(stop_exclusive, (bool, np.bool_)) or not isinstance(stop_exclusive, Integral):
+        msg = "stop_exclusive must be an integer in [2, n_points] or None"
+        raise TypeError(msg)
+    validated = int(stop_exclusive)
+    if validated < 2 or validated > n_points:
+        msg = "stop_exclusive must lie in [2, n_points]"
         raise ValueError(msg)
     return validated
 

@@ -114,6 +114,16 @@ temporais candidatas. Empates até `1e-12` favorecem maior `lambda_revision` e d
 `lambda_bend`. A mesma dupla é usada em sinais, seeds e todas as representações revisáveis. Nenhuma
 outra tolerância, lag, quantidade de elos ou regularizador é testado na Etapa 12-A.
 
+Clarificações registradas antes da primeira execução canônica:
+
+- o NRMSE é calculado separadamente por `mecanismo × seed × horizonte`, dividindo o RMSE da seleção
+  interna pelo desvio-padrão populacional do alvo no ajuste interno, com piso `1e-12`;
+- a função objetivo global é a média aritmética desses NRMSEs, sem tratar origens como réplicas;
+- cada `mecanismo × seed × representação` recebe seu próprio ridge multioutput; somente a dupla de
+  regularizadores é global;
+- o ridge compartilha as 17 entradas entre três outputs, usa três interceptos não regularizados e
+  totaliza exatamente 54 parâmetros preditivos por série e representação treinada.
+
 ## 4. Conjunto sintético mínimo identificável
 
 Não se usa uma senoide única combinando frequência, média e forma: um resultado assim não
@@ -183,6 +193,10 @@ Splits pelos endpoints dos alvos:
 - teste fechado: 30% finais;
 - últimos 20% do treino externo: seleção interna dos dois regularizadores.
 
+Como um único ridge prevê os três horizontes, uma linha pertence a um split somente quando **todos**
+os seus endpoints estão dentro dele. Linhas que atravessam treino interno/seleção interna,
+treino/validação ou validação/teste são removidas; elas nunca são transferidas ao split seguinte.
+
 Todas as representações treinadas recebem `x[t]` como âncora, têm 17 escalares, três outputs e
 `3*(17+1)=54` parâmetros incluindo interceptos. Features são padronizadas somente no treino. O
 ridge usa `alpha=0.001`.
@@ -217,6 +231,11 @@ Por elo revisável:
 ```text
 correction_energy = sqrt(update_theta^2 + (update_r / median_r_train)^2)
 ```
+
+`median_r_train` é a mediana de `r` sobre todas as aparições de elos nas versões causalmente
+observadas durante o treino externo da mesma série. Elos persistentes aparecem uma vez por versão,
+coerente com a unidade temporal de `update_theta/update_r`; nenhuma estatística da validação ou do
+teste entra nessa escala.
 
 Para cada coordenada latente conhecida (`f`, `mu` ou `kappa`), amostras no quartil superior de sua
 derivada absoluta formam a região `changing`; o quartil inferior forma `stationary`. Os quartis são
@@ -295,7 +314,8 @@ K7 passa somente se K7-R, K7-D, K7-U e todas as condições estruturais passarem
 2. Implementar somente a cauda revisável, solver quadrático, identidades e testes com seeds 11/22.
 3. Implementar as três condições sintéticas e as seis representações, sem gerar seeds canônicas.
 4. Congelar código/config em commit limpo.
-5. Rodar treino, seleção e validação sem materializar teste; congelar `selection.json` e seu hash.
+5. Rodar treino, seleção e validação com um comando sem modo de teste e gerando o sinal somente até
+   o fim da validação; congelar `selection.json` e seu hash.
 6. Abrir teste uma vez, preservar todos os resultados e repetir no mesmo commit.
 7. Promover tabelas, relatório, ambiente e manifestos para `reports/reference/`.
 
@@ -328,3 +348,7 @@ Se qualquer subgate falhar:
 - resumos por seed, mecanismo e horizonte;
 - plots de cadeia antes/depois, energia de correção e erro pareado derivados das tabelas;
 - reprodução no mesmo commit, excluindo somente campos de runtime da comparação científica.
+
+O comando de treino/validação produz o subconjunto desses artefatos que não depende do teste e não
+produz `gate.json`. O gate e os resumos decisórios pertencem exclusivamente ao futuro comando de
+teste, que deverá consumir uma seleção já congelada sem reajustá-la.

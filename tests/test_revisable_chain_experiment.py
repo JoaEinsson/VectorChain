@@ -69,6 +69,7 @@ def test_k7_signals_are_reproducible_finite_and_read_only(
 
     assert first.mechanism == mechanism
     assert first.seed == seed
+    assert first.total_n_points == 128
     assert first.latent_name == latent_name
     np.testing.assert_array_equal(first.values, second.values)
     np.testing.assert_array_equal(first.latent_coordinate, second.latent_coordinate)
@@ -150,6 +151,25 @@ def test_signal_noise_uses_only_the_explicit_generator_seed() -> None:
         np.random.set_state(previous_state)
 
 
+@pytest.mark.parametrize("mechanism", revisable_chain.MECHANISM_NAMES)
+def test_observable_prefix_matches_full_signal_without_materializing_suffix(
+    mechanism: str,
+) -> None:
+    full = revisable_chain.generate_k7_signal(mechanism, seed=22, n_points=128)
+    prefix = revisable_chain.generate_k7_signal(
+        mechanism,
+        seed=22,
+        n_points=128,
+        stop_exclusive=83,
+    )
+
+    assert prefix.total_n_points == 128
+    assert prefix.values.shape == (83,)
+    np.testing.assert_array_equal(prefix.values, full.values[:83])
+    np.testing.assert_array_equal(prefix.latent_coordinate, full.latent_coordinate[:83])
+    np.testing.assert_array_equal(prefix.latent_derivative, full.latent_derivative[:83])
+
+
 @pytest.mark.parametrize(
     ("kwargs", "error"),
     [
@@ -161,6 +181,17 @@ def test_signal_noise_uses_only_the_explicit_generator_seed() -> None:
         ({"mechanism": "frequency_modulation", "seed": 11, "noise_std": True}, TypeError),
         ({"mechanism": "frequency_modulation", "seed": 11, "noise_std": -0.1}, ValueError),
         ({"mechanism": "frequency_modulation", "seed": 11, "noise_std": np.inf}, ValueError),
+        ({"mechanism": "frequency_modulation", "seed": 11, "stop_exclusive": True}, TypeError),
+        ({"mechanism": "frequency_modulation", "seed": 11, "stop_exclusive": 1}, ValueError),
+        (
+            {
+                "mechanism": "frequency_modulation",
+                "seed": 11,
+                "n_points": 16,
+                "stop_exclusive": 17,
+            },
+            ValueError,
+        ),
     ],
 )
 def test_k7_signal_rejects_unregistered_or_invalid_inputs(
