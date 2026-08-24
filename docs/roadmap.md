@@ -221,3 +221,30 @@ obrigatórias.
 Estado: **fechada**. Só pode receber protocolo próprio se K6 passar integralmente. Datasets reais,
 modelos neurais, quantização e timestamps irregulares não podem ser usados para substituir uma
 falha da Etapa 11-A.
+
+## Etapa 12-A — Cadeia articulada revisável
+
+Esta etapa testa K7, hipótese independente de K6. Uma cauda causal de no máximo quatro elos e 256
+intervalos pode revisar somente as ordenadas de juntas ainda provisórias; o prefixo comprometido
+permanece imutável. O alvo principal é a dinâmica temporal das correções
+`update_theta/update_r`, não os deltas espaciais rejeitados em K2.
+
+Protocolo congelado em
+[`phase-2-revisable-chain-protocol.md`](phase-2-revisable-chain-protocol.md).
+
+- [x] Distinguir deltas espaciais de atualizações temporais da mesma junta
+- [x] Estender o contrato causal para `committed` versus `working`
+- [x] Fixar fronteiras e reduzir o primeiro ajuste a mínimos quadrados quadráticos
+- [x] Pré-especificar três mecanismos sintéticos isolados, seeds e gate K7
+- [x] Registrar a extensão no [`ADR 0013`](decisions/0013-bounded-revisable-tail.md)
+- [ ] Implementar identidades, versionamento e compromisso usando somente seeds 11/22
+- [ ] Implementar solver, auditorias e seis ablations pareadas
+- [ ] Congelar seleção em treino/validação antes de abrir o teste
+- [ ] Executar uma vez, reproduzir e preservar o resultado
+
+Gate: revisão precisa melhorar o estado imutável; features temporais precisam superar geometria
+revisada e deltas espaciais; a candidata precisa permanecer dentro de 5% do raw pareado usando
+quatro contra 16 passos. Todos os subgates e invariantes causais são obrigatórios.
+
+Não há experimento combinado nesta etapa. Fronteiras móveis, redes neurais e dados reais continuam
+fechados mesmo após a implementação e só podem ser discutidos se K7 passar integralmente.

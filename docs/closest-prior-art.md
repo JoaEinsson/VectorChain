@@ -65,6 +65,27 @@ Consequência: `theta`, diferença angular e turning points também não constit
 claim seguro de novidade. Curvatura e mudanças de slope aparecem em outras literaturas de
 segmentação, detecção de mudança e análise de trajetórias.
 
+### Revisão incremental e cinemática inversa temporal
+
+- Elmeleegy et al., *Online Piece-wise Linear Approximation of Numerical Streams with Precision
+  Guarantees* (PVLDB, 2009), DOI
+  [`10.14778/1687627.1687645`](https://doi.org/10.14778/1687627.1687645), mantém aproximações
+  lineares de streams sob limite de erro. Revisão de um estado linear corrente não é, portanto,
+  novidade isolada.
+- Kaess et al., *iSAM2: Incremental Smoothing and Mapping with Fluid Relinearization and
+  Incremental Variable Reordering* (ICRA, 2011),
+  [página e artigo dos autores](https://people.csail.mit.edu/kaess/pub/Kaess11icra.html), mostra o
+  princípio geral de novas medições revisarem variáveis latentes afetadas sem refazer todo o batch.
+- Murooka et al., *Optimization Computation of Time-Series Inverse Kinematics Considering
+  Time-Varying and Time-Invariant Configurations and Adjacency* (2019), DOI
+  [`10.9746/sicetr.55.664`](https://doi.org/10.9746/sicetr.55.664), formula cinemática inversa de
+  movimento robótico com regularização entre configurações adjacentes.
+
+Esses trabalhos não estabelecem a formulação exata de K7, mas impedem reivindicar como novas a
+revisão incremental, a regularização fixed-lag ou a otimização temporal de juntas. A pergunta do
+VectorChain é empírica e mais estreita: se correções temporais de uma cauda poligonal causal em um
+gráfico escalar acrescentam sinal preditivo sob controles pareados.
+
 ## Comparação conceitual
 
 | Propriedade | Precedente identificado | Situação no VectorChain |
@@ -73,6 +94,9 @@ segmentação, detecção de mudança e análise de trajetórias.
 | segmentação online | SwiftSeg e outros métodos de stream | contrato causal mais estrito, mas componente conhecido |
 | duração e incremento por trecho | ABBA/fABBA | `dt/dy` implementados |
 | ângulo ou mudança angular | representação por turning points e curvatura | `theta/delta_theta` implementados |
+| revisão incremental de variáveis recentes | PLA online, iSAM2/fixed-lag smoothing | K7 pré-especificada, ainda não implementada |
+| IK temporal regularizada | otimização de movimento robótico | inspiração para K7, não equivalência de domínio |
+| atualização temporal da mesma junta como feature preditiva | não estabelecida por este levantamento | hipótese K7, sem resultado |
 | sequência simbólica prevista | ABBA-LSTM, LLM-ABBA | não é o caminho atual |
 | quantização/tokenização | QABBA, HSQP | fora da Fase I; não planejada para 11-A |
 | ablação causal de relações mantendo fronteiras | não estabelecida por este levantamento | executada; gate relacional negativo |
@@ -113,7 +137,8 @@ Antes de qualquer claim de novidade:
 
 - pesquisar IEEE Xplore, ACM Digital Library, Scopus/Web of Science, Google Scholar e arXiv;
 - cobrir `online/streaming PLA`, `adaptive polygonal chain`, `segment transition`, `turning angle`,
-  `discrete curvature`, `event-based forecasting`, `symbolic forecasting` e `ABBA`;
+  `discrete curvature`, `event-based forecasting`, `symbolic forecasting`, `fixed-lag smoothing`,
+  `incremental smoothing`, `time-series inverse kinematics` e `ABBA`;
 - fazer backward e forward snowballing dos trabalhos acima;
 - registrar consulta, data, base, resultados incluídos/excluídos e justificativa;
 - comparar formalmente algoritmo, causalidade, estado, decoder, tarefa e protocolo experimental;

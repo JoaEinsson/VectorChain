@@ -136,3 +136,19 @@ Antes de criar `09_*`, a implementação deve:
 Qualquer divergência exige atualizar protocolo e ADR antes de executar uma seed canônica. A Etapa
 11-B externa permanece fechada mesmo depois da implementação; ela depende da passagem integral de
 K6 e de outro protocolo anterior aos dados reais.
+
+### Cadeia revisável K7
+
+A Etapa 12-A possui protocolo independente em
+[`docs/phase-2-revisable-chain-protocol.md`](../docs/phase-2-revisable-chain-protocol.md). Ainda não
+existe runner, config ou dado canônico.
+
+Seu primeiro runner deve limitar-se a:
+
+1. uma cauda de quatro elos e 256 intervalos, com fronteiras fixas;
+2. um solver quadrático NumPy e log versionado de cada revisão/compromisso;
+3. três modulações isoladas: frequência, baseline e assimetria da crista;
+4. quatro ablations vetoriais, raw pareado e persistência;
+5. seeds de desenvolvimento `11/22`, nunca as seeds canônicas do protocolo.
+
+Não implementar sinal combinado, fronteiras móveis, Kalman ou rede neural antes da decisão K7.

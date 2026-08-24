@@ -54,6 +54,10 @@ Modelos neurais e dados externos só podem entrar numa Etapa 11-B se K6 passar i
 novo protocolo congelar datasets, versões, exclusões e orçamento antes de inspecionar os alvos de
 teste. A passagem de K6 não autoriza automaticamente 11-B.
 
+K7, documentada em [`phase-2-revisable-chain-protocol.md`](phase-2-revisable-chain-protocol.md), é
+uma hipótese sintética independente sobre revisão de juntas. Ela usa seeds próprias, não entra no
+gate K6 e não pode substituir um resultado negativo desta etapa.
+
 ## 3. Unidade causal na origem
 
 Depois de observar `x[t]`, a candidata usa:

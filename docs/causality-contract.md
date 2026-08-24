@@ -81,3 +81,28 @@ representação pública e documentada.
 - Preencher um valor ausente usando interpolação com o próximo ponto.
 - Comparar um prefixo finalizado artificialmente com um stream ainda aberto e chamar a diferença de
   leakage.
+
+## Extensão causal revisável
+
+O [`ADR 0013`](decisions/0013-bounded-revisable-tail.md) autoriza pesquisar uma extensão separada
+com mais de um elo provisório. Ela não altera a API nem a semântica do `VectorChain` atual.
+
+Nessa extensão:
+
+- `committed` é o único equivalente a emitido e continua imutável;
+- `working` é uma cauda causal, provisória, limitada e explicitamente versionada;
+- uma nova amostra pode produzir uma nova versão de `working`, nunca editar uma versão já registrada;
+- o mesmo prefixo observado, parâmetros e estado anterior devem produzir a mesma nova versão;
+- um sufixo futuro pode mudar versões futuras da cauda, mas jamais o prefixo comprometido;
+- toda revisão usa somente amostras disponíveis no instante declarado;
+- compromisso, revisão e criação de elo são eventos distintos no log.
+
+Os testes de alteração futura passam a verificar duas propriedades separadas:
+
+```text
+prefixos iguais até t => committed(t) e working_version(t) iguais
+sufixos diferentes depois de t => todo committed_at_or_before(t) permanece igual
+```
+
+Chamar um elo revisável de emitido, sobrescrever seu histórico ou omitir a latência de compromisso é
+violação do contrato.

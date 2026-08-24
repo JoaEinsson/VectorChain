@@ -175,6 +175,12 @@ A escada cinemática da Fase I está encerrada. A síntese final está em
 tokenização cartesiana sob orçamento e não deve ser citada como continuação ou confirmação de
 K1–K5.
 
+K7 formula uma variável que a Fase I não possuía: a atualização temporal da mesma junta dentro de
+uma cauda provisória, `theta_i^(t)-theta_i^(t-1)` e `r_i^(t)-r_i^(t-1)`. Isso é diferente das
+relações espaciais entre elos avaliadas por K2. O protocolo está em
+[`phase-2-revisable-chain-protocol.md`](phase-2-revisable-chain-protocol.md); qualquer resultado
+deve preservar essa distinção e não rebatizar K2 como inconclusiva.
+
 ## Formulações controladas
 
 Formulação atual defensável:

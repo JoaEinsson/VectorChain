@@ -64,3 +64,7 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   hipóteses cinemática e autoregressiva avaliadas.
 - Protocolo e ADR da Fase II para K6: tokenização cartesiana causal sob budgets pareados, oito
   famílias sintéticas novas, seeds inéditas, teste fechado e condição de parada anterior ao código.
+- Protocolo K7 e ADR para uma cauda articulada revisável com compromisso limitado, distinguindo
+  relações espaciais de atualizações temporais de junta em três mecanismos sintéticos isolados.
+- Extensão documental do contrato causal para prefixo `committed` imutável e cauda `working`
+  versionada, sem alterar a API atual.

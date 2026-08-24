@@ -36,6 +36,8 @@ A interpretação final da Fase I está em
 [`docs/phase-1-scientific-synthesis.md`](docs/phase-1-scientific-synthesis.md). A nova hipótese K6,
 sobre tokenização causal sob orçamento de sequência, foi congelada em
 [`docs/phase-2-adaptive-tokenization-protocol.md`](docs/phase-2-adaptive-tokenization-protocol.md).
+Uma hipótese separada, K7, testa atualizações temporais numa cauda articulada revisável e está em
+[`docs/phase-2-revisable-chain-protocol.md`](docs/phase-2-revisable-chain-protocol.md).
 
 ## Estado do projeto
 
@@ -56,6 +58,8 @@ sobre tokenização causal sob orçamento de sequência, foi congelada em
 - [x] Síntese científica K1–K5 e encerramento da Fase I
 - [x] Protocolo da Fase II congelado antes de código ou execução
 - [ ] Implementação e execução da Etapa 11-A
+- [x] Protocolo mínimo da cadeia revisável K7 congelado
+- [ ] Implementação e execução da Etapa 12-A
 
 ## Direção pós-MVP
 
@@ -74,6 +78,12 @@ A continuação não retuna essas perguntas. A Fase II usa apenas `(dt, dy)` e t
 adaptativos ordenados preservam mais contexto sob um orçamento fixo de comprimento de sequência.
 O gate exige controles de mesmo número de tokens e raw de mesmo payload escalar; dados externos e
 modelos maiores permanecem condicionados ao teste linear sintético.
+
+K7 trata outra variável: não `delta_theta/delta_r` entre elos num snapshot, mas
+`update_theta/update_r` da mesma junta entre duas observações. Somente quatro elos provisórios podem
+ser rearticulados; o prefixo comprometido continua imutável. O primeiro teste usa três modulações
+oscilatórias isoladas — frequência, baseline e assimetria da crista — sem sinal combinado ou grade
+desnecessária.
 
 ## Ambiente de desenvolvimento
 
@@ -199,6 +209,11 @@ O balanço de toda essa evidência está na
 11-A, mas somente depois de implementar literalmente o
 [`protocolo K6 pré-especificado`](docs/phase-2-adaptive-tokenization-protocol.md), sem usar suas cinco
 seeds canônicas durante o desenvolvimento.
+
+A cadeia revisável possui protocolo próprio em
+[`docs/phase-2-revisable-chain-protocol.md`](docs/phase-2-revisable-chain-protocol.md), ADR próprio e
+seeds diferentes. Ela não muda a API causal atual nem pode ser usada para reinterpretar o resultado
+negativo das relações espaciais da Fase I.
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.

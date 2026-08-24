@@ -128,3 +128,9 @@ nenhuma região selecionada na Fase I.
 O desenho está congelado em
 [`phase-2-adaptive-tokenization-protocol.md`](phase-2-adaptive-tokenization-protocol.md). Nenhum novo
 runner, config ou dado canônico deve ser produzido antes de esse protocolo estar versionado.
+
+Uma segunda pergunta independente, K7, distingue relações espaciais entre elos de correções
+temporais da mesma junta. Ela permite somente uma cauda provisória limitada e mantém o prefixo
+comprometido imutável. Seu desenho mínimo está em
+[`phase-2-revisable-chain-protocol.md`](phase-2-revisable-chain-protocol.md). K7 não reinterpreta o
+gate negativo de K2, porque `update_theta/update_r` não são `delta_theta/delta_r` espaciais.

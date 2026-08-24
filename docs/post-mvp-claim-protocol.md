@@ -210,3 +210,7 @@ A Fase II começa por K6, uma pergunta independente sobre tokenização causal s
 sequência. Seu protocolo é
 [`phase-2-adaptive-tokenization-protocol.md`](phase-2-adaptive-tokenization-protocol.md). Um sucesso
 ou fracasso em K6 não altera retrospectivamente K1–K5.
+
+K7 abre separadamente a dinâmica de uma cauda revisável, sem alterar elos comprometidos. Seu
+protocolo é [`phase-2-revisable-chain-protocol.md`](phase-2-revisable-chain-protocol.md). K6 e K7
+possuem dados, seeds e gates distintos; nenhum pode substituir a falha do outro.
