@@ -1,0 +1,39 @@
+[experiment]
+name = "revision-path-kill-test"
+phase = "post-k7-eliminatory"
+seeds = [1103, 2207, 3301, 4409, 5501]
+
+[signals]
+names = [
+  "frequency_modulation",
+  "baseline_modulation",
+  "crest_asymmetry_modulation",
+]
+n_points = 4096
+noise_std = 0.02
+
+[revision]
+lambda_revision = 0.1
+lambda_bend = 1.0
+
+[split]
+train_end = 2048
+validation_end = 2867
+test_end = 4096
+
+[representation]
+raw_lags = 120
+
+[model]
+kind = "ridge"
+alpha = [0.01, 0.1, 1.0, 10.0, 100.0]
+
+[gate]
+path_ratio_max = 0.98
+raw_ratio_max = 1.05
+required_seed_passes = 4
+required_mechanism_passes = 2
+required_horizon_passes = 2
+
+[output]
+root = "artifacts"
