@@ -154,6 +154,17 @@ representação. `selection.json`, previsões de validação, modelos, estados v
 entram no manifesto; não existe modo de teste nem `gate.json` nesse runner. Ainda não há dado
 canônico executado ou promovido.
 
+Depois que o desenvolvimento passar integralmente pelos testes e o código estiver em commit limpo,
+o mesmo runner pode receber o escopo canônico **somente de seleção**:
+
+```powershell
+uv run python experiments/09_revisable_chain_validation.py --config configs/forecasting/revisable_chain_selection.toml
+```
+
+Esse escopo exige exatamente as cinco seeds pré-registradas, recusa worktree sujo e continua sem
+implementar ou materializar o teste. A futura abertura do teste será outro comando e deverá consumir
+o `selection.json` congelado por hash.
+
 O runner deve permanecer limitado a:
 
 1. uma cauda de quatro elos e 256 intervalos, com fronteiras fixas;

@@ -6,9 +6,9 @@ representadas de forma útil como uma cadeia causal e adaptativa de vetores.
 O projeto está em fase **pré-alpha**. A Fase I foi concluída: núcleo causal, reconstrução,
 similaridade, forecasting, controles de mecanismo e rollout possuem resultados reproduzíveis. A
 Fase II está pré-especificada; o núcleo estrutural, os três sinais, as seis representações de K7 e o
-runner restrito a treino/validação já existem. A seleção de desenvolvimento e o teste canônico ainda
-não foram executados. A evidência atual sustenta somente resultados delimitados no benchmark
-sintético; não sustenta superioridade geral.
+runner restrito a treino/validação já existem. A execução de desenvolvimento foi auditada; a seleção
+canônica e o teste fechado ainda não foram executados. A evidência atual sustenta somente resultados
+delimitados no benchmark sintético; não sustenta superioridade geral.
 
 ## Pergunta de pesquisa
 

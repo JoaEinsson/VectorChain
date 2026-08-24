@@ -100,6 +100,39 @@ def test_development_config_is_exact_and_cannot_authorize_test() -> None:
     assert config.lambda_bend == (0.01, 0.1, 1.0)
 
 
+def test_canonical_selection_config_transcribes_registered_seeds_without_test_access() -> None:
+    config = runner.load_config(Path("configs/forecasting/revisable_chain_selection.toml"))
+
+    assert config.scope == "canonical_selection"
+    assert config.seeds == runner.CANONICAL_SELECTION_SEEDS
+    assert config.mechanisms == (
+        "frequency_modulation",
+        "baseline_modulation",
+        "crest_asymmetry_modulation",
+    )
+    assert config.n_points == 4096
+    assert config.train_fraction + config.validation_fraction == pytest.approx(0.7)
+
+
+def test_canonical_selection_refuses_dirty_worktree_before_generating_signals(
+    experiment_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(runner, "_git_state", lambda _root: ("dirty-commit", True))
+
+    with pytest.raises(RuntimeError, match="clean Git worktree"):
+        runner.run_validation(
+            Path("configs/forecasting/revisable_chain_selection.toml"),
+            output_root=experiment_path,
+            command_args=("pytest", "canonical-selection-dirty"),
+        )
+
+    run_dirs = tuple((experiment_path / "revisable-chain-stage12a-selection").iterdir())
+    assert len(run_dirs) == 1
+    failures = _read_csv(run_dirs[0] / "failures.csv")
+    assert failures[0]["error_type"] == "RuntimeError"
+    assert not (run_dirs[0] / "selection.json").exists()
+
+
 def test_fixture_scope_rejects_every_seed_outside_development(experiment_path: Path) -> None:
     config_path = _write_config(experiment_path / "config.toml", seed=23)
 

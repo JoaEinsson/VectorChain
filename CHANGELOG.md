@@ -76,3 +76,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Gerador K7 por prefixo observável e runner separado de treino/validação com seleção global dos
   regularizadores, ridge multioutput por série, artefatos estruturais e barreira explícita contra o
   teste fechado.
+- Escopo canônico de seleção K7 limitado aos primeiros 70% das cinco seeds pré-registradas, com
+  recusa de worktree sujo e identidade do commit/config incorporada ao arquivo de seleção.

@@ -31,6 +31,13 @@ RIDGE_ALPHA = 0.001
 TRAIN_FRACTION = 0.5
 VALIDATION_FRACTION = 0.2
 INNER_TRAIN_FRACTION = 0.8
+CANONICAL_SELECTION_SEEDS = (
+    2652130430004669680,
+    2132228189405173304,
+    7118215795047038510,
+    7649379155735444565,
+    1017387535040708910,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -115,7 +122,7 @@ class ValidationRunSummary:
 
 
 def load_config(path: Path) -> ValidationConfig:
-    """Load a development-only K7 configuration and reject test authority."""
+    """Load a K7 selection configuration that has no closed-test authority."""
 
     resolved_path = path.resolve()
     with resolved_path.open("rb") as stream:
@@ -130,8 +137,11 @@ def load_config(path: Path) -> ValidationConfig:
     name = _non_empty_string(experiment.get("name"), "experiment.name")
     phase = _non_empty_string(experiment.get("phase"), "experiment.phase")
     scope = _non_empty_string(experiment.get("scope"), "experiment.scope")
-    if scope not in {"development", "fixture"}:
-        msg = "experiment.scope must be 'development' or 'fixture'; closed test is unsupported"
+    if scope not in {"development", "fixture", "canonical_selection"}:
+        msg = (
+            "experiment.scope must be 'development', 'fixture' or "
+            "'canonical_selection'; closed test is unsupported"
+        )
         raise ValueError(msg)
     seeds = _integer_tuple(experiment.get("seeds"), "experiment.seeds")
     mechanisms = _string_tuple(signals.get("names"), "signals.names")
@@ -175,15 +185,20 @@ def load_config(path: Path) -> ValidationConfig:
         raise ValueError(msg)
     output_root = _non_empty_string(output.get("root"), "output.root")
 
-    if scope == "development":
-        if seeds != revisable_chain.DEVELOPMENT_SEEDS:
-            msg = "development scope must use exactly seeds 11 and 22"
+    if scope in {"development", "canonical_selection"}:
+        expected_seeds = (
+            revisable_chain.DEVELOPMENT_SEEDS
+            if scope == "development"
+            else CANONICAL_SELECTION_SEEDS
+        )
+        if seeds != expected_seeds:
+            msg = f"{scope} scope must use exactly its registered seeds in order"
             raise ValueError(msg)
         if mechanisms != revisable_chain.MECHANISM_NAMES:
-            msg = "development scope must use all three registered mechanisms"
+            msg = f"{scope} scope must use all three registered mechanisms"
             raise ValueError(msg)
         if n_points != revisable_chain.N_POINTS or noise_std != revisable_chain.NOISE_STD:
-            msg = "development scope must use the registered K7 signal length and noise"
+            msg = f"{scope} scope must use the registered K7 signal length and noise"
             raise ValueError(msg)
     elif any(seed not in revisable_chain.DEVELOPMENT_SEEDS for seed in seeds):
         msg = "fixture scope is restricted to development seeds 11 and 22"
@@ -304,6 +319,9 @@ def run_validation(
     run_started = time.perf_counter_ns()
 
     try:
+        if config.scope == "canonical_selection" and git_dirty:
+            msg = "canonical selection requires a clean Git worktree"
+            raise RuntimeError(msg)
         selected, selection_rows, selection_summary = _select_regularizers(
             config, train_end=train_end, inner_end=inner_end
         )
@@ -315,6 +333,13 @@ def run_validation(
             "aggregation": "arithmetic mean of per-series per-horizon NRMSE",
             "nrmse_scale": "inner-fit target population standard deviation, floor 1e-12",
             "tie_break": "larger lambda_revision, then larger lambda_bend within 1e-12",
+            "source": {
+                "run_id": run_id,
+                "git_commit": git_commit,
+                "git_dirty": git_dirty,
+                "config_sha256": config_hash,
+                "generated_stop_exclusive": validation_end,
+            },
             "selected": {
                 "lambda_revision": selected[0],
                 "lambda_bend": selected[1],
