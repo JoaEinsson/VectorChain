@@ -216,3 +216,7 @@ O protocolo e a condição definitiva de parada estão em
 [`docs/revision-path-kill-test.md`](../docs/revision-path-kill-test.md). A candidata enfrenta
 geometria, última atualização, histórico embaralhado e raw de mesma largura; o teste só passa se
 vencer simultaneamente os quatro controles.
+
+O teste e sua reprodução foram concluídos no commit `2bca8cc`. A trajetória real venceu o sham,
+mas perdeu para a geometria atual, a última atualização e o raw pareado; o relatório negativo está
+em [`reports/reference/revision-path-kill-test/`](../reports/reference/revision-path-kill-test/).

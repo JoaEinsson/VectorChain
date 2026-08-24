@@ -1,0 +1,47 @@
+{
+  "candidate": "geometry_revision_path",
+  "comparisons": {
+    "geometry": {
+      "comparator": "geometry",
+      "global_ratio": 1.040938501705117,
+      "horizon_passes": 0,
+      "mechanism_passes": 0,
+      "passed": false,
+      "seed_passes": 0,
+      "threshold": 0.98
+    },
+    "last_update": {
+      "comparator": "geometry_last_update",
+      "global_ratio": 1.0629160956407377,
+      "horizon_passes": 0,
+      "mechanism_passes": 0,
+      "passed": false,
+      "seed_passes": 0,
+      "threshold": 0.98
+    },
+    "raw_matched": {
+      "comparator": "raw_matched",
+      "global_ratio": 2.0462476409312225,
+      "horizon_passes": 0,
+      "mechanism_passes": 0,
+      "passed": false,
+      "seed_passes": 0,
+      "threshold": 1.05
+    },
+    "sham_path": {
+      "comparator": "geometry_sham_path",
+      "global_ratio": 0.9555707276430293,
+      "horizon_passes": 3,
+      "mechanism_passes": 3,
+      "passed": true,
+      "seed_passes": 5,
+      "threshold": 0.98
+    }
+  },
+  "passed": false,
+  "requirements": {
+    "required_horizon_passes": 2,
+    "required_mechanism_passes": 2,
+    "required_seed_passes": 4
+  }
+}

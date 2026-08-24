@@ -73,3 +73,7 @@ O teste só passa se as quatro comparações passarem integralmente. Caso contr�
 permitido é negativo: a linhagem implementada não sustenta uma continuação científica do
 VectorChain. Mesmo um resultado positivo ainda seria evidência sintética, não um claim de novidade
 ou de utilidade real.
+
+O resultado executado e reproduzido está em
+[`reports/reference/revision-path-kill-test/`](../reports/reference/revision-path-kill-test/). O
+gate não passou e ativou a condição de parada definida acima.

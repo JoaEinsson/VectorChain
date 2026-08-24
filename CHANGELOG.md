@@ -80,3 +80,7 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   recusa de worktree sujo e identidade do commit/config incorporada ao arquivo de seleção.
 - Lock canônico K7 em `(lambda_revision=0.1, lambda_bend=1.0)` e referência pré-teste auditada,
   preservando a melhora de K7-R e os sinais negativos de K7-D/K7-U na validação.
+- Teste eliminatório pós-K7 da trajetória completa de revisões, com assinatura temporal de ordem 2,
+  estatísticas de caminho, controles de geometria/última atualização/sham e raw de mesma largura.
+- Relatório reproduzido do teste de trajetória: associação consistente contra histórico embaralhado,
+  mas piora diante da geometria, da última atualização e do raw, encerrando a hipótese.

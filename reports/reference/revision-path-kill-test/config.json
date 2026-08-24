@@ -1,0 +1,54 @@
+{
+  "experiment": {
+    "name": "revision-path-kill-test",
+    "phase": "post-k7-eliminatory",
+    "seeds": [
+      1103,
+      2207,
+      3301,
+      4409,
+      5501
+    ]
+  },
+  "gate": {
+    "path_ratio_max": 0.98,
+    "raw_ratio_max": 1.05,
+    "required_horizon_passes": 2,
+    "required_mechanism_passes": 2,
+    "required_seed_passes": 4
+  },
+  "model": {
+    "alpha": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "kind": "ridge"
+  },
+  "output": {
+    "root": "artifacts"
+  },
+  "representation": {
+    "raw_lags": 120
+  },
+  "revision": {
+    "lambda_bend": 1.0,
+    "lambda_revision": 0.1
+  },
+  "signals": {
+    "n_points": 4096,
+    "names": [
+      "frequency_modulation",
+      "baseline_modulation",
+      "crest_asymmetry_modulation"
+    ],
+    "noise_std": 0.02
+  },
+  "split": {
+    "test_end": 4096,
+    "train_end": 2048,
+    "validation_end": 2867
+  }
+}
