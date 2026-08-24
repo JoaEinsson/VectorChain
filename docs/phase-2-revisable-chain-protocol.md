@@ -352,6 +352,18 @@ estão em
 O resultado desfavorável de K7-D/K7-U na validação não altera o protocolo nem autoriza omitir o
 teste.
 
+### Registro operacional pós-teste
+
+O teste foi aberto uma vez em 2026-08-24 no commit limpo `0bd82d5`, sem retuning e consumindo o
+lock acima. K7-R passou integralmente, mas K7-D, a localização de energia e K7-U falharam; portanto
+K7 completo não passou. O resultado, as auditorias e os manifestos estão em
+[`reports/reference/revisable-chain-stage12a-test/`](../reports/reference/revisable-chain-stage12a-test/).
+
+A primeira tentativa de reprodução foi bloqueada antes de materializar sinais por uma comparação
+LF/CRLF da configuração. A correção estritamente operacional foi versionada em `0a3339b`; a
+reprodução nesse descendente produziu 25/25 saídas científicas idênticas. Como não foi literalmente
+o mesmo commit, o desvio permanece explícito no relatório e não é reclassificado retrospectivamente.
+
 ## 10. Claims e condição de parada
 
 Se K7 passar integralmente, o claim máximo será:
@@ -381,5 +393,5 @@ Se qualquer subgate falhar:
 - reprodução no mesmo commit, excluindo somente campos de runtime da comparação científica.
 
 O comando de treino/validação produz o subconjunto desses artefatos que não depende do teste e não
-produz `gate.json`. O gate e os resumos decisórios pertencem exclusivamente ao futuro comando de
-teste, que deverá consumir uma seleção já congelada sem reajustá-la.
+produz `gate.json`. O gate e os resumos decisórios pertencem exclusivamente ao comando separado de
+teste, que consumiu a seleção congelada sem reajustá-la.

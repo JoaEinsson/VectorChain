@@ -1,0 +1,143 @@
+{
+  "comparisons": [
+    {
+      "artifact": "config.json",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "selection.json",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "origins.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "predictions.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "solver_audit.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "commit_audit.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "causality_audit.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "batch_stream_audit.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "comparison_cells.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "gate_by_seed.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "gate_by_mechanism.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "gate_by_horizon_seed.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "gate_by_horizon.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "energy_cells.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "energy_by_seed.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "energy_by_mechanism.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "bootstrap_summary.csv",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "gate.json",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "structural_summary.json",
+      "comparison": "exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "inputs.csv.gz",
+      "comparison": "decompressed_exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "working_state.csv.gz",
+      "comparison": "decompressed_exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "working_joints.csv.gz",
+      "comparison": "decompressed_exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "events.csv.gz",
+      "comparison": "decompressed_exact_bytes",
+      "passed": true
+    },
+    {
+      "artifact": "metrics.csv",
+      "comparison": "rows excluding train_runtime_s",
+      "passed": true
+    },
+    {
+      "artifact": "models.npz",
+      "comparison": "exact arrays",
+      "passed": true
+    }
+  ],
+  "excluded": [
+    "environment timestamps and elapsed runtime",
+    "metrics.csv train_runtime_s",
+    "manifest byte hashes affected by excluded runtime fields",
+    "plot encodings; plots are derived from compared tables"
+  ],
+  "guard_only_corrective_descendant": true,
+  "primary_git_commit": "0bd82d533b24b19ee46597262f19be61072f3795",
+  "primary_run": "F:\\Projetos\\VectorChain\\artifacts\\revisable-chain-stage12a-test\\20260824T145539767422Z-b1482f2470",
+  "replica_git_commit": "0a3339beefffbc5f5899bdff6a8cd8ccff1c5a12",
+  "replica_run": "F:\\Projetos\\VectorChain\\artifacts\\revisable-chain-stage12a-test\\20260824T150319170256Z-b1482f2470",
+  "same_git_commit": false,
+  "scientifically_identical": true,
+  "status": "complete"
+}

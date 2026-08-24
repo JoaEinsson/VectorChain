@@ -1,0 +1,16 @@
+mechanism,seed,cut,modified_suffix_start,same_working_version_at_cut,same_committed_prefix_at_cut,passed
+frequency_modulation,2652130430004669680,2048,2049,1,1,1
+frequency_modulation,2132228189405173304,2048,2049,1,1,1
+frequency_modulation,7118215795047038510,2048,2049,1,1,1
+frequency_modulation,7649379155735444565,2048,2049,1,1,1
+frequency_modulation,1017387535040708910,2048,2049,1,1,1
+baseline_modulation,2652130430004669680,2048,2049,1,1,1
+baseline_modulation,2132228189405173304,2048,2049,1,1,1
+baseline_modulation,7118215795047038510,2048,2049,1,1,1
+baseline_modulation,7649379155735444565,2048,2049,1,1,1
+baseline_modulation,1017387535040708910,2048,2049,1,1,1
+crest_asymmetry_modulation,2652130430004669680,2048,2049,1,1,1
+crest_asymmetry_modulation,2132228189405173304,2048,2049,1,1,1
+crest_asymmetry_modulation,7118215795047038510,2048,2049,1,1,1
+crest_asymmetry_modulation,7649379155735444565,2048,2049,1,1,1
+crest_asymmetry_modulation,1017387535040708910,2048,2049,1,1,1

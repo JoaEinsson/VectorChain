@@ -1,0 +1,4 @@
+mechanism,geometric_mean_ratio,threshold,passed
+baseline_modulation,0.9746851678859739,1.25,0
+crest_asymmetry_modulation,0.9741469656948308,1.25,0
+frequency_modulation,0.9664973807796166,1.25,0

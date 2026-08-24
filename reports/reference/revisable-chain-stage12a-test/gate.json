@@ -1,0 +1,117 @@
+{
+  "aggregation": {
+    "cell": "paired RMSE ratio per mechanism, seed and horizon",
+    "horizon": "geometric mean across mechanisms per seed; robust in 4/5 seeds",
+    "mechanism": "five seeds times three horizons",
+    "operator": "geometric mean in log space",
+    "replicate_unit": "complete mechanism times seed series",
+    "seed": "three mechanisms times three horizons"
+  },
+  "bootstrap": {
+    "decisory": false,
+    "repetitions": 10000,
+    "seed": 7817596609602243496,
+    "unit": "15 complete mechanism times seed series"
+  },
+  "decisory_split": "test",
+  "passed": false,
+  "status": "complete",
+  "subgates": {
+    "K7-D": {
+      "against_absolute": {
+        "horizon_seed_passes": {
+          "1": 0,
+          "32": 0,
+          "8": 0
+        },
+        "mechanism_passes": 0,
+        "passed": false,
+        "required_mechanism_passes": 2,
+        "required_robust_horizons": 2,
+        "required_seed_passes": 4,
+        "robust_horizons": 0,
+        "seed_passes": 0,
+        "threshold_max": 0.99
+      },
+      "against_spatial": {
+        "horizon_seed_passes": {
+          "1": 0,
+          "32": 0,
+          "8": 0
+        },
+        "mechanism_passes": 0,
+        "passed": false,
+        "required_mechanism_passes": 2,
+        "required_robust_horizons": 2,
+        "required_seed_passes": 4,
+        "robust_horizons": 0,
+        "seed_passes": 0,
+        "threshold_max": 0.99
+      },
+      "correction_energy": {
+        "aggregation": "arithmetic mean within region, geometric mean across series",
+        "mechanism_passes": 0,
+        "passed": false,
+        "required_mechanism_passes": 2,
+        "required_seed_passes": 4,
+        "seed_passes": 0,
+        "threshold_min": 1.25,
+        "zero_corrections_included": true
+      },
+      "passed": false
+    },
+    "K7-R": {
+      "comparison": {
+        "horizon_seed_passes": {
+          "1": 5,
+          "32": 5,
+          "8": 5
+        },
+        "mechanism_passes": 3,
+        "passed": true,
+        "required_mechanism_passes": 2,
+        "required_robust_horizons": 2,
+        "required_seed_passes": 4,
+        "robust_horizons": 3,
+        "seed_passes": 5,
+        "threshold_max": 0.99
+      },
+      "passed": true
+    },
+    "K7-U": {
+      "comparison": {
+        "horizon_seed_passes": {
+          "1": 0,
+          "32": 0,
+          "8": 0
+        },
+        "mechanism_passes": 0,
+        "passed": false,
+        "required_mechanism_passes": 2,
+        "required_robust_horizons": 2,
+        "required_seed_passes": 4,
+        "robust_horizons": 0,
+        "seed_passes": 0,
+        "threshold_max": 1.05
+      },
+      "passed": false
+    },
+    "structural": {
+      "batch_stream_and_determinism_passed": true,
+      "causality_suffix_audits_passed": true,
+      "committed_snapshots_immutable": true,
+      "finite_features_and_solutions": true,
+      "max_current_anchor_error": 0.0,
+      "max_raw_span": 33,
+      "max_start_anchor_error": 0.0,
+      "max_working_links": 4,
+      "n_committed_links": 23670,
+      "n_series": 15,
+      "n_solver_states": 61440,
+      "n_working_link_states": 245472,
+      "passed": true,
+      "positive_integer_dt": true,
+      "solver_and_bounds_passed": true
+    }
+  }
+}

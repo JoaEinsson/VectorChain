@@ -122,12 +122,16 @@ operacional de:
 5. teste isolado contra geometria imutável, geometria revisada, relações espaciais, raw pareado e
    persistência.
 
-Por enquanto isso deve aparecer apenas como **fronteira de contribuição candidata** ou **hipótese
-K7**, nunca como invenção ou novidade provada. Se K7 passar e a busca ampliada não encontrar uma
-formulação equivalente, a eventual contribuição poderá ser declarada na seção de contribuições de
-um artigo como o método e o protocolo pareado; o resultado preditivo será um claim empírico separado.
-Se K7 falhar, a contribuição restante será metodológica/diagnóstica e o resultado negativo deverá
-ser preservado.
+O teste canônico de 2026-08-24 rejeitou K7 completo. K7-R passou de modo consistente, mostrando
+benefício empírico da geometria revisada contra a imutável, mas `update_theta/update_r` falharam
+contra geometria revisada, relações espaciais e raw pareado. A contribuição restante é, portanto,
+metodológica/diagnóstica: mecanismo causal auditável, protocolo de ablations pareadas e separação
+empírica entre **benefício de revisar a geometria** e **ausência de benefício de usar a revisão como
+feature dinâmica**.
+
+Isso ainda deve aparecer apenas como **fronteira de contribuição candidata**, nunca como invenção
+ou novidade provada. Uma busca ampliada pode avaliar se a combinação operacional do método é nova;
+o resultado K7-R é um claim empírico separado e estreito, não evidência de novidade.
 
 ## Lacuna de pesquisa provisória
 

@@ -1,0 +1,17 @@
+{
+  "batch_stream_and_determinism_passed": true,
+  "causality_suffix_audits_passed": true,
+  "committed_snapshots_immutable": true,
+  "finite_features_and_solutions": true,
+  "max_current_anchor_error": 0.0,
+  "max_raw_span": 33,
+  "max_start_anchor_error": 0.0,
+  "max_working_links": 4,
+  "n_committed_links": 23670,
+  "n_series": 15,
+  "n_solver_states": 61440,
+  "n_working_link_states": 245472,
+  "passed": true,
+  "positive_integer_dt": true,
+  "solver_and_bounds_passed": true
+}

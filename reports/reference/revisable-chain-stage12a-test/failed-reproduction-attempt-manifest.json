@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "path": "config.json",
+      "sha256": "f1c82859775c3163e2398f38da00a894de264c7a647e4050ff43fefdda3ed116",
+      "size_bytes": 1931
+    },
+    {
+      "path": "environment.json",
+      "sha256": "c73ac57f914f6ca0769ae1f50d7b2ddc86b09c0c42d984fcd35d78bc6f9b8d39",
+      "size_bytes": 3735
+    },
+    {
+      "path": "failures.csv",
+      "sha256": "cade0e06d96cf20c088cdd1a2069bc8a93aa74ef98f172bcd8454167e5642209",
+      "size_bytes": 134
+    }
+  ],
+  "status": "failed"
+}

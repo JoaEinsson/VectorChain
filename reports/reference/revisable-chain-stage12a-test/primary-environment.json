@@ -1,0 +1,99 @@
+{
+  "command": {
+    "argv": [
+      "experiments/10_revisable_chain_test.py",
+      "--config",
+      "configs/forecasting/revisable_chain_test.toml"
+    ],
+    "display": "experiments/10_revisable_chain_test.py --config configs/forecasting/revisable_chain_test.toml"
+  },
+  "config": {
+    "resolved": {
+      "fit_scope": "first 50 percent only; validation is not included",
+      "lambda_bend": 1.0,
+      "lambda_revision": 0.1,
+      "model_unit": "one model per mechanism, seed and representation",
+      "row_split_rule": "all target endpoints must lie within the same split",
+      "scope": "canonical_test",
+      "selection_config": "F:\\Projetos\\VectorChain\\configs\\forecasting\\revisable_chain_selection.toml",
+      "selection_config_sha256": "badcd6599848b8848e72cbd6388893530e71632c549e29b0a015dae1f80e68d0",
+      "selection_lock": "F:\\Projetos\\VectorChain\\configs\\forecasting\\revisable_chain_selection.lock.json",
+      "selection_lock_sha256": "d4e3e4ba8b03e4e8e3ca638cc2061790f84e81475a44cdc5713fb331525f58b2",
+      "test_end_exclusive": 4096,
+      "test_materialization_supported": true,
+      "test_start_inclusive": 2867,
+      "train_end_exclusive": 2048,
+      "tuning_supported": false,
+      "validation_start_inclusive": 2048
+    },
+    "source": {
+      "bootstrap": {
+        "lower_quantile": 0.025,
+        "repetitions": 10000,
+        "seed": 7817596609602243496,
+        "upper_quantile": 0.975
+      },
+      "experiment": {
+        "name": "revisable-chain-stage12a-test",
+        "phase": "stage12a-canonical-test",
+        "scope": "canonical_test"
+      },
+      "gate": {
+        "energy_ratio_min": 1.25,
+        "raw_ratio_max": 1.05,
+        "required_horizon_passes": 2,
+        "required_horizon_seed_passes": 4,
+        "required_mechanism_passes": 2,
+        "required_seed_passes": 4,
+        "revision_ratio_max": 0.99,
+        "temporal_ratio_max": 0.99
+      },
+      "output": {
+        "plot_dpi": 150,
+        "root": "artifacts",
+        "save_plots": true
+      },
+      "selection": {
+        "config": "revisable_chain_selection.toml",
+        "lock": "revisable_chain_selection.lock.json",
+        "lock_sha256": "d4e3e4ba8b03e4e8e3ca638cc2061790f84e81475a44cdc5713fb331525f58b2"
+      }
+    }
+  },
+  "decisory": true,
+  "dependencies": {
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.2",
+    "vectorchain": "0.1.0.dev0"
+  },
+  "elapsed_s": 125.7164023,
+  "finished_utc": "2026-08-24T14:57:45.720132+00:00",
+  "gate_passed": false,
+  "git": {
+    "commit": "0bd82d533b24b19ee46597262f19be61072f3795",
+    "dirty": false
+  },
+  "mode": "primary",
+  "n_failures": 0,
+  "n_series": 15,
+  "phase": "stage12a-canonical-test",
+  "platform": {
+    "machine": "AMD64",
+    "release": "11",
+    "system": "Windows"
+  },
+  "python": {
+    "executable": "F:\\Projetos\\VectorChain\\.venv\\Scripts\\python.exe",
+    "implementation": "CPython",
+    "version": "3.12.12"
+  },
+  "replication_of": null,
+  "run_id": "20260824T145539767422Z-b1482f2470",
+  "scope": "canonical_test",
+  "selection_lock_sha256": "d4e3e4ba8b03e4e8e3ca638cc2061790f84e81475a44cdc5713fb331525f58b2",
+  "started_utc": "2026-08-24T14:55:39.767422+00:00",
+  "status": "complete",
+  "test_materialized": true,
+  "test_opened": true,
+  "test_opened_utc": "2026-08-24T14:55:40.000372+00:00"
+}

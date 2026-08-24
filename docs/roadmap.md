@@ -241,7 +241,7 @@ Protocolo congelado em
 - [x] Implementar solver, três sinais e seis representações pareadas
 - [x] Implementar auditorias em artefatos e o comando separado de treino/validação
 - [x] Congelar seleção em treino/validação antes de abrir o teste
-- [ ] Executar uma vez, reproduzir e preservar o resultado
+- [x] Executar uma vez, reproduzir cientificamente e preservar o resultado e o desvio operacional
 
 Gate: revisão precisa melhorar o estado imutável; features temporais precisam superar geometria
 revisada e deltas espaciais; a candidata precisa permanecer dentro de 5% do raw pareado usando
@@ -249,3 +249,10 @@ quatro contra 16 passos. Todos os subgates e invariantes causais são obrigatór
 
 Não há experimento combinado nesta etapa. Fronteiras móveis, redes neurais e dados reais continuam
 fechados mesmo após a implementação e só podem ser discutidos se K7 passar integralmente.
+
+Resultado: **K7 completo não passou**. K7-R confirmou benefício consistente da geometria revisada
+contra a imutável (`0,8297` de razão global; 5/5 seeds, 3/3 mecanismos e 3/3 horizontes), mas K7-D,
+energia e K7-U falharam em todas as agregações exigidas. A referência reproduzida está em
+[`reports/reference/revisable-chain-stage12a-test/`](../reports/reference/revisable-chain-stage12a-test/).
+Conforme a condição de parada, a condição combinada e as extensões acima não serão abertas por esta
+sequência.

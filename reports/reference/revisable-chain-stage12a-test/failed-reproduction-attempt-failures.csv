@@ -1,0 +1,2 @@
+stage,mechanism,seed,error_type,message
+canonical_test_runner,,,RuntimeError,replication configuration differs from the primary run

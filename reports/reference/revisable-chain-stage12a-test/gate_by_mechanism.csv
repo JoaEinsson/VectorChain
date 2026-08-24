@@ -1,0 +1,13 @@
+comparison,mechanism,geometric_mean_ratio,threshold,passed
+K7-R,baseline_modulation,0.794590298228663,0.99,1
+K7-R,crest_asymmetry_modulation,0.8379131622944614,0.99,1
+K7-R,frequency_modulation,0.8577729202285552,0.99,1
+K7-D-absolute,baseline_modulation,1.3339739421545718,0.99,0
+K7-D-absolute,crest_asymmetry_modulation,1.2437138059164645,0.99,0
+K7-D-absolute,frequency_modulation,1.2312568014236434,0.99,0
+K7-D-spatial,baseline_modulation,1.0481194267425153,0.99,0
+K7-D-spatial,crest_asymmetry_modulation,1.0440830239119905,0.99,0
+K7-D-spatial,frequency_modulation,1.0205013966376961,0.99,0
+K7-U,baseline_modulation,1.5088651411873106,1.05,0
+K7-U,crest_asymmetry_modulation,1.3897763202608109,1.05,0
+K7-U,frequency_modulation,1.522501649619269,1.05,0

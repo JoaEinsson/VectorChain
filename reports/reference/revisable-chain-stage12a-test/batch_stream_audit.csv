@@ -1,0 +1,16 @@
+mechanism,seed,n_versions,versions_equal,committed_equal,events_equal,representation_rows_aligned,all_inputs_finite,payload_parity,shared_origins_targets_boundaries,passed
+frequency_modulation,2652130430004669680,4096,1,1,1,1,1,1,1,1
+frequency_modulation,2132228189405173304,4096,1,1,1,1,1,1,1,1
+frequency_modulation,7118215795047038510,4096,1,1,1,1,1,1,1,1
+frequency_modulation,7649379155735444565,4096,1,1,1,1,1,1,1,1
+frequency_modulation,1017387535040708910,4096,1,1,1,1,1,1,1,1
+baseline_modulation,2652130430004669680,4096,1,1,1,1,1,1,1,1
+baseline_modulation,2132228189405173304,4096,1,1,1,1,1,1,1,1
+baseline_modulation,7118215795047038510,4096,1,1,1,1,1,1,1,1
+baseline_modulation,7649379155735444565,4096,1,1,1,1,1,1,1,1
+baseline_modulation,1017387535040708910,4096,1,1,1,1,1,1,1,1
+crest_asymmetry_modulation,2652130430004669680,4096,1,1,1,1,1,1,1,1
+crest_asymmetry_modulation,2132228189405173304,4096,1,1,1,1,1,1,1,1
+crest_asymmetry_modulation,7118215795047038510,4096,1,1,1,1,1,1,1,1
+crest_asymmetry_modulation,7649379155735444565,4096,1,1,1,1,1,1,1,1
+crest_asymmetry_modulation,1017387535040708910,4096,1,1,1,1,1,1,1,1

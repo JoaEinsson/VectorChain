@@ -185,6 +185,11 @@ A seleção canônica foi executada no commit `742d51f` e congelou
 de K7-D/K7-U na validação, está em
 [`reports/reference/revisable-chain-stage12a-selection/`](../reports/reference/revisable-chain-stage12a-selection/).
 
+O teste canônico foi aberto no commit `0bd82d5` e reproduzido cientificamente após o fix operacional
+`0a3339b`. K7-R passou, mas K7-D, energia e K7-U não; K7 completo falhou e a condição de parada está
+ativa. Tabelas, auditorias, plots, desvio LF/CRLF e manifestos estão em
+[`reports/reference/revisable-chain-stage12a-test/`](../reports/reference/revisable-chain-stage12a-test/).
+
 O runner deve permanecer limitado a:
 
 1. uma cauda de quatro elos e 256 intervalos, com fronteiras fixas;
