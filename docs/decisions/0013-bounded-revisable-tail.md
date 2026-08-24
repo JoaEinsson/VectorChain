@@ -17,7 +17,7 @@ aumentaria custo sem limite e confundiria smoothing offline com estado online. A
 ## Decisão
 
 - Manter `VectorChain` e seu modo causal atual inalterados.
-- Criar futuramente um componente separado, sem reutilizar o termo `emitido` para elos revisáveis.
+- Criar um componente separado, sem reutilizar o termo `emitido` para elos revisáveis.
 - Dividir o estado em prefixo comprometido imutável e cauda de trabalho versionada.
 - Limitar a cauda a quatro elos e 256 intervalos raw; o limite que ocorrer primeiro força o
   compromisso do elo completo mais antigo.

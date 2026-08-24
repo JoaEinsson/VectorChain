@@ -5,8 +5,9 @@ representadas de forma útil como uma cadeia causal e adaptativa de vetores.
 
 O projeto está em fase **pré-alpha**. A Fase I foi concluída: núcleo causal, reconstrução,
 similaridade, forecasting, controles de mecanismo e rollout possuem resultados reproduzíveis. A
-Fase II está pré-especificada, mas ainda não possui código ou resultados. A evidência atual sustenta
-somente resultados delimitados no benchmark sintético; não sustenta superioridade geral.
+Fase II está pré-especificada; o núcleo estrutural de K7 já existe, mas seus sinais, forecasting e
+teste canônico ainda não foram implementados nem executados. A evidência atual sustenta somente
+resultados delimitados no benchmark sintético; não sustenta superioridade geral.
 
 ## Pergunta de pesquisa
 
@@ -59,6 +60,7 @@ Uma hipótese separada, K7, testa atualizações temporais numa cauda articulada
 - [x] Protocolo da Fase II congelado antes de código ou execução
 - [ ] Implementação e execução da Etapa 11-A
 - [x] Protocolo mínimo da cadeia revisável K7 congelado
+- [x] Núcleo estrutural causal da cauda revisável K7
 - [ ] Implementação e execução da Etapa 12-A
 
 ## Direção pós-MVP
@@ -127,6 +129,32 @@ for value in stream:
     segments.extend(vc.update(value))
 segments.extend(vc.finalize())
 ```
+
+O experimento K7 usa um componente separado; ele não muda segmentos emitidos por `VectorChain`:
+
+```python
+from vectorchain import RevisableVectorChain
+
+tail = RevisableVectorChain(
+    tolerance=0.03,
+    lambda_revision=0.1,
+    lambda_bend=0.1,
+)
+
+for value in stream:
+    version = tail.update(value)
+    current_links = version.links
+
+immutable_prefix = tail.committed_
+version_history = tail.versions_
+audit_events = tail.events_
+```
+
+Cada observação aceita cria uma `WorkingVersion` imutável. A cauda contém no máximo quatro elos e
+256 intervalos raw; o elo completo mais antigo passa para `committed_` antes de exceder o limite.
+`update_theta/update_r` comparam apenas o mesmo `link_id`, e elos novos recebem zero. O wrapper
+`fit_transform` apenas repete `update` e não compromete artificialmente a cauda ao terminar a
+entrada. Esse núcleo ainda não constitui um resultado científico de K7.
 
 As features disponíveis são `dt`, `dy`, `theta`, `r`, `delta_theta` e `delta_r`. `dt` e `dy` são
 obrigatórias no primeiro MVP. Alterar a seleção ou a ordem das features não muda as fronteiras.

@@ -68,3 +68,6 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
   relações espaciais de atualizações temporais de junta em três mecanismos sintéticos isolados.
 - Extensão documental do contrato causal para prefixo `committed` imutável e cauda `working`
   versionada, sem alterar a API atual.
+- Núcleo `RevisableVectorChain` separado, com fronteiras propostas pelo segmentador causal, solver
+  quadrático NumPy, IDs estáveis, histórico append-only e compromisso limitado a quatro elos ou
+  256 intervalos raw.

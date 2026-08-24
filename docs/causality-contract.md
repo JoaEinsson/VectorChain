@@ -87,6 +87,11 @@ representação pública e documentada.
 O [`ADR 0013`](decisions/0013-bounded-revisable-tail.md) autoriza pesquisar uma extensão separada
 com mais de um elo provisório. Ela não altera a API nem a semântica do `VectorChain` atual.
 
+A implementação estrutural dessa extensão é `RevisableVectorChain`. Seu `update(x_t)` acrescenta
+uma `WorkingVersion` imutável e seu `fit_transform(x)` é somente a repetição dessa transição; o fim
+de um array não compromete artificialmente a cauda. `versions_` e `events_` são logs append-only,
+enquanto `committed_` contém snapshots que nunca voltam ao estado de trabalho.
+
 Nessa extensão:
 
 - `committed` é o único equivalente a emitido e continua imutável;

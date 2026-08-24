@@ -13,6 +13,16 @@ from vectorchain.baselines import (
 from vectorchain.core import Segment, VectorChain
 from vectorchain.features import DEFAULT_FEATURES, SUPPORTED_FEATURES, FeatureName
 from vectorchain.metrics import compression_factor, mae, retention_fraction, rmse
+from vectorchain.revisable import (
+    CommittedLink,
+    RevisableVectorChain,
+    RevisionSolverError,
+    TailEvent,
+    WorkingJoint,
+    WorkingLink,
+    WorkingTailLimitError,
+    WorkingVersion,
+)
 from vectorchain.similarity import FeatureStandardizer, Neighbor, dtw_distance, nearest_neighbors
 from vectorchain.synthetic import (
     RngLike,
@@ -30,13 +40,21 @@ __version__ = version("vectorchain")
 __all__ = [
     "DEFAULT_FEATURES",
     "SUPPORTED_FEATURES",
+    "CommittedLink",
     "FeatureName",
     "FeatureStandardizer",
     "FixedSegmentation",
     "Neighbor",
+    "RevisableVectorChain",
+    "RevisionSolverError",
     "RngLike",
     "Segment",
+    "TailEvent",
     "VectorChain",
+    "WorkingJoint",
+    "WorkingLink",
+    "WorkingTailLimitError",
+    "WorkingVersion",
     "__version__",
     "compression_factor",
     "dtw_distance",
