@@ -155,6 +155,13 @@ Uma segunda execução no mesmo commit e ambiente é reprodução computacional.
 independente requer, no mínimo, execução por outro operador ou implementação/ambiente separado e,
 preferencialmente, novos dados. Relatórios devem usar esses termos sem intercambiá-los.
 
+Para K7, a abertura e a reprodução computacional são comandos diferentes. O primeiro comando
+recusa qualquer execução primária previamente marcada como `test_opened=true`; o segundo exige
+`--replicate <primary-run-dir>`, o mesmo commit e o mesmo hash do lock. A comparação científica é
+exata para tabelas, arrays e conteúdo descomprimido, excluindo somente timestamps, runtime,
+manifestos afetados por runtime e encoding dos plots. Um gate científico negativo retorna execução
+válida, permanece no manifesto e não autoriza retuning.
+
 Se a árvore estiver suja, o experimento pode rodar, mas deve registrar esse fato e não pode ser
 promovido a resultado de referência sem preservar o diff correspondente.
 

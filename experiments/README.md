@@ -161,8 +161,24 @@ uv run python experiments/09_revisable_chain_validation.py --config configs/fore
 ```
 
 Esse escopo exige exatamente as cinco seeds pré-registradas, recusa worktree sujo e continua sem
-implementar ou materializar o teste. A futura abertura do teste será outro comando e deverá consumir
-o `selection.json` congelado por hash.
+implementar ou materializar o teste. O comando separado e sem caminho de tuning que consome o lock
+congelado é:
+
+```powershell
+uv run python experiments/10_revisable_chain_test.py --config configs/forecasting/revisable_chain_test.toml
+```
+
+Ele exige commit limpo, ajusta modelos e normalizadores somente nos 50% iniciais e marca
+duravelmente a abertura antes de gerar o primeiro sinal integral. Uma segunda execução primária é
+recusada. A reprodução computacional obrigatória precisa declarar explicitamente o diretório da
+primeira execução e permanecer no mesmo commit:
+
+```powershell
+uv run python experiments/10_revisable_chain_test.py --config configs/forecasting/revisable_chain_test.toml --replicate artifacts/revisable-chain-stage12a-test/<primary-run-id>
+```
+
+O exit code distingue execução válida de crash; um `gate.json` negativo continua sendo uma
+execução completa e deve ser preservado.
 
 A seleção canônica foi executada no commit `742d51f` e congelou
 `lambda_revision=0.1`, `lambda_bend=1.0`. O registro pré-teste, incluindo o resultado desfavorável
@@ -175,7 +191,8 @@ O runner deve permanecer limitado a:
 2. um solver quadrático NumPy e log versionado de cada revisão/compromisso;
 3. três modulações isoladas: frequência, baseline e assimetria da crista;
 4. quatro ablations vetoriais, raw pareado e persistência;
-5. seeds estritamente iguais às registradas para o escopo `development` ou `canonical_selection`.
+5. seeds estritamente iguais às registradas para o escopo `development`, `canonical_selection` ou
+   ao teste canônico que apenas herda o lock dessa seleção.
 
 Não implementar sinal combinado, fronteiras móveis, Kalman ou rede neural antes da decisão K7.
 Durante o desenvolvimento, uma origem comum também precisa ter 16 incrementos anteriores para

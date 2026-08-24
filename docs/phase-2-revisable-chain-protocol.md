@@ -272,6 +272,27 @@ após auditoria estrutural e commit limpo.
 Depois da auditoria estrutural, o teste deve ser aberto mesmo se a validação externa for
 desfavorável; validação não funciona como regra de parada opcional.
 
+### Unidade e operador de agregação congelados
+
+Cada célula elementar é uma razão pareada de RMSE para
+`mecanismo × seed × horizonte`. Toda agregação de razões usa média geométrica, calculada no domínio
+logarítmico. Os modelos e os normalizadores são ajustados somente nos 50% iniciais; validação não é
+incorporada ao ajuste antes do teste.
+
+- o resultado por seed agrega os três mecanismos e os três horizontes;
+- o resultado por mecanismo agrega as cinco seeds e os três horizontes;
+- para a robustez por horizonte, cada `horizonte × seed` agrega os três mecanismos; um horizonte é
+  robusto quando passa em pelo menos 4/5 seeds;
+- energia de correção é agregada primeiro por `mecanismo × seed` sobre todas as versões e elos do
+  teste, incluindo correções zero; o resultado por seed agrega os três mecanismos e o resultado por
+  mecanismo agrega as cinco seeds;
+- os quantis de derivada que definem regiões `stationary` e `changing` e a mediana de `r` usada na
+  escala da energia são estimados somente no treino.
+
+Os intervalos descritivos usam 10.000 reamostragens pareadas das 15 séries completas
+`mecanismo × seed`, com seed de bootstrap `7817596609602243496`. Cada série contribui com a média
+geométrica de seus três horizontes. Esses intervalos não substituem nem alteram o gate discreto.
+
 ### K7-R — valor da revisão
 
 `RMSE(revisable_absolute) / RMSE(immutable_absolute) <= 0.99` em:
