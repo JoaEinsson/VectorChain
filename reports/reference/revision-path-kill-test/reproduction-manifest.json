@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "bytes": 999,
+      "path": "README.md",
+      "sha256": "f845719f3379bd7393c2e92eb3b11ebde8e40209ac9c58892470b5eb250e4876"
+    },
+    {
+      "bytes": 903,
+      "path": "config.json",
+      "sha256": "e72ca3e6fd43e1ebdd9a63e633fb5bf035b2521a78327049f8e06c3417d782eb"
+    },
+    {
+      "bytes": 797,
+      "path": "environment.json",
+      "sha256": "25a83b8df7612c49626b71f60ef8c8c342027541ee53d7a9b422e22447056084"
+    },
+    {
+      "bytes": 1145,
+      "path": "gate.json",
+      "sha256": "4d92a16ce669f140a7501b29be228dc319af336fb5a8d76cd236bc9bf61d7b8c"
+    },
+    {
+      "bytes": 19977,
+      "path": "metrics.csv",
+      "sha256": "45469cc559b87cd23a2062555d8cb49135d99368e8dae982e3e5d871af3f79de"
+    },
+    {
+      "bytes": 13692,
+      "path": "ratios.csv",
+      "sha256": "7b158f7590e536cf4891b985b02bc9d5ef249ca9a9c0fc25022a727f5bbdee70"
+    },
+    {
+      "bytes": 80900,
+      "path": "selection.csv",
+      "sha256": "394e9970beec96d163e1f773360013b9acbe6e50a1fcb5b16b672b3f69cb3411"
+    },
+    {
+      "bytes": 143,
+      "path": "selection.json",
+      "sha256": "6b696d8e961085ac316589c00f8a070ce64781bb65121105a0506f0bd9ee14fe"
+    }
+  ]
+}

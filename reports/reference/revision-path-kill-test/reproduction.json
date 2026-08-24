@@ -1,0 +1,17 @@
+{
+  "commit": "2bca8ccd5e4892721b8e4b96cd102d774a744a6f",
+  "config_sha256": "28173b876f61056f5b297ab1cc2f216e3f33296d24d9c7eb30ad32dc85af2450",
+  "gate_passed": false,
+  "identical_files": {
+    "generated-README.md": "f845719f3379bd7393c2e92eb3b11ebde8e40209ac9c58892470b5eb250e4876",
+    "config.json": "e72ca3e6fd43e1ebdd9a63e633fb5bf035b2521a78327049f8e06c3417d782eb",
+    "gate.json": "4d92a16ce669f140a7501b29be228dc319af336fb5a8d76cd236bc9bf61d7b8c",
+    "metrics.csv": "45469cc559b87cd23a2062555d8cb49135d99368e8dae982e3e5d871af3f79de",
+    "ratios.csv": "7b158f7590e536cf4891b985b02bc9d5ef249ca9a9c0fc25022a727f5bbdee70",
+    "selection.csv": "394e9970beec96d163e1f773360013b9acbe6e50a1fcb5b16b672b3f69cb3411",
+    "selection.json": "6b696d8e961085ac316589c00f8a070ce64781bb65121105a0506f0bd9ee14fe"
+  },
+  "primary_run": "artifacts/revision-path-kill-test/20260824T163213710896Z-28173b876f",
+  "reproduction_run": "artifacts/revision-path-kill-test/20260824T163320936986Z-28173b876f",
+  "scientific_outputs_identical": true
+}

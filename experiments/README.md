@@ -202,3 +202,21 @@ O runner deve permanecer limitado a:
 Não implementar sinal combinado, fronteiras móveis, Kalman ou rede neural antes da decisão K7.
 Durante o desenvolvimento, uma origem comum também precisa ter 16 incrementos anteriores para
 `raw_matched`; não se usa padding nem se criam origens diferentes por representação.
+
+### Teste eliminatório pós-K7
+
+O último teste isolado usa a geometria atual junto da linhagem completa das revisões, em vez de
+somente `update_theta/update_r` do passo anterior:
+
+```powershell
+uv run python experiments/11_revision_path_kill_test.py --config configs/forecasting/revision_path_kill_test.toml
+```
+
+O protocolo e a condição definitiva de parada estão em
+[`docs/revision-path-kill-test.md`](../docs/revision-path-kill-test.md). A candidata enfrenta
+geometria, última atualização, histórico embaralhado e raw de mesma largura; o teste só passa se
+vencer simultaneamente os quatro controles.
+
+O teste e sua reprodução foram concluídos no commit `2bca8cc`. A trajetória real venceu o sham,
+mas perdeu para a geometria atual, a última atualização e o raw pareado; o relatório negativo está
+em [`reports/reference/revision-path-kill-test/`](../reports/reference/revision-path-kill-test/).

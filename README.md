@@ -3,12 +3,12 @@
 VectorChain é um projeto científico para investigar se séries temporais escalares podem ser
 representadas de forma útil como uma cadeia causal e adaptativa de vetores.
 
-O projeto está em fase **pré-alpha**. A Fase I foi concluída: núcleo causal, reconstrução,
-similaridade, forecasting, controles de mecanismo e rollout possuem resultados reproduzíveis. A
-Fase II está pré-especificada; o núcleo estrutural, os três sinais, as seis representações de K7 e o
-runner restrito a treino/validação já existem. A seleção canônica foi executada, auditada e
-congelada; o teste fechado continua intacto. A evidência atual sustenta somente resultados
-delimitados no benchmark sintético; não sustenta superioridade geral.
+O projeto está em fase **pré-alpha**, com desenvolvimento científico ativo encerrado. A Fase I e a
+cadeia revisável K7 foram concluídas com resultados reproduzíveis. K7 confirmou somente que revisar
+a geometria provisória ajuda a própria baseline geométrica; suas atualizações temporais falharam.
+O teste eliminatório posterior da trajetória completa de revisões também foi negativo. A evidência
+atual sustenta resultados diagnósticos delimitados no benchmark sintético, não novidade de nível
+médio, superioridade geral ou utilidade prática.
 
 ## Pergunta de pesquisa
 
@@ -65,7 +65,9 @@ Uma hipótese separada, K7, testa atualizações temporais numa cauda articulada
 - [x] Três sinais e seis representações pareadas K7, testados somente com seeds 11/22
 - [x] Runner K7 separado de treino/validação, sem acesso ao teste fechado
 - [x] Seleção canônica K7 congelada antes da abertura do teste
-- [ ] Implementação e execução da Etapa 12-A
+- [x] Implementação e execução da Etapa 12-A, com K7 completo negativo preservado
+- [x] Teste eliminatório da trajetória completa de revisões, negativo e reproduzido
+- [x] Condição de parada final documentada
 
 ## Direção pós-MVP
 
@@ -90,6 +92,12 @@ K7 trata outra variável: não `delta_theta/delta_r` entre elos num snapshot, ma
 ser rearticulados; o prefixo comprometido continua imutável. O primeiro teste usa três modulações
 oscilatórias isoladas — frequência, baseline e assimetria da crista — sem sinal combinado ou grade
 desnecessária.
+
+O teste canônico de K7 confirmou a vantagem da geometria revisada sobre a imutável, mas rejeitou o
+valor das atualizações como features e perdeu para raw. O último teste preservou a geometria atual e
+acrescentou toda a linhagem recursiva das revisões. A trajetória real venceu sua versão embaralhada,
+mas piorou a geometria isolada e teve aproximadamente o dobro do RMSE do raw pareado. Isso encerra
+a hipótese sem nova rodada de representação ou modelo.
 
 ## Ambiente de desenvolvimento
 
@@ -236,16 +244,19 @@ Sem pooling, o estado causal completou rollouts compactos e venceu controles mul
 mas teve RMSE maior que AR raw nas cinco seeds e nos três horizontes. K5-A não avançou; modelos
 maiores e confirmação externa permanecem fechados por essa condição de parada.
 
-O balanço de toda essa evidência está na
-[`síntese da Fase I`](docs/phase-1-scientific-synthesis.md). A próxima execução possível é a Etapa
-11-A, mas somente depois de implementar literalmente o
-[`protocolo K6 pré-especificado`](docs/phase-2-adaptive-tokenization-protocol.md), sem usar suas cinco
-seeds canônicas durante o desenvolvimento.
+O balanço da Fase I está na
+[`síntese científica`](docs/phase-1-scientific-synthesis.md). O protocolo K6 permanece preservado
+como hipótese não executada, mas não é uma próxima etapa ativa após a decisão de parada.
 
 A cadeia revisável possui protocolo próprio em
 [`docs/phase-2-revisable-chain-protocol.md`](docs/phase-2-revisable-chain-protocol.md), ADR próprio e
 seeds diferentes. Ela não muda a API causal atual nem pode ser usada para reinterpretar o resultado
 negativo das relações espaciais da Fase I.
+
+O último teste, sua réplica byte a byte e a decisão final estão em
+[`reports/reference/revision-path-kill-test/`](reports/reference/revision-path-kill-test/). A
+trajetória completa venceu somente o controle embaralhado (`0,9556`), perdeu para geometria
+(`1,0409`) e última atualização (`1,0629`) e ficou muito atrás de raw (`2,0462`).
 
 Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para o fluxo completo e
 [`docs/reproducibility.md`](docs/reproducibility.md) para reprodução de experimentos.
