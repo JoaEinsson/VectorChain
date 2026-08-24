@@ -140,8 +140,9 @@ K6 e de outro protocolo anterior aos dados reais.
 ### Cadeia revisável K7
 
 A Etapa 12-A possui protocolo independente em
-[`docs/phase-2-revisable-chain-protocol.md`](../docs/phase-2-revisable-chain-protocol.md). Ainda não
-existe runner, config ou dado canônico.
+[`docs/phase-2-revisable-chain-protocol.md`](../docs/phase-2-revisable-chain-protocol.md). O módulo
+`revisable_chain.py` já materializa os três sinais, as origens causais comuns e as seis matrizes de
+design; ainda não existe comando de seleção/validação, config congelada ou dado canônico.
 
 Seu primeiro runner deve limitar-se a:
 
@@ -152,3 +153,5 @@ Seu primeiro runner deve limitar-se a:
 5. seeds de desenvolvimento `11/22`, nunca as seeds canônicas do protocolo.
 
 Não implementar sinal combinado, fronteiras móveis, Kalman ou rede neural antes da decisão K7.
+Durante o desenvolvimento, uma origem comum também precisa ter 16 incrementos anteriores para
+`raw_matched`; não se usa padding nem se criam origens diferentes por representação.

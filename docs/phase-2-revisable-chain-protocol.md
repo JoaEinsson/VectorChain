@@ -133,6 +133,10 @@ g(phi, kappa) = (sin(phi) + kappa*sin(2*phi + pi/4)) / (1 + abs(kappa))
 | `baseline_modulation` | baseline/média local | `phi=2*pi*16*u`; `mu(u)=1-cos(2*pi*3*u)`; `kappa=0` |
 | `crest_asymmetry_modulation` | assimetria harmônica | `phi=2*pi*16*u`; `mu=0`; `kappa(u)=0.225*(1-cos(2*pi*3*u))` |
 
+Clarificação de implementação registrada antes de qualquer execução canônica: na recorrência da
+frequência, `phi[0]=0` e a atualização documentada é aplicada para `t=1,...,n_points-1` usando
+`f(u[t])`. Isso fixa a fase inicial sem introduzir outro parâmetro.
+
 `baseline_modulation` varia de zero a duas amplitudes do componente fundamental. Essa escala é mais
 diagnóstica que um deslocamento arbitrário `0 -> 12`, que dominaria a tolerância absoluta sem
 isolar melhor o mecanismo.
@@ -168,6 +172,10 @@ incluindo o aberto. Origens inelegíveis são removidas de todas as representaç
 y_h(t) = x[t+h] - x[t],  h in {1, 8, 32}
 ```
 
+Como `raw_matched` requer 16 incrementos, a origem comum também deve satisfazer `t>=16`. Não há
+padding: uma origem que não puder materializar qualquer uma das seis representações é removida de
+todas elas.
+
 Splits pelos endpoints dos alvos:
 
 - treino externo: primeiros 50%;
@@ -187,6 +195,14 @@ ridge usa `alpha=0.001`.
 | `revisable_temporal` | `dt,dy,update_theta,update_r` | candidata K7 |
 | `raw_matched` | últimos 16 primeiros incrementos raw | mesmo payload e parâmetros, 16 passos |
 | `persistence` | nenhum contexto treinado | prevê incremento zero |
+
+Clarificações de layout registradas antes da execução canônica:
+
+- `immutable_absolute` usa os valores raw nas mesmas fronteiras temporais de `W_t`;
+- as quatro ablations vetoriais são achatadas por elo, do mais antigo ao aberto, e `x[t]` é o último
+  escalar;
+- o primeiro elo de `revisable_spatial` recebe deltas espaciais zero por convenção;
+- `raw_matched` ordena os 16 incrementos do mais antigo ao mais recente e também termina em `x[t]`.
 
 Essas são todas as representações autorizadas. Não entram K6, média móvel, Transformer, Kalman,
 ABBA, fronteiras móveis ou modelos probabilísticos. O objetivo é decidir primeiro se revisão e

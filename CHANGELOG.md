@@ -71,3 +71,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e o pro
 - Núcleo `RevisableVectorChain` separado, com fronteiras propostas pelo segmentador causal, solver
   quadrático NumPy, IDs estáveis, histórico append-only e compromisso limitado a quatro elos ou
   256 intervalos raw.
+- Três modulações K7 isoladas com coordenadas latentes analíticas e seis matrizes causais pareadas de
+  17 escalares, mantendo quatro passos vetoriais contra 16 incrementos raw e persistência separada.

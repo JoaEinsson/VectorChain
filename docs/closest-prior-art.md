@@ -94,7 +94,7 @@ gráfico escalar acrescentam sinal preditivo sob controles pareados.
 | segmentação online | SwiftSeg e outros métodos de stream | contrato causal mais estrito, mas componente conhecido |
 | duração e incremento por trecho | ABBA/fABBA | `dt/dy` implementados |
 | ângulo ou mudança angular | representação por turning points e curvatura | `theta/delta_theta` implementados |
-| revisão incremental de variáveis recentes | PLA online, iSAM2/fixed-lag smoothing | K7 pré-especificada, ainda não implementada |
+| revisão incremental de variáveis recentes | PLA online, iSAM2/fixed-lag smoothing | núcleo estrutural K7 implementado, ainda sem resultado |
 | IK temporal regularizada | otimização de movimento robótico | inspiração para K7, não equivalência de domínio |
 | atualização temporal da mesma junta como feature preditiva | não estabelecida por este levantamento | hipótese K7, sem resultado |
 | sequência simbólica prevista | ABBA-LSTM, LLM-ABBA | não é o caminho atual |

@@ -237,8 +237,9 @@ Protocolo congelado em
 - [x] Fixar fronteiras e reduzir o primeiro ajuste a mínimos quadrados quadráticos
 - [x] Pré-especificar três mecanismos sintéticos isolados, seeds e gate K7
 - [x] Registrar a extensão no [`ADR 0013`](decisions/0013-bounded-revisable-tail.md)
-- [ ] Implementar identidades, versionamento e compromisso usando somente seeds 11/22
-- [ ] Implementar solver, auditorias e seis ablations pareadas
+- [x] Implementar identidades, versionamento e compromisso usando somente seeds 11/22
+- [x] Implementar solver, três sinais e seis representações pareadas
+- [ ] Implementar auditorias em artefatos e o comando separado de treino/validação
 - [ ] Congelar seleção em treino/validação antes de abrir o teste
 - [ ] Executar uma vez, reproduzir e preservar o resultado
 
