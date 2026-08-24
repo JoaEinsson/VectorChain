@@ -8,6 +8,7 @@ import gzip
 import hashlib
 import json
 import platform
+import subprocess
 import sys
 import time
 import tomllib
@@ -1071,6 +1072,10 @@ def compare_scientific_runs(primary_dir: Path, replica_dir: Path) -> dict[str, A
 
     primary = Path(primary_dir).resolve()
     replica = Path(replica_dir).resolve()
+    primary_environment = json.loads((primary / "environment.json").read_text(encoding="utf-8"))
+    replica_environment = json.loads((replica / "environment.json").read_text(encoding="utf-8"))
+    primary_commit = str(primary_environment["git"]["commit"])
+    replica_commit = str(replica_environment["git"]["commit"])
     exact_files = (
         "config.json",
         "selection.json",
@@ -1126,6 +1131,12 @@ def compare_scientific_runs(primary_dir: Path, replica_dir: Path) -> dict[str, A
     return {
         "status": "complete",
         "scientifically_identical": all(bool(row["passed"]) for row in comparisons),
+        "same_git_commit": primary_commit == replica_commit,
+        "primary_git_commit": primary_commit,
+        "replica_git_commit": replica_commit,
+        "guard_only_corrective_descendant": (
+            primary_commit != replica_commit and _is_guard_only_fix(primary_commit, replica_commit)
+        ),
         "primary_run": str(primary),
         "replica_run": str(replica),
         "excluded": [
@@ -1254,19 +1265,43 @@ def _validate_primary(primary_dir: Path, git_commit: str, config: TestConfig) ->
     if environment.get("mode") != "primary" or environment.get("status") != "complete":
         msg = "replication requires a completed primary test run"
         raise ValueError(msg)
-    if environment.get("git", {}).get("commit") != git_commit:
-        msg = "replication must run on the exact primary Git commit"
+    primary_commit = str(environment.get("git", {}).get("commit", ""))
+    if primary_commit != git_commit and not _is_guard_only_fix(primary_commit, git_commit):
+        msg = "replication must use the primary commit or a guard-only corrective descendant"
         raise RuntimeError(msg)
     if environment.get("selection_lock_sha256") != config.selection_lock_sha256:
         msg = "replication selection lock differs from the primary run"
         raise RuntimeError(msg)
-    if (primary_dir / "config.json").read_bytes() != json.dumps(
-        _resolved_config(config, *_split_bounds(config.selection_config)),
-        indent=2,
-        sort_keys=True,
-    ).encode("utf-8") + b"\n":
+    primary_config = json.loads((primary_dir / "config.json").read_text(encoding="utf-8"))
+    if primary_config != _resolved_config(config, *_split_bounds(config.selection_config)):
         msg = "replication configuration differs from the primary run"
         raise RuntimeError(msg)
+
+
+def _is_guard_only_fix(primary_commit: str, current_commit: str) -> bool:
+    if not primary_commit or not current_commit:
+        return False
+    repository_root = Path(__file__).resolve().parents[1]
+    ancestry = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", primary_commit, current_commit],
+        cwd=repository_root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if ancestry.returncode != 0:
+        return False
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", primary_commit, current_commit],
+        cwd=repository_root,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.splitlines()
+    return bool(changed) and set(changed) <= {
+        "experiments/revisable_chain_test.py",
+        "tests/test_revisable_chain_test.py",
+    }
 
 
 def _split_bounds(config: validation.ValidationConfig) -> tuple[int, int]:

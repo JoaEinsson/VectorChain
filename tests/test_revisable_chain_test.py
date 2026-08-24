@@ -174,6 +174,31 @@ def test_fixture_fit_uses_train_only_and_materializes_only_development_seed(
     assert all("raw_start_value" in row and "raw_end_value" in row for row in rows["working_state"])
 
 
+def test_primary_config_comparison_is_semantic_across_windows_newlines(
+    experiment_path: Path,
+) -> None:
+    config = runner.load_config(Path("configs/forecasting/revisable_chain_test.toml"))
+    git_commit, _dirty = runner.validation._git_state(Path.cwd())
+    primary = experiment_path / "primary"
+    primary.mkdir()
+    (primary / "environment.json").write_text(
+        json.dumps(
+            {
+                "mode": "primary",
+                "status": "complete",
+                "git": {"commit": git_commit},
+                "selection_lock_sha256": config.selection_lock_sha256,
+            }
+        ),
+        encoding="utf-8",
+    )
+    expected = runner._resolved_config(config, *runner._split_bounds(config.selection_config))
+    windows_json = json.dumps(expected, indent=2, sort_keys=True).replace("\n", "\r\n") + "\r\n"
+    (primary / "config.json").write_bytes(windows_json.encode("utf-8"))
+
+    runner._validate_primary(primary, git_commit, config)
+
+
 def _write_fixture_selection_config(path: Path) -> Path:
     path.write_text(
         """
