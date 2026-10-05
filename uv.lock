@@ -490,7 +490,7 @@ wheels = [
 
 [[package]]
 name = "fabba"
-version = "1.5.2"
+version = "1.5.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "joblib" },
@@ -503,7 +503,7 @@ dependencies = [
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ad/e5/5b340818f5c6a7ff9f7e44e71e14da0881c4f7aaacff930c48581ca68ae9/fabba-1.5.2.tar.gz", hash = "sha256:1f8dac1527157b1443a78b422a86e28b6791601dd8aa29f7d985474f1029b53c", size = 12916114, upload-time = "2026-01-04T16:11:33.594Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4e/14/0c37e874abe02049b755786ea8a0090243220d8ddcf365ad53575ea1a132/fabba-1.5.3.tar.gz", hash = "sha256:3a946bd31a36f354b6f10630c8fe1e079ed5ad1234ae67db14b5e34033bf6dd6", size = 11722590, upload-time = "2026-09-26T19:30:19.391Z" }
 
 [[package]]
 name = "filelock"
@@ -1650,7 +1650,7 @@ resolution-markers = [
     "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz", hash = "sha256:95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0", size = 30573822, upload-time = "2026-02-23T00:26:24.851Z" }
 wheels = [
@@ -1732,7 +1732,7 @@ resolution-markers = [
     "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7e/74/66de6258867beb2ef08f35f9f2ac017a52cacd5081714d239ff1a442d458/scipy-1.18.1.tar.gz", hash = "sha256:52c4b7422442aba924d03ad4019852b08a92e64ea187b933135687bfe2747307", size = 30781235, upload-time = "2026-08-21T23:28:50.599Z" }
 wheels = [
@@ -1943,7 +1943,7 @@ requires-dist = [
 provides-extras = ["plot"]
 
 [package.metadata.requires-dev]
-abba = [{ name = "fabba", specifier = "==1.5.2" }]
+abba = [{ name = "fabba", specifier = "==1.5.3" }]
 dev = [
     { name = "build", specifier = ">=1.2" },
     { name = "hypothesis", specifier = ">=6.125" },
